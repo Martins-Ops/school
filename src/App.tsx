@@ -9,6 +9,7 @@ import Login from './screens/Login';
 import ProfileForm from './screens/RegisterStudents';
 import { Provider } from 'react-redux'
 import store from './store/store';
+import ProfileScreen from './screens/ProfileScreen';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
     <Route  path='/' element={ <HomeScreen /> } /> 
     <Route  path='/login' element={ <Login /> } /> 
      <Route  path='/register' element={ <ProfileForm /> } /> 
+      <Route  path='/profile' element={ <ProfileScreen /> } /> 
    </Routes>
 
  
