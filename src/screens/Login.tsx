@@ -49,7 +49,7 @@ const loginHandler=async()=>{
      localStorage.setItem('isLoggedin','true')
     navigate('/')
    }
-   console.log(data)
+
 
   }catch(error){
   }

@@ -23,7 +23,7 @@ dispatch((setIsLoggedIn(isLoggedIn==='true'? true:false)))
 },[])
 
 const token:any = useSelector((state:authState) => state);
-  // const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+
 
   return (
     <div>
