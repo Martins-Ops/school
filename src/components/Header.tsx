@@ -5,20 +5,24 @@ import {FaPhoneAlt} from "react-icons/fa";
 import {AiOutlineMail,AiOutlineLogin} from 'react-icons/ai'
 import {BiLogIn, BiMenuAltRight} from 'react-icons/bi'
 import {ImCancelCircle} from 'react-icons/im' 
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className='relative'>
-      <div className='bg-teal-500 w-full h-12 px-20 pt-3' >
+    <div className='relative fixed'>
 
-        <div className='flex gap-6 md:gap-24' >
-        <span className='flex gap-4'>
+        {isOpen &&<div onClick={() => setIsOpen(false)} className='w-1/2 backdrop-brightness-50 h-screen fixed top-0 right-0 z-20'></div>}
+
+      <div className=' z-50 bg-teal-500 w-full h-12 px-8 md:px-20 pt-3' >
+
+        <div className='flex gap-4 md:gap-24' >
+        <span className='flex gap-2 md:gap-4'>
           <FaPhoneAlt className='text-white mt-1' />
           <p className='text-white'>090-234-3923</p>
         </span>
-           <span className='flex gap-4'>
+             <span className='flex gap-2 md:gap-4'>
           <AiOutlineMail className='text-white mt-1' />
          <p className='text-white'>school@gmail.com</p>
         </span>        
@@ -29,30 +33,32 @@ const Header = () => {
             <div className='flex gap-6 md:gap-24' >
         <span className='flex gap-4'>
           <BiLogIn className='text-white mt-1' />
-          <p className='text-white'>Login</p>
+          <Link to='login' className='text-white'>Login</Link>
         </span>
            <span className='flex gap-4'>
           <AiOutlineLogin className='text-white mt-1' />
-         <p className='text-white pointer'>register</p>
+         <Link to='register' className='text-white'>Register</Link>
         </span>        
         </div>
             
           </div>
 
       </div>
-          <header className="fixed w-full bg-white shadow-lg z-10">
+          <header className=" w-full bg-white shadow-lg z-10">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
-            <img className="h-8 w-auto mr-2" src={logo} alt="School logo" />
-         
+          <div className="items-center">
+            <Link to='/'>
+               <img className="w-48 h-12 mr-2" src={logo} alt="School logo" />
+            </Link>
+           
           </div>
           <div className="hidden md:block">
-            <nav className="flex space-x-4">
-              <a href="#" className="text-gray-600 hover:text-gray-900">Home</a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">About</a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">Services</a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">Contacts</a>
+            <nav className="flex space-x-16">
+              <a href="#" className="text-gray-600 hover:text-teal-500">Home</a>
+              <a href="#" className="text-gray-600 hover:text-teal-500">About</a>
+              <a href="#" className="text-gray-600 hover:text-teal-500">Services</a>
+              <a href="#" className="text-white hover:text-gray-900 bg-teal-500 px-4 py-1 rounded-20">Contacts</a>
             </nav>
           </div>
           <div className="md:hidden">
@@ -75,7 +81,7 @@ const Header = () => {
     leave="transition ease-in duration-200 transform"
     leaveFrom="translate-x-0"
     leaveTo="-translate-x-full"
-    className="absolute top-0 w-1/2 left-0 z-10 md:hidden"
+    className="fixed h-screen absolute top-0 w-1/2 left-0 z-50 md:hidden"
   >
     <div>
       <nav className="bg-white px-2 py-3 h-screen shadow">
@@ -91,7 +97,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </header>
+          </header>
     </div>
   
   );
