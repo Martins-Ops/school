@@ -7,10 +7,12 @@ import {Routes,Route,Link} from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import Login from './screens/Login';
 import ProfileForm from './screens/RegisterStudents';
+import { Provider } from 'react-redux'
+import store from './store/store';
 
 function App() {
   return (
-    <div className="App">
+   <Provider store={store}>
    <Header />
 
    <Routes>
@@ -23,7 +25,7 @@ function App() {
 
  
   
-    </div>
+    </Provider>
   );
 }
 
