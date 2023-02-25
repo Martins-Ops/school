@@ -1,14 +1,23 @@
+import {FaPhoneAlt} from "react-icons/fa";
 import React, { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import logo from '../assets/images/logo.png'
-import {FaPhoneAlt} from "react-icons/fa";
 import {AiOutlineMail,AiOutlineLogin} from 'react-icons/ai'
 import {BiLogIn, BiMenuAltRight} from 'react-icons/bi'
-import {ImCancelCircle} from 'react-icons/im' 
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+
+
+interface authState {
+  isLoggeedin:boolean,
+  token : string
+}
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const auth:any = useSelector((state:authState) => state);
+
+  console.log(auth.auth.isLoggedIn)
 
   return (
     <div className='relative fixed'>
@@ -30,6 +39,7 @@ const Header = () => {
        
           <div className='hidden lg:block absolute right-20 top-3'>
 
+        {!auth.auth.isLoggedIn ?    
             <div className='flex gap-6 md:gap-24' >
         <span className='flex gap-4'>
           <BiLogIn className='text-white mt-1' />
@@ -38,8 +48,20 @@ const Header = () => {
            <span className='flex gap-4'>
           <AiOutlineLogin className='text-white mt-1' />
          <Link to='register' className='text-white'>Register</Link>
-        </span>        
-        </div>
+        </span>  
+
+            </div>:
+
+            <div className='flex gap-6 md:gap-24' >
+      
+           <span className='flex gap-4'>
+          <AiOutlineLogin className='text-white mt-1' />
+         <Link to='register' className='text-white'>Profile</Link>
+        </span>  
+
+            </div>
+            
+          }
             
           </div>
 
