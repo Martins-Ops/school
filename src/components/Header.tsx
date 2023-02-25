@@ -56,7 +56,7 @@ const Header = () => {
       
            <span className='flex gap-4'>
           <AiOutlineLogin className='text-white mt-1' />
-         <Link to='register' className='text-white'>Profile</Link>
+         <Link to='profile' className='text-white'>Profile</Link>
         </span>  
 
             </div>
