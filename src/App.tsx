@@ -14,13 +14,10 @@ function App() {
   return (
    <Provider store={store}>
    <Header />
-
    <Routes>
-
     <Route  path='/' element={ <HomeScreen /> } /> 
     <Route  path='/login' element={ <Login /> } /> 
      <Route  path='/register' element={ <ProfileForm /> } /> 
-
    </Routes>
 
  
