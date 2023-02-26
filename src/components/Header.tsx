@@ -17,8 +17,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const auth:any = useSelector((state:authState) => state);
 
-  console.log(auth.auth.isLoggedIn)
-
+ 
   return (
     <div className='relative fixed'>
 
