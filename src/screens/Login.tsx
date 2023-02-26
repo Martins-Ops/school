@@ -41,6 +41,7 @@ const loginHandler=async()=>{
    })
    setLoading(false)
    const data = await response.data
+   console.log(data.token)
    if (data.status==='error'){
     setLoginerr(true)
      setCredentials({...credentials, 'password': ''})

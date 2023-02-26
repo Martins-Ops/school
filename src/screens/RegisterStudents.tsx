@@ -14,7 +14,7 @@ function ProfileForm() {
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    // handle form submission logic here
+      
   };
 
   return (
@@ -24,8 +24,7 @@ function ProfileForm() {
 <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="grid grid-cols-1 gap-6 w-full">
             <div className="mb-6">
-           
-            <input type="text" id="first-name" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="border-b border-gray-400 py-2 px-3 w-full rounded-none focus:outline-none focus:border-blue-500" placeholder='firstname' required />
+                       <input type="text" id="first-name" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="border-b border-gray-400 py-2 px-3 w-full rounded-none focus:outline-none focus:border-blue-500" placeholder='firstname' required />
             </div>
             <div className="mb-6">
             <label htmlFor="middle-name" className="block text-gray-700 font-bold mb-2">Middle Name:</label>
