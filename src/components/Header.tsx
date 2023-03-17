@@ -21,23 +21,31 @@ const Header = () => {
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="w-1/2 backdrop-brightness-50 h-screen fixed top-0 right-0 z-20"
+          className="w-1/2 backdrop-brightness-50 md:backdrop-brightness-100 h-screen fixed top-0 right-0 z-20"
         ></div>
       )}
 
-      <div className=" z-50 bg-gray-700 w-full h-12 px-8 md:px-20 pt-3">
-        <div className="hidden lg:block absolute right-20 top-3">
+      <div className=" z-50 w-full h-12 px-8 md:px-20 pt-3">
+        <div className="hidden lg:block absolute right-80 top-4">
           {!auth.auth.isLoggedIn ? (
             <div className="flex gap-6 md:gap-24">
+              <span>
+                <Link
+                  to="apply"
+                  className="text-white bg-red-500 rounded-lg px-4 py-2 mt-4"
+                >
+                  Apply now
+                </Link>
+              </span>
               <span className="flex gap-4">
-                <BiLogIn className="text-white mt-1" />
-                <Link to="login" className="text-white">
+                <BiLogIn className="text-indigo-900 mt-1" />
+                <Link to="login" className="text-indigo-900">
                   Login
                 </Link>
               </span>
               <span className="flex gap-4">
-                <AiOutlineLogin className="text-white mt-1" />
-                <Link to="register" className="text-white">
+                <AiOutlineLogin className="text-indigo-900 mt-1" />
+                <Link to="register" className="text-indigo-900">
                   Register
                 </Link>
               </span>
@@ -57,32 +65,35 @@ const Header = () => {
       <header className=" w-full bg-white shadow-lg z-10">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
-            <div className="items-center">
-              <Link to="/">
+            <div className="items-center flex">
+              <Link to="/" className="flex">
                 <img
                   className="w-32 h-24 mr-2 absolute z-20 top-1"
                   src={logo}
                   alt="School logo"
                 />
+                <h2 className="text-red-700 absolute top-1 w-1/10 left-40 font-bold md:text-lg mt-10">
+                  SAINT PAUL COLLEDGE
+                </h2>
               </Link>
             </div>
             <div className="hidden md:block">
               <nav className="flex space-x-16">
-                <a href="#" className="text-gray-600 hover:text-teal-500">
+                <Link to="/" className="text-gray-600 hover:text-teal-500">
                   Home
-                </a>
-                <a href="#" className="text-gray-600 hover:text-teal-500">
+                </Link>
+                <Link to="/about" className="text-gray-600 hover:text-teal-500">
                   About
-                </a>
-                <a href="#" className="text-gray-600 hover:text-teal-500">
+                </Link>
+                <Link to="#" className="text-gray-600 hover:text-teal-500">
                   Services
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="#"
                   className="text-white hover:text-gray-900 bg-red-700 px-4 py-1 rounded-20"
                 >
                   Contacts
-                </a>
+                </Link>
               </nav>
             </div>
             <div className="md:hidden">
