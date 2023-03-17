@@ -18,7 +18,6 @@ import vp from "../../src/assets/images/vp.png";
 import girl1 from "../../src/assets/images/girl1.jpg";
 import girl2 from "../../src/assets/images/girl2.jpg";
 
-
 interface authState {
   isLoggeedin: boolean;
   token: string;
@@ -42,9 +41,14 @@ function HomeScreen() {
 
       <div
         id="intro"
-        className="my-4 mx-10 mt-20 md:mx-20 md:flex gap-20 lg:w-3/4 justify-center -"
+        className="relative my-4 mx-4 md:mx-10 mt-20 md:mx-20 md:flex gap-20 lg:w-3/4 justify-center"
       >
-        <p>
+        <div className="bg-red-400 left-0 w-20 h-2 absolute"></div>
+        <p
+          data-aos-delay="300"
+          data-aos="fade-right"
+          className="shadow-lg text-gray-500 py-4 px-3"
+        >
           Saint Paul College Sagamu located in the quiet town of Ijebu-Itele,
           Ogun State Nigeria, pristinely kept from the sprawling realities of
           urban life. Providently born on January 11 1998, the simply beautiful
@@ -54,6 +58,8 @@ function HomeScreen() {
           guide
         </p>
         <img
+          data-aos-delay="600"
+          data-aos="fade-left"
           src={logo}
           alt="logo"
           className="w-60 h-60 mt-10 md:mt-0 text-center mx-auto"
@@ -61,7 +67,11 @@ function HomeScreen() {
       </div>
 
       <div id="mission" className="md:flex mt-16 mx-8 md:mx-20 gap-4">
-        <div className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 ">
+        <div
+          data-aos-delay="300"
+          data-aos="fade-right"
+          className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
+        >
           <h3 className="my-4">Our Mission</h3>
           <p>
             To provide holistic education that fosters knowledge, Christian
@@ -69,7 +79,11 @@ function HomeScreen() {
           </p>
         </div>
 
-        <div className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 ">
+        <div
+          data-aos-delay="600"
+          data-aos="fade-down"
+          className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
+        >
           <h3 className="my-4">Our Vision</h3>
           <p>
             A distinguished Colledge that provides solid foundation for
@@ -78,7 +92,11 @@ function HomeScreen() {
           </p>
         </div>
 
-        <div className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 ">
+        <div
+          data-aos-delay="900"
+          data-aos="fade-left"
+          className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
+        >
           <h3 className="my-4">Our Mission</h3>
           <p>
             To provide holistic education that fosters knowledge, Christian
@@ -87,56 +105,38 @@ function HomeScreen() {
         </div>
       </div>
 
-      <div id="upcomming events" className="mx-10 my-20 md:mx-40">
+    
+
+      <div id="upcoming-events" className="mx-10 my-20 md:mx-40">
         <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">Upcoming Events</h3>
-
-        <div className="md:flex gap-20 justify-center">
-          <div className="relative my-12 md:my-0">
-            <img
-              src={task1}
-              className="object-cover h-30 object-center"
-              alt=""
-            />
-            <span className="absolute bg-teal-500 bottom-0 w-20 h-20 text-center">
-              <p className="text-white mt-2">10</p>
+        <div className="flex justify-center flex-wrap">
+          <div className="relative my-12 md:my-0 w-full md:w-1/4">
+            <img src={task1} className="object-cover w-full h-64" alt="" />
+            <div className="absolute bg-gray-200 bg-opacity-75 bottom-0 left-0 p-2">
+              <p className="text-white font-bold text-lg">10</p>
               <p className="text-white text-sm">MAR 2023</p>
-            </span>
+            </div>
           </div>
-
-          <div className="relative my-12 md:my-0">
-            <img
-              src={task2}
-              className="object-cover h-auto object-center"
-              alt=""
-            />
-            <span className="absolute bg-teal-500 bottom-0">
-              <p>10</p>
-              <p>MAR 2023</p>
-            </span>
+          <div className="relative my-12 md:my-0 w-full md:w-1/4">
+            <img src={task2} className="object-cover w-full h-64" alt="" />
+            <div className="absolute bg-gray-200 bg-opacity-75 bottom-0 left-0 p-2">
+              <p className="text-white font-bold text-lg">10</p>
+              <p className="text-white text-sm">MAR 2023</p>
+            </div>
           </div>
-
-          <div className="relative my-12 md:my-0">
-            <img
-              src={task3}
-              className="object-cover h-auto object-center"
-              alt=""
-            />
-            <span className="absolute bg-teal-500 bottom-0">
-              <p>10</p>
-              <p>MAR 2023</p>
-            </span>
+          <div className="relative my-12 md:my-0 w-full md:w-1/4">
+            <img src={task3} className="object-cover w-full h-64" alt="" />
+            <div className="absolute bg-gray-200 bg-opacity-75 bottom-0 left-0 p-2">
+              <p className="text-white font-bold text-lg">10</p>
+              <p className="text-white text-sm">MAR 2023</p>
+            </div>
           </div>
-
-          <div className="relative my-12 md:my-0">
-            <img
-              src={task4}
-              className="object-cover h-auto object-center"
-              alt=""
-            />
-            <span className="absolute bg-teal-500 bottom-0">
-              <p>10</p>
-              <p>MAR 2023</p>
-            </span>
+          <div className="relative my-12 md:my-0 w-full md:w-1/4">
+            <img src={task4} className="object-cover w-full h-64" alt="" />
+            <div className="absolute bg-gray-200 bg-opacity-75 bottom-0 left-0 p-2">
+              <p className="text-white font-bold text-lg">10</p>
+              <p className="text-white text-sm">MAR 2023</p>
+            </div>
           </div>
         </div>
       </div>
@@ -172,11 +172,15 @@ function HomeScreen() {
         </div>
       </div>
 
-      <div id="Testimonials" className="mx-10 md:mx-20 my-10">
+      <div id="Testimonials" className="mx-2 md:mx-20 my-10">
         <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">Testimonials</h3>
 
         <div className="md:flex mx-4 md:mx-4 gap-10 justify-center">
-          <div className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700">
+          <div
+            data-aos-delay="300"
+            data-aos="fade-right"
+            className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
+          >
             <h2 className="italic text-lg text-white mb-4">Folarin Balogun</h2>
             <p className="text-white">
               "I was there in January 1998 when LGHS was born, with My good
@@ -191,7 +195,11 @@ function HomeScreen() {
             />
           </div>
 
-          <div className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700">
+          <div
+            data-aos-delay="600"
+            data-aos="fade-down"
+            className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
+          >
             <h2 className="italic text-lg text-white mb-4">Junias Mario</h2>
             <p className="text-white">
               "I was there in January 1998 when LGHS was born, with My good
@@ -206,7 +214,11 @@ function HomeScreen() {
             />
           </div>
 
-          <div className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700">
+          <div
+            data-aos-delay="900"
+            data-aos="fade-left"
+            className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
+          >
             <h2 className="italic text-lg text-white mb-4">Abigirl Esther</h2>
             <p className="text-white">
               "I was there in January 1998 when LGHS was born, with My good
