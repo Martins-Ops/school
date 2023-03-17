@@ -3,6 +3,6 @@
     "env": {
       "CI": "true"
     },
-    "command": "npm install -f && npm run build"
+    "command": "npm install --force && npm run build"
   }
 }
