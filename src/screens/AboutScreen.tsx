@@ -1,9 +1,15 @@
 import logo from "../../src/assets/images/logo.png";
+import { useEffect } from "react";
 
 const About = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="my-20">
-      <div id="into and logo" className="mx-6 md:mx-10 md:flex md:gap-10">
+    <div className="">
+      <div id="into and logo" className="pt-36 mx-6 md:mx-10 md:flex md:gap-10">
         <div className="shadow-lg bg-gray-700 md:w-1/2 py-4 px-6">
           <img src={logo} className="" alt="logo" />
         </div>
@@ -59,7 +65,10 @@ const About = () => {
         </div>
       </div>
 
-      <div id="focal points" className="text-center mt-80 md:mt-40 bg-gray-300 py-4">
+      <div
+        id="focal points"
+        className="text-center mt-80 md:mt-40 bg-gray-300 py-4"
+      >
         <h2 className="text-3xl my-10">Our Five Focal Points</h2>
         <p className="text-xl">
           Saint Paul Sagamu have four focal points geared towards helping them

@@ -33,11 +33,14 @@ interface authState {
 function HomeScreen() {
   const dispatch = useDispatch();
 
+
+
   useEffect(() => {
     var isLoggedIn = localStorage.getItem("isLoggedin");
     var token = localStorage.getItem("token");
     dispatch(setToken(token));
     dispatch(setIsLoggedIn(isLoggedIn === "true" ? true : false));
+       window.scrollTo(0, 0);
   }, []);
 
   const token: any = useSelector((state: authState) => state);
