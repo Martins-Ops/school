@@ -9,12 +9,12 @@ import Slider from "react-slick";
 import Fade from "react-reveal/Fade";
 import banner1 from '../../src/assets/images/banner3.jpg'
 import banner2 from "../../src/assets/images/banner2.jpg";
-import banner3 from "../../src/assets/images/banner1.jpg";
+import banner3 from "../../src/assets/images/banner4.jpeg";
 
 
 const carouselItems = [
   {
-    image: banner1,
+    image: banner3,
     p1: "Featured notification",
     p2: "Education is key to success",
     p3: "Making an impact ",
@@ -26,7 +26,7 @@ const carouselItems = [
     p3: "Making an impact ",
   },
   {
-    image: banner3,
+    image: banner1,
     p1: "Featured notification",
     p2: "Education is key to success",
     p3: "Making an impact ",
@@ -43,6 +43,7 @@ function Carousel() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    arrows:false,
 
     afterChange: (index:number) => {
        setCurrentSlide(index);
@@ -62,23 +63,21 @@ function Carousel() {
               alt="School logo"
             />
 
-            <div className={`absolute top-1/2 left-1/2 md:left-1/4 transform -translate-x-1/2 -translate-y-1/2 text-white text-center`}>
-              <img className="object-cover" src={bg} alt="School logo" />
-            </div>
+           
             <div
               className={`absolute top-1/2 left-1/2 md:left-1/4
                transform -translate-x-1/2 -translate-y-1/2 text-white text-center`}
             >
               <Fade left when={shouldFade}>
-                <p className="text-xl my-8">{each.p1}</p>
+                <p className="md:text-xl my-8">{each.p1}</p>
               </Fade>
               {/* {console.log(shouldFade)} */}
               <Fade right delay={300} when={shouldFade}>
-                <p className="text-3xl my-8">{each.p2}</p>
+                <p className="text-xl md:text-3xl my-8">{each.p2}</p>
               </Fade>
 
               <Fade up delay={600} when={shouldFade}>
-                <p className="text-xl">{each.p3}</p>
+                <p className="md:text-xl">{each.p3}</p>
               </Fade>
             </div>
           </div>

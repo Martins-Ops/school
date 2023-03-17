@@ -4,6 +4,7 @@ import { Transition } from "@headlessui/react";
 import logo from "../assets/images/logo.png";
 import { AiOutlineMail, AiOutlineLogin } from "react-icons/ai";
 import { BiLogIn, BiMenuAltRight } from "react-icons/bi";
+import { RiMenu4Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,6 +17,18 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const auth: any = useSelector((state: authState) => state);
 
+  const closeNav = () => {
+    setIsOpen(false)
+  }
+
+
+  const nav = [
+    { link: "/", name: "Home" },
+    { link: "/about", name: "About" },
+    { link: "/contact", name: "Contact" },
+    { link: "/login", name: "Login" },
+  ];
+
   return (
     <div className="relative fixed">
       {isOpen && (
@@ -25,44 +38,7 @@ const Header = () => {
         ></div>
       )}
 
-      <div className=" z-50 w-full h-12 px-8 md:px-20 pt-3">
-        <div className="hidden lg:block absolute right-80 top-4">
-          {!auth.auth.isLoggedIn ? (
-            <div className="flex gap-6 md:gap-24">
-              <span>
-                <Link
-                  to="apply"
-                  className="text-white bg-red-500 rounded-lg px-4 py-2 mt-4"
-                >
-                  Apply now
-                </Link>
-              </span>
-              <span className="flex gap-4">
-                <BiLogIn className="text-indigo-900 mt-1" />
-                <Link to="login" className="text-indigo-900">
-                  Login
-                </Link>
-              </span>
-              <span className="flex gap-4">
-                <AiOutlineLogin className="text-indigo-900 mt-1" />
-                <Link to="register" className="text-indigo-900">
-                  Register
-                </Link>
-              </span>
-            </div>
-          ) : (
-            <div className="flex gap-6 md:gap-24">
-              <span className="flex gap-4">
-                <AiOutlineLogin className="text-white mt-1" />
-                <Link to="profile" className="text-white">
-                  Profile
-                </Link>
-              </span>
-            </div>
-          )}
-        </div>
-      </div>
-      <header className=" w-full bg-white shadow-lg z-10">
+      <header className=" w-full h-28 fixed bg-gray-300 shadow-lg z-10">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <div className="items-center flex">
@@ -72,38 +48,45 @@ const Header = () => {
                   src={logo}
                   alt="School logo"
                 />
-                <h2 className="text-red-700 absolute top-1 w-1/10 left-40 font-bold md:text-lg mt-10">
-                  SAINT PAUL COLLEDGE
+                <h2 className="text-red-700 absolute bottom-16 w-1/10 left-40 font-bold text-sm md:text-lg mt-10">
+                  SAINT PAUL
+                </h2>
+
+                <h2 className="text-red-700 absolute bottom-10 w-1/10 left-40 font-bold text-sm md:text-lg mt-10">
+                  COLLEDGE
                 </h2>
               </Link>
             </div>
-            <div className="hidden md:block">
-              <nav className="flex space-x-16">
+            <div className="absolute right-16 bottom-8 hidden md:block">
+              <nav className="flex space-x-16 mr-4">
                 <Link to="/" className="text-gray-600 hover:text-teal-500">
                   Home
                 </Link>
                 <Link to="/about" className="text-gray-600 hover:text-teal-500">
                   About
                 </Link>
-                <Link to="#" className="text-gray-600 hover:text-teal-500">
-                  Services
-                </Link>
                 <Link
-                  to="#"
-                  className="text-white hover:text-gray-900 bg-red-700 px-4 py-1 rounded-20"
+                  to="/contact"
+                  className="text-gray-600 hover:text-teal-500"
                 >
                   Contacts
                 </Link>
+                <span className="flex gap-3">
+                  <BiLogIn className="text-indigo-900 mt-1" />
+                  <Link to="login" className="text-indigo-900">
+                    Login
+                  </Link>
+                </span>
               </nav>
             </div>
             <div className="md:hidden">
               <button
                 type="button"
-                className="block text-gray-500 hover:text-gray-900 focus:text-gray-900 focus:outline-none"
+                className="block mr-6 mt-4 text-gray-500 hover:text-gray-900 focus:text-gray-900 focus:outline-none"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {!isOpen ? (
-                  <BiMenuAltRight className="w-8 h-8" />
+                  <RiMenu4Line className="w-8 h-8" />
                 ) : (
                   <h2 className=" text-2xl">X</h2>
                 )}
@@ -120,36 +103,25 @@ const Header = () => {
                 className="fixed h-screen absolute top-0 w-1/2 left-0 z-50 md:hidden"
               >
                 <div>
-                  <nav className="bg-white px-2 py-3 h-screen shadow">
+                  <nav className="bg-gray-400 text-center px-2 py-3 h-screen shadow">
                     <img
-                      className="h-8 mx-auto mb-12 mt-4"
+                      className="h-32 mx-auto mb-12 mt-12"
                       src={logo}
                       alt="School logo"
                     />
-                    <a
-                      href="#"
-                      className="block text-gray-600 hover:text-gray-900 py-2"
-                    >
-                      Home
-                    </a>
-                    <a
-                      href="#"
-                      className="block text-gray-600 hover:text-gray-900 py-2"
-                    >
-                      About
-                    </a>
-                    <a
-                      href="#"
-                      className="block text-gray-600 hover:text-gray-900 py-2"
-                    >
-                      Services
-                    </a>
-                    <a
-                      href="#"
-                      className="block text-gray-600 hover:text-gray-900 py-2"
-                    >
-                      Contacts
-                    </a>
+                    {nav.map((each) => {
+                      return (
+                        <Link
+                          onClick={closeNav}
+                          to={each.link}
+                          className="block text-gray-600 hover:text-gray-900 mb-8 py-2"
+                        >
+                          {each.name}
+                        </Link>
+                      );
+                    })}
+                  
+
                   </nav>
                 </div>
               </Transition>
