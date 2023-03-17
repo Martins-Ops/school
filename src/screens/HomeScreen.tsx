@@ -18,6 +18,13 @@ import vp from "../../src/assets/images/vp.png";
 import girl1 from "../../src/assets/images/girl1.jpg";
 import girl2 from "../../src/assets/images/girl2.jpg";
 
+const events = [
+  { img: task1, day: 10, month: "MAR 2023", title: "Mid term break" },
+  { img: task2, day: 1, month: "APR 2023", title: "Workshop Session" },
+  { img: task3, day: 15, month: "APR 2023", title: "Exam Starts" },
+  { img: task4, day: 12, month: "JUN 2023", title: "Vacation Starts" },
+];
+
 interface authState {
   isLoggeedin: boolean;
   token: string;
@@ -105,39 +112,28 @@ function HomeScreen() {
         </div>
       </div>
 
-    
-
       <div id="upcoming-events" className="mx-10 my-20 md:mx-40">
         <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">Upcoming Events</h3>
         <div className="flex justify-center flex-wrap">
-          <div className="relative my-12 md:my-0 w-full md:w-1/4">
-            <img src={task1} className="object-cover w-full h-64" alt="" />
-            <div className="absolute bg-gray-200 bg-opacity-75 bottom-0 left-0 p-2">
-              <p className="text-white font-bold text-lg">10</p>
-              <p className="text-white text-sm">MAR 2023</p>
-            </div>
-          </div>
-          <div className="relative my-12 md:my-0 w-full md:w-1/4">
-            <img src={task2} className="object-cover w-full h-64" alt="" />
-            <div className="absolute bg-gray-200 bg-opacity-75 bottom-0 left-0 p-2">
-              <p className="text-white font-bold text-lg">10</p>
-              <p className="text-white text-sm">MAR 2023</p>
-            </div>
-          </div>
-          <div className="relative my-12 md:my-0 w-full md:w-1/4">
-            <img src={task3} className="object-cover w-full h-64" alt="" />
-            <div className="absolute bg-gray-200 bg-opacity-75 bottom-0 left-0 p-2">
-              <p className="text-white font-bold text-lg">10</p>
-              <p className="text-white text-sm">MAR 2023</p>
-            </div>
-          </div>
-          <div className="relative my-12 md:my-0 w-full md:w-1/4">
-            <img src={task4} className="object-cover w-full h-64" alt="" />
-            <div className="absolute bg-gray-200 bg-opacity-75 bottom-0 left-0 p-2">
-              <p className="text-white font-bold text-lg">10</p>
-              <p className="text-white text-sm">MAR 2023</p>
-            </div>
-          </div>
+          {events.map((each) => {
+            return (
+              <div className="brightness-50 relative my-6 md:my-0 w-full md:w-1/4">
+                <img
+                  src={each.img}
+                  className="object-cover  h-64"
+                  alt={each.title}
+                  style={{width:'97%'}}
+                />
+                <div className="absolute bg-gray-500 bg-opacity-75 bottom-9 left-0 p-2">
+                  <p className="text-white font-bold text-lg">{each.day}</p>
+                  <p className="text-white text-sm">{each.month}</p>
+                </div>
+                <p className="mt-3 text-center">{each.title}</p>
+              </div>
+            );
+          })}
+
+
         </div>
       </div>
 
