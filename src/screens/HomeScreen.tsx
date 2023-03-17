@@ -19,10 +19,38 @@ import girl1 from "../../src/assets/images/girl1.jpg";
 import girl2 from "../../src/assets/images/girl2.jpg";
 
 const events = [
-  { img: task1, day: 10, month: "MAR 2023", title: "Mid term break" },
-  { img: task2, day: 1, month: "APR 2023", title: "Workshop Session" },
-  { img: task3, day: 15, month: "APR 2023", title: "Exam Starts" },
-  { img: task4, day: 12, month: "JUN 2023", title: "Vacation Starts" },
+  {
+    img: task1,
+    day: 10,
+    month: "MAR 2023",
+    title: "Mid term break",
+    anime: "fade-right",
+    time: "300",
+  },
+  {
+    img: task2,
+    day: 1,
+    month: "APR 2023",
+    title: "Workshop Session",
+    anime: "fade-down",
+    time: "600",
+  },
+  {
+    img: task3,
+    day: 15,
+    month: "APR 2023",
+    title: "Exam Starts",
+    anime: "fade-up",
+    time: "900",
+  },
+  {
+    img: task4,
+    day: 12,
+    month: "JUN 2023",
+    title: "Vacation Starts",
+    anime: "fade-left",
+    time: "1200",
+  },
 ];
 
 interface authState {
@@ -53,8 +81,8 @@ function HomeScreen() {
       >
         <div className="bg-red-400 left-0 w-20 h-2 absolute"></div>
         <p
-            data-aos-delay="300"
-            data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos="fade-right"
           className="shadow-lg text-gray-500 py-4 px-3"
         >
           Saint Paul College Sagamu located in the quiet town of Ijebu-Itele,
@@ -66,8 +94,8 @@ function HomeScreen() {
           guide
         </p>
         <img
-            data-aos-delay="600"
-            data-aos="fade-left"
+          data-aos-delay="600"
+          data-aos="fade-left"
           src={logo}
           alt="logo"
           className="w-60 h-60 mt-10 md:mt-0 text-center mx-auto"
@@ -76,8 +104,8 @@ function HomeScreen() {
 
       <div id="mission" className="md:flex mt-16 mx-8 md:mx-20 gap-4">
         <div
-          //   data-aos-delay="300"
-          //   data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos="fade-right"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
           <h3 className="my-4">Our Mission</h3>
@@ -88,8 +116,8 @@ function HomeScreen() {
         </div>
 
         <div
-          //   data-aos-delay="600"
-          //   data-aos="fade-down"
+          data-aos-delay="600"
+          data-aos="fade-down"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
           <h3 className="my-4">Our Vision</h3>
@@ -101,8 +129,8 @@ function HomeScreen() {
         </div>
 
         <div
-          //   data-aos-delay="900"
-          //   data-aos="fade-left"
+          data-aos-delay="900"
+          data-aos="fade-left"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
           <h3 className="my-4">Our Mission</h3>
@@ -113,12 +141,16 @@ function HomeScreen() {
         </div>
       </div>
 
-      <div id="upcoming-events" className="mx-10 my-20 md:mx-40">
+      <div id="upcoming-events" className="mx-10 my-20 md:mx-20">
         <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">Upcoming Events</h3>
         <div className="flex justify-center flex-wrap">
           {events.map((each) => {
             return (
-              <div className="brightness-50 relative my-6 md:my-0 w-full md:w-1/4">
+              <div
+                data-aos-delay={each.time}
+                data-aos={each.anime}
+                className="brightness-50 relative my-6 md:my-0 w-full md:w-1/4"
+              >
                 <img
                   src={each.img}
                   className="object-cover  h-64"
@@ -172,8 +204,8 @@ function HomeScreen() {
 
         <div className="md:flex mx-4 md:mx-4 gap-10 justify-center">
           <div
-            // data-aos-delay="300"
-            // data-aos="fade-right"
+            data-aos-delay="300"
+            data-aos="fade-right"
             className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
           >
             <h2 className="italic text-lg text-white mb-4">Folarin Balogun</h2>
@@ -191,8 +223,8 @@ function HomeScreen() {
           </div>
 
           <div
-            // data-aos-delay="600"
-            // data-aos="fade-down"
+            data-aos-delay="600"
+            data-aos="fade-down"
             className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
           >
             <h2 className="italic text-lg text-white mb-4">Junias Mario</h2>
@@ -210,8 +242,8 @@ function HomeScreen() {
           </div>
 
           <div
-            // data-aos-delay="900"
-            // data-aos="fade-left"
+            data-aos-delay="900"
+            data-aos="fade-left"
             className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
           >
             <h2 className="italic text-lg text-white mb-4">Abigirl Esther</h2>
