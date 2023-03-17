@@ -63,13 +63,18 @@ function Carousel() {
               alt="School logo"
             />
 
-           
             <div
               className={`absolute top-1/2 left-1/2 md:left-1/4
                transform -translate-x-1/2 -translate-y-1/2 text-white text-center`}
             >
               <Fade left when={shouldFade}>
-                <p className="md:text-xl my-8">{each.p1}</p>
+                <p
+                  data-aos-delay="300"
+                  data-aos="fade-right"
+                  className="md:text-xl my-8"
+                >
+                  {each.p1}
+                </p>
               </Fade>
               {/* {console.log(shouldFade)} */}
               <Fade right delay={300} when={shouldFade}>

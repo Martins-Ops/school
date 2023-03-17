@@ -25,7 +25,7 @@ const events = [
     month: "MAR 2023",
     title: "Mid term break",
     anime: "fade-right",
-    time: "300",
+    time: "100",
   },
   {
     img: task2,
@@ -33,7 +33,7 @@ const events = [
     month: "APR 2023",
     title: "Workshop Session",
     anime: "fade-down",
-    time: "600",
+    time: "200",
   },
   {
     img: task3,
@@ -41,7 +41,7 @@ const events = [
     month: "APR 2023",
     title: "Exam Starts",
     anime: "fade-up",
-    time: "900",
+    time: "300",
   },
   {
     img: task4,
@@ -49,7 +49,7 @@ const events = [
     month: "JUN 2023",
     title: "Vacation Starts",
     anime: "fade-left",
-    time: "1200",
+    time: "400",
   },
 ];
 
@@ -81,7 +81,7 @@ function HomeScreen() {
       >
         <div className="bg-red-400 left-0 w-20 h-2 absolute"></div>
         <p
-          data-aos-delay="300"
+          data-aos-delay="200"
           data-aos="fade-right"
           className="shadow-lg text-gray-500 py-4 px-3"
         >
@@ -94,7 +94,7 @@ function HomeScreen() {
           guide
         </p>
         <img
-          data-aos-delay="600"
+          data-aos-delay="400"
           data-aos="fade-left"
           src={logo}
           alt="logo"
@@ -104,7 +104,7 @@ function HomeScreen() {
 
       <div id="mission" className="md:flex mt-16 mx-8 md:mx-20 gap-4">
         <div
-          data-aos-delay="300"
+          data-aos-delay="100"
           data-aos="fade-right"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
@@ -116,7 +116,7 @@ function HomeScreen() {
         </div>
 
         <div
-          data-aos-delay="600"
+          data-aos-delay="200"
           data-aos="fade-down"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
@@ -129,7 +129,7 @@ function HomeScreen() {
         </div>
 
         <div
-          data-aos-delay="900"
+          data-aos-delay="300"
           data-aos="fade-left"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >

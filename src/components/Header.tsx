@@ -44,15 +44,15 @@ const Header = () => {
             <div className="items-center flex">
               <Link to="/" className="flex">
                 <img
-                  className="w-32 h-24 mr-2 absolute z-20 top-1"
+                  className="w-16 h-16 md:w-32 md:h-24 mr-2 absolute z-20 top-6 md:top-1"
                   src={logo}
                   alt="School logo"
                 />
-                <h2 className="text-red-700 absolute bottom-16 w-1/10 left-40 font-bold text-sm md:text-lg mt-10">
+                <h2 className="text-red-700 absolute bottom-16 w-1/10 left-24 md:left-40 font-bold text-sm md:text-lg mt-10">
                   SAINT PAUL
                 </h2>
 
-                <h2 className="text-red-700 absolute bottom-10 w-1/10 left-40 font-bold text-sm md:text-lg mt-10">
+                <h2 className="text-red-700 absolute bottom-10 w-1/10 left-24 md:left-40 font-bold text-sm md:text-lg mt-10">
                   COLLEDGE
                 </h2>
               </Link>
