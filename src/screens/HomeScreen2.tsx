@@ -33,12 +33,14 @@ interface authState {
 function HomeScreen() {
   const dispatch = useDispatch();
 
+
+
   useEffect(() => {
     var isLoggedIn = localStorage.getItem("isLoggedin");
     var token = localStorage.getItem("token");
     dispatch(setToken(token));
     dispatch(setIsLoggedIn(isLoggedIn === "true" ? true : false));
-    window.scrollTo(0, 0);
+       window.scrollTo(0, 0);
   }, []);
 
   const token: any = useSelector((state: authState) => state);
@@ -53,8 +55,8 @@ function HomeScreen() {
       >
         <div className="bg-red-400 left-0 w-20 h-2 absolute"></div>
         <p
-            data-aos-delay="300"
-            data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos="fade-right"
           className="shadow-lg text-gray-500 py-4 px-3"
         >
           Saint Paul College Sagamu located in the quiet town of Ijebu-Itele,
@@ -66,8 +68,8 @@ function HomeScreen() {
           guide
         </p>
         <img
-            data-aos-delay="600"
-            data-aos="fade-left"
+          data-aos-delay="600"
+          data-aos="fade-left"
           src={logo}
           alt="logo"
           className="w-60 h-60 mt-10 md:mt-0 text-center mx-auto"
@@ -76,8 +78,8 @@ function HomeScreen() {
 
       <div id="mission" className="md:flex mt-16 mx-8 md:mx-20 gap-4">
         <div
-          //   data-aos-delay="300"
-          //   data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos="fade-right"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
           <h3 className="my-4">Our Mission</h3>
@@ -88,8 +90,8 @@ function HomeScreen() {
         </div>
 
         <div
-          //   data-aos-delay="600"
-          //   data-aos="fade-down"
+          data-aos-delay="600"
+          data-aos="fade-down"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
           <h3 className="my-4">Our Vision</h3>
@@ -101,8 +103,8 @@ function HomeScreen() {
         </div>
 
         <div
-          //   data-aos-delay="900"
-          //   data-aos="fade-left"
+          data-aos-delay="900"
+          data-aos="fade-left"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
           <h3 className="my-4">Our Mission</h3>
@@ -123,7 +125,7 @@ function HomeScreen() {
                   src={each.img}
                   className="object-cover  h-64"
                   alt={each.title}
-                  style={{ width: "97%" }}
+                  style={{width:'97%'}}
                 />
                 <div className="absolute bg-gray-500 bg-opacity-75 bottom-9 left-0 p-2">
                   <p className="text-white font-bold text-lg">{each.day}</p>
@@ -133,6 +135,8 @@ function HomeScreen() {
               </div>
             );
           })}
+
+
         </div>
       </div>
 
@@ -172,8 +176,8 @@ function HomeScreen() {
 
         <div className="md:flex mx-4 md:mx-4 gap-10 justify-center">
           <div
-            // data-aos-delay="300"
-            // data-aos="fade-right"
+            data-aos-delay="300"
+            data-aos="fade-right"
             className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
           >
             <h2 className="italic text-lg text-white mb-4">Folarin Balogun</h2>
@@ -191,8 +195,8 @@ function HomeScreen() {
           </div>
 
           <div
-            // data-aos-delay="600"
-            // data-aos="fade-down"
+            data-aos-delay="600"
+            data-aos="fade-down"
             className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
           >
             <h2 className="italic text-lg text-white mb-4">Junias Mario</h2>
@@ -210,8 +214,8 @@ function HomeScreen() {
           </div>
 
           <div
-            // data-aos-delay="900"
-            // data-aos="fade-left"
+            data-aos-delay="900"
+            data-aos="fade-left"
             className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
           >
             <h2 className="italic text-lg text-white mb-4">Abigirl Esther</h2>

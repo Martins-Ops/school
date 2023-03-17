@@ -15,12 +15,12 @@ import About from './screens/AboutScreen';
 import ContactScreen from "./screens/ContactScreen";
 import {useEffect} from 'react'
 
-// import AOS from "aos";
+import AOS from "aos";
 
 function App() {
 
 
-  // AOS.init()
+  AOS.init()
 
   return (
     <Provider store={store}>

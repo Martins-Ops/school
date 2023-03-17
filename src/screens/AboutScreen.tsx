@@ -7,6 +7,8 @@ const About = () => {
     window.scrollTo(0, 0);
   }, []);
 
+// 08073738551
+
   return (
     <div className="">
       <div id="into and logo" className="pt-36 mx-6 md:mx-10 md:flex md:gap-10">
