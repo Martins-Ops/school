@@ -77,7 +77,7 @@ const loginHandler=async()=>{
           <input onChange={handleChange}type="password" className="w-full border-none focus:outline-none" placeholder="Password" name='password' value={credentials.password} />
         </div>
        {passwordInputError && <p className='text-red-700 text-sm mt-4'>Password must be greater than 4 characters</p>}
-        <button onClick={loginHandler} className="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 rounded-lg mt-6">{!loading?'Sign In':'...'}</button>
+        <button onClick={loginHandler} className="w-full bg-red-600 hover:bg-teal-600 text-white font-bold py-3 rounded-lg mt-6">{!loading?'Sign In':'...'}</button>
       </div>
     </div>
   );
