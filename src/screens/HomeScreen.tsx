@@ -6,6 +6,18 @@ import logo from "../../src/assets/images/logo.png";
 import party from "../../src/assets/images/banner1.jpg";
 import cultural from "../../src/assets/images/banner2.jpg";
 import opening from "../../src/assets/images/banner3.jpg";
+import task1 from "../../src/assets/images/task1.png";
+import task2 from "../../src/assets/images/task2.png";
+import task3 from "../../src/assets/images/task3.jpg";
+import task4 from "../../src/assets/images/task4.jpg";
+
+import abell from "../../src/assets/images/abell.png";
+import daniel from "../../src/assets/images/daniel.png";
+import principal from "../../src/assets/images/principal.png";
+import vp from "../../src/assets/images/vp.png";
+import girl1 from "../../src/assets/images/girl1.jpg";
+import girl2 from "../../src/assets/images/girl2.jpg";
+
 
 interface authState {
   isLoggeedin: boolean;
@@ -25,18 +37,21 @@ function HomeScreen() {
   const token: any = useSelector((state: authState) => state);
 
   return (
-    <div className="bg-gray-300 pb-20">
+    <div className=" pb-20">
       <Carousel />
 
-      <div className="mx-10 mt-20 md:mx-20 md:flex gap-20 lg:w-4/5 justify-center -">
+      <div
+        id="intro"
+        className="my-4 mx-10 mt-20 md:mx-20 md:flex gap-20 lg:w-3/4 justify-center -"
+      >
         <p>
-          Louisville Girls High School is divinely located in the quiet town of
-          Ijebu-Itele, Ogun State Nigeria, pristinely kept from the sprawling
-          realities of urban life. Providently born on January 11 1998, the
-          simply beautiful campus she has grown to be is the ideal learning
-          environment for young girls. This is where your daughter is moulded
-          with Veritas et Caritas (Latin expression for Truth & Charity [Love],
-          the school motto) as a guide
+          Saint Paul College Sagamu located in the quiet town of Ijebu-Itele,
+          Ogun State Nigeria, pristinely kept from the sprawling realities of
+          urban life. Providently born on January 11 1998, the simply beautiful
+          campus she has grown to be is the ideal learning environment for young
+          girls. This is where your daughter is moulded with Veritas et Caritas
+          (Latin expression for Truth & Charity [Love], the school motto) as a
+          guide
         </p>
         <img
           src={logo}
@@ -45,17 +60,29 @@ function HomeScreen() {
         />
       </div>
 
-      <div id="mission" className="md:flex mx-10 md:mx-20 gap-4">
-        <div className="mb-10 px-8 py-4 shadow-lg rounded-sm md:w-1/3 ">
-          <p>Our Mission</p>
+      <div id="mission" className="md:flex mt-16 mx-8 md:mx-20 gap-4">
+        <div className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 ">
+          <h3 className="my-4">Our Mission</h3>
           <p>
-            The New Orleans Charter Science and Mathematics High School is an
-            open-admission public charter school that prepares all students for
-            college admissions and successful careers. Sci High provides a
-            rigorous high school curriculum with an emphasis in science and
-            mathematics in a supportive environment of learning and respect that
-            prepares students to make informed choices about post-secondary
-            pursuits.
+            To provide holistic education that fosters knowledge, Christian
+            values, and servant leadership in Church and society
+          </p>
+        </div>
+
+        <div className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 ">
+          <h3 className="my-4">Our Vision</h3>
+          <p>
+            A distinguished Colledge that provides solid foundation for
+            christian values and moral probity, and serves as transformational
+            agens in the society
+          </p>
+        </div>
+
+        <div className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 ">
+          <h3 className="my-4">Our Mission</h3>
+          <p>
+            To provide holistic education that fosters knowledge, Christian
+            values, and servant leadership in Church and society
           </p>
         </div>
       </div>
@@ -64,10 +91,10 @@ function HomeScreen() {
         <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">Upcoming Events</h3>
 
         <div className="md:flex gap-20 justify-center">
-          <div className="relative">
+          <div className="relative my-12 md:my-0">
             <img
-              src={opening}
-              className="object-cover h-auto object-center"
+              src={task1}
+              className="object-cover h-30 object-center"
               alt=""
             />
             <span className="absolute bg-teal-500 bottom-0 w-20 h-20 text-center">
@@ -76,9 +103,9 @@ function HomeScreen() {
             </span>
           </div>
 
-          <div className="relative">
+          <div className="relative my-12 md:my-0">
             <img
-              src={cultural}
+              src={task2}
               className="object-cover h-auto object-center"
               alt=""
             />
@@ -88,9 +115,21 @@ function HomeScreen() {
             </span>
           </div>
 
-          <div className="relative">
+          <div className="relative my-12 md:my-0">
             <img
-              src={opening}
+              src={task3}
+              className="object-cover h-auto object-center"
+              alt=""
+            />
+            <span className="absolute bg-teal-500 bottom-0">
+              <p>10</p>
+              <p>MAR 2023</p>
+            </span>
+          </div>
+
+          <div className="relative my-12 md:my-0">
+            <img
+              src={task4}
               className="object-cover h-auto object-center"
               alt=""
             />
@@ -106,25 +145,29 @@ function HomeScreen() {
         <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">
           Meet the Management Team
         </h3>
-        <div className="md:flex gap-10">
-          <div className="w-1/4">
-            <img src={opening} className="w-30 h-30 rounded-full" alt="" />
-            <p>The Principal</p>
+        <div className="md:flex md:gap-10 justify-center items-center">
+          <div className=" md:w-1/4 justify-center">
+            <img src={principal} className="" alt="" />
+            <p className="text-center font-bold text-2xl my-8">The Principal</p>
           </div>
 
-          <div className="w-1/4">
-            <img src={opening} className="w-30 h-30 rounded-full" alt="" />
-            <p className="text-center mt-5">The Principal</p>
+          <div className="w-full md:w-1/4 justify-center">
+            <img src={vp} className="" alt="" />
+            <p className="text-center font-bold text-2xl my-8">
+              The Vice Principal
+            </p>
           </div>
 
-          <div className="w-1/4">
-            <img src={opening} className="w-30 h-30 rounded-full" alt="" />
-            <p>The Principal</p>
+          <div className=" md:w-1/4 justify-center">
+            <img src={abell} className="" alt="" />
+            <p className="text-center font-bold text-2xl my-8">
+              The Accountant
+            </p>
           </div>
 
-          <div className="w-1/4">
-            <img src={opening} className="w-30 h-30 rounded-full" alt="" />
-            <p>The Principal</p>
+          <div className=" md:w-1/4 justify-center">
+            <img src={daniel} className="" alt="" />
+            <p className="text-center font-bold text-2xl my-8">The Manager</p>
           </div>
         </div>
       </div>
@@ -136,39 +179,47 @@ function HomeScreen() {
           <div className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700">
             <h2 className="italic text-lg text-white mb-4">Folarin Balogun</h2>
             <p className="text-white">
-              A very good school for learning and teaching
+              "I was there in January 1998 when LGHS was born, with My good
+              friend Adiela Aviram Oyindamola. Apart from the fact that I was
+              going to cut my hair, I was excited at the thought of going away
+              from home."
             </p>
             <img
-              src={party}
+              src={girl1}
               alt="person-1"
               className="w-16 h-16 rounded-full my-4 "
             />
           </div>
 
           <div className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700">
-            <h2 className="italic text-lg text-white mb-4">Folarin Balogun</h2>
+            <h2 className="italic text-lg text-white mb-4">Junias Mario</h2>
             <p className="text-white">
-              A very good school for learning and teaching
+              "I was there in January 1998 when LGHS was born, with My good
+              friend Adiela Aviram Oyindamola. Apart from the fact that I was
+              going to cut my hair, I was excited at the thought of going away
+              from home."
             </p>
             <img
-              src={party}
+              src={girl2}
               alt="person-1"
               className="w-16 h-16 rounded-full my-4 "
             />
           </div>
 
           <div className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700">
-            <h2 className="italic text-lg text-white mb-4">Folarin Balogun</h2>
+            <h2 className="italic text-lg text-white mb-4">Abigirl Esther</h2>
             <p className="text-white">
-              A very good school for learning and teaching
+              "I was there in January 1998 when LGHS was born, with My good
+              friend Adiela Aviram Oyindamola. Apart from the fact that I was
+              going to cut my hair, I was excited at the thought of going away
+              from home."
             </p>
             <img
-              src={party}
+              src={girl1}
               alt="person-1"
               className="w-16 h-16 rounded-full my-4 "
             />
           </div>
-
         </div>
       </div>
     </div>
