@@ -1,31 +1,53 @@
-import {useState}from 'react'
-import AddStudents from './AddStudents'
-import StudentsScreen from './StudentsScreen'
+import { useState } from "react";
+import AddStudents from "./AddStudents";
+import StudentsScreen from "./StudentsScreen";
+import { NavLink, NavLinkProps } from "react-router-dom";
+import logo from "../../src/assets/images/logo.png";
+import { FaUserCheck, FaUserPlus, FaUserTie, FaBook } from "react-icons/fa";
+import { FcMoneyTransfer } from "react-icons/fc";
+import AddTeacher from "./AddTeacher";
 
-function ProfileScreen() {
-    const [currScreen, setCurrScreen] = useState<string>('viewStudents')
+function ProfileScreen({ activeLink }: any) {
+  var nav = [
+    { name: "View Students", link: "/dashboard", icon: FaUserCheck },
+    { name: "Add Students", link: "/addstudent", icon: FaUserPlus },
+    { name: "Add Teacher", link: "/addteacher", icon: FaUserTie },
+    { name: "Payment History", link: "/payment-history", icon: FcMoneyTransfer },
+    { name: "My Subjects", link: "/my-aubject", icon: FaBook },
+  ];
+
   return (
-    <div className='flex w-full gap-20'>
-        <div className='w-1/4 h-screen bg-teal-700'>
-            <h3 className='text-white text-center text-3xl font-mono mt-8'>Profile</h3>
-            <div className='mt-12 mx-10'>
-                <p onClick={()=>{setCurrScreen('viewStudents')}} className='text-gray-300 text-xl pointer mb-8 hover:border hover:px-4 hover:py-1 hover:bg-teal-900'>View Students</p>
-                <p onClick={()=>{setCurrScreen('addStudents')}} className='text-gray-300 text-xl pointer mb-8 hover:border hover:px-4 hover:py-1 hover:bg-teal-900'>Add Student</p>
-                <p className='text-gray-300 text-xl pointer mb-8 hover:border hover:px-4 hover:py-1 hover:bg-teal-900'>Change Password</p>
-                <p className='text-gray-300 text-xl pointer mb-8 hover:border hover:px-4 hover:py-1 hover:bg-teal-900'>Upload Results</p>
-                </div>
+    <div className="flex w-full gap-20">
+      <div className="w-1/4 h-screen border border-r-100">
+        <div className="flex gap-10 mt-10 mx-5">
+          <img src={logo} alt="logo" className="w-20" />
+          <p className="mt-4 text-red-700 text-lg">SP Sagamu</p>
         </div>
 
-        
-<div className='mt-10 flex-grow w-3/4 mx-auto text-center'>
-
-        {currScreen==='viewStudents'&& <StudentsScreen />}
-        {currScreen === 'addStudents' && <AddStudents />}
-
+        <div className="mt-12 mx-10">
+          {nav.map((each) => {
+            return (
+              <div className="flex gap-5 my-5" key={each.name}>
+                <each.icon className="text-gray-400" size={24} />
+                <NavLink
+                  to={each.link}
+                  className="text-gray-600 pointer block mb-8 hover:text-green-500"
+                >
+                  {each.name}
+                </NavLink>
+              </div>
+            );
+          })}
         </div>
+      </div>
 
+      <div className="mt-10 flex-grow w-3/4 mx-auto text-center">
+        {activeLink === "dashboard" && <StudentsScreen />}
+        {activeLink === "addstudent" && <AddStudents />}
+        {activeLink === "addteacher" && <AddTeacher />}
+      </div>
     </div>
-  )
+  );
 }
 
-export default ProfileScreen
+export default ProfileScreen;

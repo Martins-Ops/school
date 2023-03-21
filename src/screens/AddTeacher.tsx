@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { countries } from "../utils/countries";
 import { apiRequest, post } from "../utils/exports";
 
-function AddStudents() {
+function AddTeacher() {
   interface FormDetails {
     first_name: string;
     last_name: string;
@@ -51,7 +51,7 @@ function AddStudents() {
 
   return (
     <div>
-      <h3 className="text-lg bold-500 capitalize mx-auto">Add new student</h3>
+      <h3 className="text-lg bold-500 capitalize mx-auto capitalize">Add a New Teacher</h3>
 
       <form onSubmit={submitHandler} action="">
         <div className="mb-6 flex gap-20 mt-10 mx-12">
@@ -189,4 +189,4 @@ function AddStudents() {
   );
 }
 
-export default AddStudents;
+export default AddTeacher;
