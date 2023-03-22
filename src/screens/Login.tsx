@@ -83,7 +83,7 @@ const loginHandler=async()=>{
           />
         </div>
         {usernameInputError && (
-          <p className="text-red-700 text-sm mt-1">
+          <p className="text-red-700 text-sm mt-1 absolute">
             Username must be greater than 4 characters
           </p>
         )}
@@ -105,7 +105,7 @@ const loginHandler=async()=>{
         )}
         <button
           onClick={loginHandler}
-          className="w-full bg-red-600 hover:bg-teal-600 text-white font-bold py-3 rounded-lg mt-6"
+          className="w-full bg-blue-900 hover:bg-teal-600 text-white font-bold py-3 rounded-lg mt-6"
         >
           {!loading ? "Sign In" : "..."}
         </button>
