@@ -10,7 +10,6 @@ import ProfileScreen from "./screens/ProfileScreen";
 import Footer from "./components/Footer";
 import About from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
-import { useEffect } from "react";
 
 import AOS from "aos";
 
@@ -19,7 +18,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/about" element={<About />} />
@@ -39,6 +38,10 @@ function App() {
           element={<ProfileScreen activeLink="addteacher" />}
         />
 
+        <Route
+          path="/mysubjects"
+          element={<ProfileScreen activeLink="mysubjects" />}
+        />
         <Route path="/contact" element={<ContactScreen />} />
       </Routes>
       <Footer />
