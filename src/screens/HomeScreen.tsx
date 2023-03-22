@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import Carousel from "../components/Carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setIsLoggedIn } from "../store/slices/authslice";
@@ -17,6 +17,22 @@ import principal from "../../src/assets/images/principal.png";
 import vp from "../../src/assets/images/vp.png";
 import girl1 from "../../src/assets/images/girl1.jpg";
 import girl2 from "../../src/assets/images/girl2.jpg";
+
+
+const LogoImage = lazy(() => import("../../src/assets/images/logo.png"));
+
+
+const images = [
+  party,
+  cultural,
+  opening,
+  abell,
+  daniel,
+  principal,
+  vp,
+  girl1,
+  girl2,
+];
 
 const events = [
   {
@@ -100,6 +116,11 @@ function HomeScreen() {
           alt="logo"
           className="w-60 h-60 mt-10 md:mt-0 text-center mx-auto"
         />
+        {/* <div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <LogoImage />
+          </Suspense>
+        </div> */}
       </div>
 
       <div id="mission" className="md:flex mt-16 mx-8 md:mx-20 gap-4">
@@ -196,6 +217,28 @@ function HomeScreen() {
             <img src={daniel} className="" alt="" />
             <p className="text-center font-bold text-2xl my-8">The Manager</p>
           </div>
+        </div>
+      </div>
+
+      <div id="gallery" className="mx-10 md:mx-20 my-10">
+        <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">
+          Our Image gallery
+        </h3>
+        <div className="md:flex md:gap-20">
+          <div className="flex gap-10 flex-wrap">
+            {images?.map((image) => {
+              return (
+                <div className="">
+                  <img src={image} alt="" className="w-40 h-40 object-cover " />
+                </div>
+              );
+            })}
+          </div>
+          <p className="text-gray-400 my-20 md:my-auto ">
+            "I was there in January 1998 when LGHS was born, with My good friend
+            Adiela Aviram Oyindamola. Apart from the fact that I was going to
+            cut my hair, I was excited at the thought of going away from home."
+          </p>
         </div>
       </div>
 
