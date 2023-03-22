@@ -18,15 +18,14 @@ const Header = () => {
   const auth: any = useSelector((state: authState) => state);
 
   const closeNav = () => {
-    setIsOpen(false)
-  }
-
+    setIsOpen(false);
+  };
 
   const nav = [
     { link: "/", name: "Home" },
     { link: "/about", name: "About" },
     { link: "/contact", name: "Contact" },
-    { link: "/login", name: "Login" },
+    // { link: "/login", name: "Login" },
   ];
 
   return (
@@ -38,7 +37,7 @@ const Header = () => {
         ></div>
       )}
 
-      <header className=" w-full h-28 fixed bg-gray-300 shadow-lg z-10">
+      <header className=" w-full h-28 fixed bg-gray-700 shadow-lg z-10">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <div className="items-center flex">
@@ -48,32 +47,31 @@ const Header = () => {
                   src={logo}
                   alt="School logo"
                 />
-                <h2 className="text-red-700 absolute bottom-16 w-1/10 left-24 md:left-40 font-bold text-sm md:text-lg mt-10">
+                <h2 className="text-white absolute bottom-16 w-1/10 left-24 md:left-40 font-bold text-sm md:text-lg mt-10">
                   SAINT PAUL
                 </h2>
 
-                <h2 className="text-red-700 absolute bottom-10 w-1/10 left-24 md:left-40 font-bold text-sm md:text-lg mt-10">
+                <h2 className="text-white absolute bottom-10 w-1/10 left-24 md:left-40 font-bold text-sm md:text-lg mt-10">
                   COLLEDGE
                 </h2>
               </Link>
             </div>
             <div className="absolute right-16 bottom-8 hidden md:block">
               <nav className="flex space-x-16 mr-4">
-                <Link to="/" className="text-gray-600 hover:text-teal-500">
-                  Home
-                </Link>
-                <Link to="/about" className="text-gray-600 hover:text-teal-500">
-                  About
-                </Link>
-                <Link
-                  to="/contact"
-                  className="text-gray-600 hover:text-teal-500"
-                >
-                  Contacts
-                </Link>
+                {nav.map((each) => {
+                  return (
+                    <Link
+                      to={each.link}
+                      className="text-white hover:text-teal-500"
+                    >
+                      {each.name}
+                    </Link>
+                  );
+                })}
+
                 <span className="flex gap-3">
-                  <BiLogIn className="text-indigo-900 mt-1" />
-                  <Link to="login" className="text-indigo-900">
+                  <BiLogIn className="text-white" />
+                  <Link to="login" className="text-white hover:text-teal-500">
                     Login
                   </Link>
                 </span>
@@ -120,8 +118,6 @@ const Header = () => {
                         </Link>
                       );
                     })}
-                  
-
                   </nav>
                 </div>
               </Transition>
