@@ -6,23 +6,30 @@ import logo from "../../src/assets/images/logo.png";
 import { FaUserCheck, FaUserPlus, FaUserTie, FaBook } from "react-icons/fa";
 import { FcMoneyTransfer } from "react-icons/fc";
 import AddTeacher from "./AddTeacher";
+import MySubjects from "./MySubjects";
+import { Link } from "react-router-dom";
+
 
 function ProfileScreen({ activeLink }: any) {
   var nav = [
     { name: "View Students", link: "/dashboard", icon: FaUserCheck },
     { name: "Add Students", link: "/addstudent", icon: FaUserPlus },
     { name: "Add Teacher", link: "/addteacher", icon: FaUserTie },
-    { name: "Payment History", link: "/payment-history", icon: FcMoneyTransfer },
-    { name: "My Subjects", link: "/my-aubject", icon: FaBook },
+    {
+      name: "Payment History",
+      link: "/payment-history",
+      icon: FcMoneyTransfer,
+    },
+    { name: "My Subjects", link: "/mysubjects", icon: FaBook },
   ];
 
   return (
     <div className="flex w-full gap-20">
       <div className="w-1/4 h-screen border border-r-100">
-        <div className="flex gap-10 mt-10 mx-5">
+        <Link to="/" className="flex gap-10 mt-10 mx-5">
           <img src={logo} alt="logo" className="w-20" />
           <p className="mt-4 text-red-700 text-lg">SP Sagamu</p>
-        </div>
+        </Link>
 
         <div className="mt-12 mx-10">
           {nav.map((each) => {
@@ -45,6 +52,7 @@ function ProfileScreen({ activeLink }: any) {
         {activeLink === "dashboard" && <StudentsScreen />}
         {activeLink === "addstudent" && <AddStudents />}
         {activeLink === "addteacher" && <AddTeacher />}
+        {activeLink === "mysubjects" && <MySubjects />}
       </div>
     </div>
   );
