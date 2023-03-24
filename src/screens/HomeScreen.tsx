@@ -3,6 +3,8 @@ import Carousel from "../components/Carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setIsLoggedIn } from "../store/slices/authslice";
 import logo from "../../src/assets/images/logo.png";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import party from "../../src/assets/images/banner1.jpg";
 import cultural from "../../src/assets/images/banner2.jpg";
 import opening from "../../src/assets/images/banner3.jpg";
@@ -32,7 +34,6 @@ import img11 from "../../src/assets/images/img11.jpg";
 
 
 const LogoImage = lazy(() => import("../../src/assets/images/logo.png"));
-
 
 const images = [
   img1,
@@ -125,19 +126,14 @@ function HomeScreen() {
           (Latin expression for Truth & Charity [Love], the school motto) as a
           guide
         </p>
-        <img
+        <LazyLoadImage
           data-aos-delay="400"
           data-aos="fade-left"
           src={logo}
           alt="logo"
           className="w-60 h-60 mt-10 md:mt-0 text-center mx-auto"
         />
-        {/* <div>
-          <Suspense fallback={<div>Loading...</div>}>
-            <LogoImage />
-          </Suspense>
-        </div> */}
-      </div>
+         </div>
 
       <div id="mission" className="md:flex mt-16 mx-8 md:mx-20 gap-4">
         <div
@@ -188,7 +184,7 @@ function HomeScreen() {
                 data-aos={each.anime}
                 className="brightness-50 relative my-6 md:my-0 w-full md:w-1/4"
               >
-                <img
+                <LazyLoadImage
                   src={each.img}
                   className="object-cover  h-64"
                   alt={each.title}
@@ -245,7 +241,11 @@ function HomeScreen() {
             {images?.map((image) => {
               return (
                 <div className="">
-                  <img src={image} alt="" className="w-40 h-40 object-cover " />
+                  <LazyLoadImage
+                    src={image}
+                    alt=""
+                    className="w-40 h-40 object-cover "
+                  />
                 </div>
               );
             })}
