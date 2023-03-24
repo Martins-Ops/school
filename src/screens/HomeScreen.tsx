@@ -18,21 +18,37 @@ import vp from "../../src/assets/images/vp.png";
 import girl1 from "../../src/assets/images/girl1.jpg";
 import girl2 from "../../src/assets/images/girl2.jpg";
 
+import img1 from "../../src/assets/images/img1.jpg";
+import img2 from "../../src/assets/images/img2.jpg";
+import img3 from "../../src/assets/images/img3.jpg";
+import img4 from "../../src/assets/images/img4.jpg";
+import img5 from "../../src/assets/images/img5.jpg";
+import img6 from "../../src/assets/images/img6.jpg";
+import img7 from "../../src/assets/images/img7.jpg";
+import img8 from "../../src/assets/images/img8.jpg";
+import img9 from "../../src/assets/images/img9.jpg";
+import img10 from "../../src/assets/images/img10.jpg";
+import img11 from "../../src/assets/images/img11.jpg";
+
 
 const LogoImage = lazy(() => import("../../src/assets/images/logo.png"));
 
 
 const images = [
-  party,
-  cultural,
-  opening,
-  abell,
-  daniel,
-  principal,
-  vp,
-  girl1,
-  girl2,
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img10,
+  img11,
 ];
+
+
 
 const events = [
   {
@@ -224,8 +240,8 @@ function HomeScreen() {
         <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">
           Our Image gallery
         </h3>
-        <div className="md:flex md:gap-20">
-          <div className="flex gap-10 flex-wrap">
+        <div className="md:flex md:gap-20 justify-center">
+          <div className="flex gap-10 flex-wrap justify-center">
             {images?.map((image) => {
               return (
                 <div className="">
