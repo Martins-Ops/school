@@ -1,13 +1,13 @@
 import logo from "../../src/assets/images/logo.png";
 import { useEffect } from "react";
+import img5 from "../../src/assets/images/img5.jpg";
 
 const About = () => {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-// 08073738551
+  // 08073738551
 
   return (
     <div className="">
@@ -34,7 +34,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="relative">
+      <div id="vision-and-mission" className="relative my-20">
         <div className="my-20 mx-8 md:mx-20 shadow-lg bg-gray-700 rounded-sm text-center py-10 md:py-20 px-4">
           <h2 className="text-4xl text-white">Vision</h2>
           <p className="text-gray-300 my-8 text-xl md:text-2xl">
@@ -44,9 +44,9 @@ const About = () => {
           </p>
         </div>
 
-        <div className="md:flex mx-12 px-4 md:mx-28 md:gap-10 md:mx-32 bg-white rounded-lg absolute top-60">
+        <div className="md:flex mx-8 px-8 md:mx-28 md:gap-10 md:mx-32 bg-gray-200 py-10 rounded-lg">
           <div className="text-center">
-            <h2 className="my-8">Mission</h2>
+            <h2 className="my-4">Mission</h2>
             <p className="text-gray-500">
               With the help of God and the collaboration of all stakeholders,
               Louisville Girls High School, a Catholic educational institution
@@ -56,7 +56,7 @@ const About = () => {
           </div>
 
           <div className="text-center">
-            <h2 className="my-8">Mission</h2>
+            <h2 className="my-4">Mission</h2>
             <p className="text-gray-500">
               With the help of God and the collaboration of all stakeholders,
               Louisville Girls High School, a Catholic educational institution
@@ -67,9 +67,62 @@ const About = () => {
         </div>
       </div>
 
+      <div id="location" className="my-10 mx-8 md:mx-20 md:flex md:gap-20">
+        <div>
+          <h2 className="capitalize text-3xl md:text-5xl text-gray-500">
+            The Location
+          </h2>
+          <p className="mt-16 mb-20 md:mb-0 ">
+            The Sisters of St. Louis are in nine countries of the world: France,
+            Ireland, Brazil, Nigeria, Ghana, Benin Republic, Ethiopia, USA, and
+            the United Kingdom, but with a very active mission in Africa. The
+            St. Louis Sisters arrived in Nigeria (Kano State) in 1948. There are
+            presently about 140 sisters of St. Louis working in Nigeria.
+            Louisville Girls High School was established on 11th January 1998,
+            in a quiet rural community, Ijebu Itele, devoid of all forms of
+            distraction. It is an environment that is highly conducive to
+            learning. There are presently sixty-five teachers, twenty-eight
+            clerical and forty-five utility staff, and five hundred and eighteen
+            (518) students for the 2016/2017 academic session.
+          </p>
+        </div>
+
+        <div>
+          <img src={img5} alt="big image" />
+        </div>
+      </div>
+
+      <div
+        id="Quality"
+        className="mx-8 md:mx-20 md:flex md:flex md:flex-row-reverse mt-20 md:mt-32 md:gap-20"
+      >
+        <div>
+          <h2 className="capitalize text-3xl md:text-5xl text-gray-500">
+            The Quality
+          </h2>
+          <p className="mt-16 mb-10 md:mb-0 ">
+            The Sisters of St. Louis are in nine countries of the world: France,
+            Ireland, Brazil, Nigeria, Ghana, Benin Republic, Ethiopia, USA, and
+            the United Kingdom, but with a very active mission in Africa. The
+            St. Louis Sisters arrived in Nigeria (Kano State) in 1948. There are
+            presently about 140 sisters of St. Louis working in Nigeria.
+            Louisville Girls High School was established on 11th January 1998,
+            in a quiet rural community, Ijebu Itele, devoid of all forms of
+            distraction. It is an environment that is highly conducive to
+            learning. There are presently sixty-five teachers, twenty-eight
+            clerical and forty-five utility staff, and five hundred and eighteen
+            (518) students for the 2016/2017 academic session.
+          </p>
+        </div>
+
+        <div>
+          <img src={img5} alt="big image" />
+        </div>
+      </div>
+
       <div
         id="focal points"
-        className="text-center mt-80 md:mt-40 bg-gray-300 py-4"
+        className="text-center my-20 bg-gray-300 py-4"
       >
         <h2 className="text-3xl my-10">Our Five Focal Points</h2>
         <p className="text-xl">
@@ -83,23 +136,23 @@ const About = () => {
           </span>
 
           <span className="w-1/5">
-            <p className="text-8xl text-gray-200 mb-8">01.</p>
-            <p className="text-4xl">Faith</p>
+            <p className="text-8xl text-gray-200 mb-8">02.</p>
+            <p className="text-4xl">Love</p>
           </span>
 
           <span className="w-1/5">
             <p className="text-8xl text-gray-200 mb-8">01.</p>
-            <p className="text-4xl">Faith</p>
+            <p className="text-4xl">Charity</p>
           </span>
 
           <span className="w-1/5">
             <p className="text-8xl text-gray-200 mb-8">01.</p>
-            <p className="text-4xl">Faith</p>
+            <p className="text-4xl">Morals</p>
           </span>
 
           <span className="w-1/5">
             <p className="text-8xl text-gray-200 mb-8">01.</p>
-            <p className="text-4xl">Faith</p>
+            <p className="text-4xl">Charity</p>
           </span>
         </div>
       </div>
