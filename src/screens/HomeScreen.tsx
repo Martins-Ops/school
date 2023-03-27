@@ -32,9 +32,6 @@ import img9 from "../../src/assets/images/img9.jpg";
 import img10 from "../../src/assets/images/img10.jpg";
 import img11 from "../../src/assets/images/img11.jpg";
 
-
-const LogoImage = lazy(() => import("../../src/assets/images/logo.png"));
-
 const images = [
   img1,
   img2,
@@ -133,7 +130,7 @@ function HomeScreen() {
           alt="logo"
           className="w-60 h-60 mt-10 md:mt-0 text-center mx-auto"
         />
-         </div>
+      </div>
 
       <div id="mission" className="md:flex mt-16 mx-8 md:mx-20 gap-4">
         <div
@@ -207,26 +204,26 @@ function HomeScreen() {
         </h3>
         <div className="md:flex md:gap-10 justify-center items-center">
           <div className=" md:w-1/4 justify-center">
-            <img src={principal} className="" alt="" />
+            <LazyLoadImage src={principal} className="" alt="" />
             <p className="text-center font-bold text-2xl my-8">The Principal</p>
           </div>
 
           <div className="w-full md:w-1/4 justify-center">
-            <img src={vp} className="" alt="" />
+            <LazyLoadImage src={vp} className="" alt="" />
             <p className="text-center font-bold text-2xl my-8">
               The Vice Principal
             </p>
           </div>
 
           <div className=" md:w-1/4 justify-center">
-            <img src={abell} className="" alt="" />
+            <LazyLoadImage src={abell} className="" alt="" />
             <p className="text-center font-bold text-2xl my-8">
               The Accountant
             </p>
           </div>
 
           <div className=" md:w-1/4 justify-center">
-            <img src={daniel} className="" alt="" />
+            <LazyLoadImage src={daniel} className="" alt="" />
             <p className="text-center font-bold text-2xl my-8">The Manager</p>
           </div>
         </div>
@@ -237,7 +234,7 @@ function HomeScreen() {
           Our Image gallery
         </h3>
         <div className="md:flex md:gap-20 justify-center">
-          <div className="flex gap-10 flex-wrap justify-center">
+          <div className="flex gap-10 md:flex-wrap justify-center w-1/2">
             {images?.map((image) => {
               return (
                 <div className="">
@@ -250,11 +247,25 @@ function HomeScreen() {
               );
             })}
           </div>
-          <p className="text-gray-400 my-20 md:my-auto ">
+          {/* <p className="text-gray-400 my-20 w-1/2 md:my-auto ">
             "I was there in January 1998 when LGHS was born, with My good friend
             Adiela Aviram Oyindamola. Apart from the fact that I was going to
             cut my hair, I was excited at the thought of going away from home."
-          </p>
+          </p> */}
+
+          <div className="flex gap-10 md:flex-wrap justify-center w-1/2">
+            {images?.map((image) => {
+              return (
+                <div className="flex ">
+                  <LazyLoadImage
+                    src={image}
+                    alt=""
+                    className="w-60  object-cover "
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -274,7 +285,7 @@ function HomeScreen() {
               going to cut my hair, I was excited at the thought of going away
               from home."
             </p>
-            <img
+            <LazyLoadImage
               src={girl1}
               alt="person-1"
               className="w-16 h-16 rounded-full my-4 "
@@ -293,7 +304,7 @@ function HomeScreen() {
               going to cut my hair, I was excited at the thought of going away
               from home."
             </p>
-            <img
+            <LazyLoadImage
               src={girl2}
               alt="person-1"
               className="w-16 h-16 rounded-full my-4 "
@@ -312,7 +323,7 @@ function HomeScreen() {
               going to cut my hair, I was excited at the thought of going away
               from home."
             </p>
-            <img
+            <LazyLoadImage
               src={girl1}
               alt="person-1"
               className="w-16 h-16 rounded-full my-4 "
