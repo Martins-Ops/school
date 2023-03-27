@@ -24,12 +24,12 @@ function ProfileScreen({ activeLink }: any) {
   ];
 
   return (
-    <div className="flex w-full gap-20">
+    <div className="md:flex pt-20 w-full md:gap-20">
       <div className="w-1/4 h-screen border border-r-100">
-        <Link to="/" className="flex gap-10 mt-10 mx-5">
+        {/* <Link to="/" className="flex gap-10 mt-10 mx-5">
           <img src={logo} alt="logo" className="w-20" />
           <p className="mt-4 text-red-700 text-lg">SP Sagamu</p>
-        </Link>
+        </Link> */}
 
         <div className="mt-12 mx-10">
           {nav.map((each) => {
@@ -38,7 +38,7 @@ function ProfileScreen({ activeLink }: any) {
                 <each.icon className="text-gray-400" size={24} />
                 <NavLink
                   to={each.link}
-                  className="text-gray-600 pointer block mb-8 hover:text-green-500"
+                  className="flex text-gray-600 pointer block mb-8 hover:text-green-500"
                 >
                   {each.name}
                 </NavLink>
