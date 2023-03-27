@@ -28,6 +28,9 @@ const Header = () => {
     // { link: "/login", name: "Login" },
   ];
 
+  const logoText =
+    "text-white absolute  w-1/10 left-28 md:left-40 font-bold text-sm md:text-lg mt-10";
+
   return (
     <div className="relative fixed">
       {isOpen && (
@@ -43,17 +46,13 @@ const Header = () => {
             <div className="items-center flex">
               <Link to="/" className="flex">
                 <img
-                  className="w-16 h-16 md:w-32 md:h-24 mr-2 absolute z-20 top-6 md:top-1"
+                  className="w-16 h-16 md:w-32 md:h-24 mr-2 absolute left-8 z-20 top-6 md:top-1"
                   src={logo}
                   alt="School logo"
                 />
-                <h2 className="text-white absolute bottom-16 w-1/10 left-24 md:left-40 font-bold text-sm md:text-lg mt-10">
-                  SAINT PAUL
-                </h2>
+                <h2 className={`${logoText} bottom-16`}>SAINT PAUL</h2>
 
-                <h2 className="text-white absolute bottom-10 w-1/10 left-24 md:left-40 font-bold text-sm md:text-lg mt-10">
-                  COLLEDGE
-                </h2>
+                <h2 className={`${logoText} bottom-10`}>COLLEDGE</h2>
               </Link>
             </div>
             <div className="absolute right-16 bottom-8 hidden md:block">
