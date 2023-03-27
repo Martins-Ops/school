@@ -101,13 +101,15 @@ function HomeScreen() {
 
   const token: any = useSelector((state: authState) => state);
 
+  const sectionHeader = "bg-gray-200 mb-10 py-2 px-8 rounded";
+
   return (
     <div className=" pb-20">
       <Carousel />
 
       <div
         id="intro"
-        className="relative my-4 mx-4 md:mx-10 mt-20 md:mx-20 md:flex gap-20 lg:w-3/4 justify-center"
+        className="relative my-4 mx-4 md:mx-10 mt-20 md:mx-20 md:flex gap-20 lg:w-3/4 justify-center overflow-x-hidden"
       >
         <div className="bg-red-400 left-0 w-20 h-2 absolute"></div>
         <p
@@ -172,7 +174,7 @@ function HomeScreen() {
       </div>
 
       <div id="upcoming-events" className="mx-10 my-20 md:mx-20">
-        <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">Upcoming Events</h3>
+        <h3 className={sectionHeader}>Upcoming Events</h3>
         <div className="flex justify-center flex-wrap">
           {events.map((each) => {
             return (
@@ -199,7 +201,7 @@ function HomeScreen() {
       </div>
 
       <div id="management-team" className="mx-10 md:mx-20 my-10">
-        <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">
+        <h3 className={sectionHeader}>
           Meet the Management Team
         </h3>
         <div className="md:flex md:gap-10 justify-center items-center">
@@ -230,7 +232,7 @@ function HomeScreen() {
       </div>
 
       <div id="gallery" className="mx-10 md:mx-20 my-10">
-        <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">
+        <h3 className={sectionHeader}>
           Our Image gallery
         </h3>
         <div className="md:flex md:gap-20 justify-center">
@@ -247,13 +249,13 @@ function HomeScreen() {
               );
             })}
           </div>
-          {/* <p className="text-gray-400 my-20 w-1/2 md:my-auto ">
+          <p className="text-gray-400 my-20 w-1/2 md:my-auto ">
             "I was there in January 1998 when LGHS was born, with My good friend
             Adiela Aviram Oyindamola. Apart from the fact that I was going to
             cut my hair, I was excited at the thought of going away from home."
-          </p> */}
+          </p>
 
-          <div className="flex gap-10 md:flex-wrap justify-center w-1/2">
+          {/* <div className="flex gap-10 md:flex-wrap justify-center w-1/2">
             {images?.map((image) => {
               return (
                 <div className="flex ">
@@ -265,14 +267,14 @@ function HomeScreen() {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <div id="Testimonials" className="mx-2 md:mx-20 my-10">
-        <h3 className="bg-gray-200 mb-10 py-2 px-8 rounded">Testimonials</h3>
+      <div id="Testimonials" className="mx-4  md:mx-20 my-10">
+        <h3 className={sectionHeader}>Testimonials</h3>
 
-        <div className="md:flex mx-4 md:mx-4 gap-10 justify-center">
+        <div className="md:flex mx-2 md:mx-4 md:gap-10 justify-center">
           <div
             data-aos-delay="300"
             data-aos="fade-right"

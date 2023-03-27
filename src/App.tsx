@@ -17,7 +17,7 @@ function App() {
   AOS.init();
 
   return (
-    <Provider store={store}>
+    <Provider store={store}>  
       <Header />
       <Routes>
         <Route path="/" element={<HomeScreen />} />
