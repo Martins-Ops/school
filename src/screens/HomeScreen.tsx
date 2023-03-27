@@ -46,8 +46,6 @@ const images = [
   img11,
 ];
 
-
-
 const events = [
   {
     img: task1,
@@ -101,8 +99,10 @@ function HomeScreen() {
 
   const token: any = useSelector((state: authState) => state);
 
-  const sectionHeader = "bg-gray-200 mb-10 py-2 px-8 rounded";
-
+  const sectionHeader =
+    "bg-gray-200 mb-10 py-2 px-8 rounded text-sm md:text-lg";
+  const missionParagraph = "text-sm md:text-lg";
+  var testimonialParagraph = "text-sm md:test-lg";
   return (
     <div className=" pb-20">
       <Carousel />
@@ -114,8 +114,8 @@ function HomeScreen() {
         <div className="bg-red-400 left-0 w-20 h-2 absolute"></div>
         <p
           // data-aos-delay="200"
-         // data-aos="fade-right"
-          className="shadow-lg text-gray-500 py-4 px-3"
+          // data-aos="fade-right"
+          className="text-sm md:text-lg shadow-lg text-gray-500 py-4 px-3"
         >
           Saint Paul College Sagamu located in the quiet town of Ijebu-Itele,
           Ogun State Nigeria, pristinely kept from the sprawling realities of
@@ -127,7 +127,7 @@ function HomeScreen() {
         </p>
         <LazyLoadImage
           // data-aos-delay="400"
-        //  data-aos="fade-left"
+          //  data-aos="fade-left"
           src={logo}
           alt="logo"
           className="w-60 h-60 mt-10 md:mt-0 text-center mx-auto"
@@ -141,7 +141,7 @@ function HomeScreen() {
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
           <h3 className="my-4">Our Mission</h3>
-          <p>
+          <p className={missionParagraph}>
             To provide holistic education that fosters knowledge, Christian
             values, and servant leadership in Church and society
           </p>
@@ -153,7 +153,7 @@ function HomeScreen() {
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
           <h3 className="my-4">Our Vision</h3>
-          <p>
+          <p className={missionParagraph}>
             A distinguished Colledge that provides solid foundation for
             christian values and moral probity, and serves as transformational
             agens in the society
@@ -165,9 +165,8 @@ function HomeScreen() {
           // data-aos="fade-left"
           className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
         >
-          <h3 className="my-4">Our
-            Mission</h3>
-          <p>
+          <h3 className="my-4">Our Mission</h3>
+          <p className={missionParagraph}>
             To provide holistic education that fosters knowledge, Christian
             values, and servant leadership in Church and society
           </p>
@@ -202,9 +201,7 @@ function HomeScreen() {
       </div>
 
       <div id="management-team" className="mx-10 md:mx-20 my-10">
-        <h3 className={sectionHeader}>
-          Meet the Management Team
-        </h3>
+        <h3 className={sectionHeader}>Meet the Management Team</h3>
         <div className="md:flex md:gap-10 justify-center items-center">
           <div className=" md:w-1/4 justify-center">
             <LazyLoadImage src={principal} className="" alt="" />
@@ -232,46 +229,6 @@ function HomeScreen() {
         </div>
       </div>
 
-      <div id="gallery" className="mx-10 md:mx-20 my-10">
-        <h3 className={sectionHeader}>
-          Our Image gallery
-        </h3>
-        <div className="md:flex md:gap-20 justify-center">
-          <div className="flex gap-10 md:flex-wrap justify-center w-1/2">
-            {images?.map((image) => {
-              return (
-                <div className="">
-                  <LazyLoadImage
-                    src={image}
-                    alt=""
-                    className="w-40 h-40 object-cover "
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <p className="text-gray-400 my-20 w-1/2 md:my-auto ">
-            "I was there in January 1998 when LGHS was born, with My good friend
-            Adiela Aviram Oyindamola. Apart from the fact that I was going to
-            cut my hair, I was excited at the thought of going away from home."
-          </p>
-
-          {/* <div className="flex gap-10 md:flex-wrap justify-center w-1/2">
-            {images?.map((image) => {
-              return (
-                <div className="flex ">
-                  <LazyLoadImage
-                    src={image}
-                    alt=""
-                    className="w-60  object-cover "
-                  />
-                </div>
-              );
-            })}
-          </div> */}
-        </div>
-      </div>
-
       <div id="Testimonials" className="mx-4  md:mx-20 my-10">
         <h3 className={sectionHeader}>Testimonials</h3>
 
@@ -282,7 +239,7 @@ function HomeScreen() {
             className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
           >
             <h2 className="italic text-lg text-white mb-4">Folarin Balogun</h2>
-            <p className="text-white">
+            <p className={testimonialParagraph}>
               "I was there in January 1998 when LGHS was born, with My good
               friend Adiela Aviram Oyindamola. Apart from the fact that I was
               going to cut my hair, I was excited at the thought of going away
@@ -296,12 +253,12 @@ function HomeScreen() {
           </div>
 
           <div
-           // data-aos-delay="600"
-           // data-aos="fade-down"
+            // data-aos-delay="600"
+            // data-aos="fade-down"
             className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
           >
             <h2 className="italic text-lg text-white mb-4">Junias Mario</h2>
-            <p className="text-white">
+            <p className={testimonialParagraph}>
               "I was there in January 1998 when LGHS was born, with My good
               friend Adiela Aviram Oyindamola. Apart from the fact that I was
               going to cut my hair, I was excited at the thought of going away
@@ -320,7 +277,7 @@ function HomeScreen() {
             className="mt-8 w-full md:w-1/3 rounded py-8 px-5 bg-gray-700"
           >
             <h2 className="italic text-lg text-white mb-4">Abigirl Esther</h2>
-            <p className="text-white">
+            <p className={testimonialParagraph}>
               "I was there in January 1998 when LGHS was born, with My good
               friend Adiela Aviram Oyindamola. Apart from the fact that I was
               going to cut my hair, I was excited at the thought of going away
