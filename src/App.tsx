@@ -12,13 +12,13 @@ import About from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
 
 // import AOS from "aos";
-
+  import "react-toastify/dist/ReactToastify.css";
 function App() {
   // AOS.init();
 
   return (
     <Provider store={store}>  
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/about" element={<About />} />

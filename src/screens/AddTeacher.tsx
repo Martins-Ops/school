@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { countries } from "../utils/countries";
 import { apiRequest, post } from "../utils/exports";
+import { ToastContainer, toast } from "react-toastify";
 
 function AddTeacher() {
   interface FormDetails {
@@ -29,6 +30,8 @@ function AddTeacher() {
     student_class: 0,
   };
 
+  const notify = () => toast("Teacher has been added");
+
   const [formDetails, setFormDetails] =
     useState<FormDetails>(initialFormDetails);
 
@@ -38,9 +41,10 @@ function AddTeacher() {
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await apiRequest("POST", "app/addstudent", formDetails);
-    const data = await response;
-
+    // const response = await apiRequest("POST", "app/addstudent", formDetails);
+    // const data = await response;
+    console.log(formDetails);
+    notify()
     // const response = await post('app/addstudent',formDetails)
     // const data = await response
     // console.log(data)
@@ -51,7 +55,10 @@ function AddTeacher() {
 
   return (
     <div>
-      <h3 className="text-lg bold-500 capitalize mx-auto capitalize">Add a New Teacher</h3>
+      <h3 className="text-lg bold-500 capitalize mx-auto capitalize">
+        Add a New Teacher
+      </h3>
+      <ToastContainer />
 
       <form onSubmit={submitHandler} action="">
         <div className="mb-6 flex gap-20 mt-10 mx-12">
