@@ -24,14 +24,14 @@ function ProfileScreen({ activeLink }: any) {
   ];
 
   return (
-    <div className="md:flex pt-20 w-full md:gap-20">
-      <div className="w-1/4 h-screen border border-r-100">
-        {/* <Link to="/" className="flex gap-10 mt-10 mx-5">
+    <div className="md:flex  w-full md:gap-20">
+      <div className="md:w-1/4 h-screen md:border border-r-100">
+        <Link to="/" className="flex gap-10 mt-10 mx-5">
           <img src={logo} alt="logo" className="w-20" />
           <p className="mt-4 text-red-700 text-lg">SP Sagamu</p>
-        </Link> */}
+        </Link>
 
-        <div className="mt-12 mx-10">
+        <div className="mt-12 mx-10 flex md:block">
           {nav.map((each) => {
             return (
               <div className="flex gap-5 my-5" key={each.name}>
@@ -48,7 +48,7 @@ function ProfileScreen({ activeLink }: any) {
         </div>
       </div>
 
-      <div className="mt-10 flex-grow w-3/4 mx-auto text-center">
+      <div className="md:mt-10 flex-grow md:w-3/4 mx-auto text-center">
         {activeLink === "dashboard" && <StudentsScreen />}
         {activeLink === "addstudent" && <AddStudents />}
         {activeLink === "addteacher" && <AddTeacher />}
