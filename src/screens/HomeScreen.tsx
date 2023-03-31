@@ -102,7 +102,7 @@ function HomeScreen() {
   const sectionHeader =
     "bg-gray-200 mb-10 py-2 px-8 rounded text-sm md:text-lg";
   const missionParagraph = "text-sm md:text-lg";
-  var testimonialParagraph = "text-sm md:test-lg";
+  var testimonialParagraph = "text-sm md:test-lg text-gray-300";
   return (
     <div className=" pb-20">
       <Carousel />
