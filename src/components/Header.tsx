@@ -25,7 +25,7 @@ const Header = () => {
     { link: "/", name: "Home" },
     { link: "/about", name: "About" },
     { link: "/contact", name: "Contact" },
-    // { link: "/login", name: "Login" },
+    { link: "/login", name: "Login" },
   ];
 
   const logoText =
