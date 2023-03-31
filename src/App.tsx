@@ -18,7 +18,7 @@ function App() {
 
   return (
     <Provider store={store}>  
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/about" element={<About />} />
