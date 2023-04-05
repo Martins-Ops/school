@@ -9,7 +9,6 @@ import AddTeacher from "./AddTeacher";
 import MySubjects from "./MySubjects";
 import { Link } from "react-router-dom";
 
-
 function ProfileScreen({ activeLink }: any) {
   var nav = [
     { name: "View Students", link: "/dashboard", icon: FaUserCheck },
@@ -38,7 +37,15 @@ function ProfileScreen({ activeLink }: any) {
                 <each.icon className="text-gray-400" size={24} />
                 <NavLink
                   to={each.link}
-                  className="flex text-gray-600 pointer block mb-8 hover:text-green-500"
+                  className="flex text-gray-600 pointer block mb-8 active:text-green-500"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          textDecoration: "none",
+                          color: "#6EE7B7",
+                        }
+                      : {}
+                  }
                 >
                   {each.name}
                 </NavLink>
