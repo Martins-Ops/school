@@ -43,47 +43,51 @@ function Carousel() {
 
     afterChange: (index: number) => {
       setCurrentSlide(index);
+   
     },
   };
 
+
   return (
-    <Slider {...settings}>
-      {carouselItems.map((each, index) => {
-        const shouldFade = index === currentSlide;
-        return (
-          <div className="relative h-screen">
-            <img
-              className="mt-28 w-full h-4/5 object-cover brightness-50"
-              src={each.image}
-              alt="School logo"
-            />
+    <div>
+      <Slider {...settings}>
+        {carouselItems.map((each, index) => {
+          const shouldFade = index === currentSlide;
+          return (
+            <div className="relative h-screen">
+              <img
+                className="mt-28 w-full h-4/5 object-cover brightness-50"
+                src={each.image}
+                alt="School logo"
+              />
 
-            <div
-              className={`absolute top-1/2 left-1/2 md:left-1/4
+              <div
+                className={`absolute top-1/2 left-1/2 md:left-1/4
                transform -translate-x-1/2 -translate-y-1/2 text-white text-center`}
-            >
-              <Fade left when={shouldFade}>
-                <p
-                  data-aos-delay="300"
-                  data-aos="fade-right"
-                  className="md:text-xl my-8"
-                >
-                  {each.p1}
-                </p>
-              </Fade>
-              {/* {console.log(shouldFade)} */}
-              <Fade right delay={300} when={shouldFade}>
-                <p className="text-xl md:text-3xl my-8">{each.p2}</p>
-              </Fade>
+              >
+                <Fade left when={shouldFade}>
+                  <p
+                    data-aos-delay="300"
+                    data-aos="fade-right"
+                    className="md:text-xl my-8"
+                  >
+                    {each.p1}
+                  </p>
+                </Fade>
+                <Fade right delay={300} when={shouldFade}>
+                  <p className="text-xl md:text-3xl my-8">{each.p2}</p>
+                </Fade>
 
-              <Fade up delay={600} when={shouldFade}>
-                <p className="md:text-xl">{each.p3}</p>
-              </Fade>
+                <Fade up delay={600} when={shouldFade}>
+                  <p className="md:text-xl">{each.p3}</p>
+                </Fade>
+              </div>
             </div>
-          </div>
-        );
-      })}
-    </Slider>
+          );
+        })}
+      </Slider>
+
+    </div>
   );
 }
 
