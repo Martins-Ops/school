@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToken, setIsLoggedIn } from "../store/slices/authslice";
 import logo from "../../src/assets/images/logo.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Map, { Marker } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { HiLocationMarker } from "react-icons/hi";
 
-import party from "../../src/assets/images/banner1.jpg";
-import cultural from "../../src/assets/images/banner2.jpg";
-import opening from "../../src/assets/images/banner3.jpg";
+
 import task1 from "../../src/assets/images/task1.png";
 import task2 from "../../src/assets/images/task2.png";
 import task3 from "../../src/assets/images/task3.jpg";
@@ -80,6 +81,11 @@ const events = [
     time: "400",
   },
 ];
+
+
+
+var lng = 3.61644;
+var lat = 6.853513;
 
 interface authState {
   isLoggeedin: boolean;
@@ -181,6 +187,7 @@ function HomeScreen() {
               <div
                 // data-aos-delay={each.time}
                 // data-aos={each.anime}
+                key={each.title}
                 className="brightness-50 relative my-6 md:my-0 w-full md:w-1/4"
               >
                 <LazyLoadImage
@@ -290,6 +297,28 @@ function HomeScreen() {
             />
           </div>
         </div>
+      </div>
+
+      <div id="Location" className="mx-4  md:mx-20 my-10">
+        <h3 className={sectionHeader}>Location</h3>
+
+        <Map
+          style={{ height: "54vh", width: "100%" }}
+          mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+          longitude={3.6319}
+          latitude={6.8322}
+          zoom={12}
+          mapStyle="mapbox://styles/mapbox/streets-v9"
+        >
+          <Marker
+            // onClick={() => setShowPopup(true)}
+            longitude={lng}
+            latitude={lat}
+            anchor="bottom"
+          >
+            <HiLocationMarker size={32} color="blue" />
+          </Marker>
+        </Map>
       </div>
     </div>
   );
