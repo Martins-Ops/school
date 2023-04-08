@@ -1,4 +1,3 @@
-import { FaPhoneAlt } from "react-icons/fa";
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import logo from "../assets/images/logo.png";
@@ -29,7 +28,7 @@ const Header = () => {
   ];
 
   const logoText =
-    "text-white absolute  w-1/10 left-28 md:left-40 font-bold text-sm md:text-lg mt-10";
+    "text-white absolute  w-1/10 left-32 md:left-48 font-bold text-sm md:text-lg mt-10";
 
   return (
     <div className="relative fixed">
@@ -46,7 +45,7 @@ const Header = () => {
             <div className="items-center flex">
               <Link to="/" className="flex">
                 <img
-                  className="w-16 h-16 md:w-32 md:h-24 mr-2 absolute left-8 z-20 top-6 md:top-1"
+                  className="w-20 h-20 md:w-36 md:h-32 mr-2 absolute left-8 z-20 top-6 md:top-1"
                   src={logo}
                   alt="School logo"
                 />
