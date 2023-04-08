@@ -56,7 +56,7 @@ function Carousel() {
           return (
             <div className="relative h-screen">
               <img
-                className="mt-28 w-full h-4/5 object-cover brightness-50"
+                className="mt-28 w-full h-[99%] object-cover brightness-50"
                 src={each.image}
                 alt="School logo"
               />
