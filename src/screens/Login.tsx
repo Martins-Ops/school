@@ -1,5 +1,10 @@
 import { FaUser, FaLock } from "react-icons/fa";
-import { post } from "../utils/exports";
+import {
+  BASE_URL,
+  getAuthCall,
+  getLoginAuthCall,
+  post,
+} from "../utils/exports";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -9,76 +14,99 @@ function LoginPage() {
     window.scrollTo(0, 0);
   }, []);
 
+  const checkUser = async (token: string) => {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+    //  myHeaders.append("Content-Type", "application/json");
+
+    try {
+      const response = await fetch(`${BASE_URL}app/user/`, {
+        method: "GET",
+        headers: myHeaders,
+        credentials: "include",
+        redirect: "follow",
+      });
+
+      const result = await response.text();
+      console.log(result);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   const [loading, setLoading] = useState(false);
   const [loginErr, setLoginerr] = useState(false);
   const [passwordInputError, setPasswordInputErr] = useState(false);
-  const [usernameInputError, setUsernameInputErr] = useState(false);
+  const [emailInputError, setemailInputErr] = useState(false);
 
   const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState<{
-    username: string;
+    email: string;
     password: string;
-  }>({ username: "", password: "" });
+  }>({ email: "", password: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginerr(false);
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
     setPasswordInputErr(false);
-    setUsernameInputErr(false);
+    setemailInputErr(false);
   };
 
   const loginHandler = async () => {
-    if (credentials.username.length < 3) {
-      setUsernameInputErr(true);
+    if (credentials.email.length < 3) {
+      setemailInputErr(true);
     } else if (credentials.password.length < 4) {
       setPasswordInputErr(true);
     } else {
       try {
         setLoading(true);
-        const response = await post("login", {
-          username: credentials.username,
+        const response = await post("auth/login", {
+          email: credentials.email,
           password: credentials.password,
         });
         setLoading(false);
         const data = await response.data;
-        console.log(data.token);
-        if (data.status === "error") {
-          setLoginerr(true);
-          setCredentials({ ...credentials, password: "" });
-        } else {
-          localStorage.setItem("token", data.token);
+
+        if (data) {
+          console.log(data);
+          localStorage.setItem("token", data.access);
           localStorage.setItem("isLoggedin", "true");
-          navigate("/");
+
+          document.cookie = `access_token=${data.access}; HttpOnly`;
+
+          navigate("/dashboard", { replace: true });
+          checkUser(data.access);
         }
-      } catch (error) {}
+      } catch (error) {
+        setLoginerr(true);
+        setCredentials({ ...credentials, password: "" });
+        setLoading(false);
+      }
     }
   };
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8 items-center">
       <div className="bg-white p-10 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-6">Login</h2>
-
         {loginErr && (
-          <p className="text-red-700">Invalid Username or password</p>
+          <p className="text-red-700 py-8">Invalid email or password</p>
         )}
-        <div className="flex items-center border-b border-gray-300 pb-3 mt-8">
+        <h2 className="text-2xl font-bold mb-6">Login</h2>
+        <div className="flex items-center border-b border-gray-300 pb-3 mt-8 mb-2">
           <FaUser className="text-gray-400 mr-3" />
           <input
             onChange={handleChange}
             type="email"
             className="w-full border-none focus:outline-none"
             placeholder="Email"
-            name="username"
-            value={credentials.username}
+            name="email"
+            value={credentials.email}
           />
         </div>
-        {usernameInputError && (
-          <p className="text-red-700 text-sm mt-1 absolute">
-            Username must be greater than 4 characters
-          </p>
+        {emailInputError && (
+          <p className="text-red-700 text-sm mt-1">Invalid Email</p>
         )}
-        <div className="flex items-center border-b border-gray-300 py-3">
+        <div className="flex items-center border-b border-gray-300 mt-4 py-3">
           <FaLock className="text-gray-400 mr-3" />
           <input
             onChange={handleChange}
@@ -94,14 +122,13 @@ function LoginPage() {
             Password must be greater than 4 characters
           </p>
         )}
-        <Link to="/dashboard">
-          <button
-            onClick={loginHandler}
-            className="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 rounded-lg mt-6"
-          >
-            {!loading ? "Sign In" : "..."}
-          </button>
-        </Link>
+
+        <button
+          onClick={loginHandler}
+          className="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 rounded-lg mt-6"
+        >
+          {!loading ? "Sign In" : "..."}
+        </button>
       </div>
     </div>
   );
