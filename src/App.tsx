@@ -11,13 +11,16 @@ import Footer from "./components/Footer";
 import About from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
 
+// export const serverUrl = ''
+
 // import AOS from "aos";
-  import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
+import PrivateRoutes from "./utils/PrivateRoutes";
 function App() {
   // AOS.init();
 
   return (
-    <Provider store={store}>  
+    <Provider store={store}>
       <Header />
       <Routes>
         <Route path="/" element={<HomeScreen />} />
@@ -25,10 +28,17 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<ProfileForm />} />
 
-        <Route
+        {/* <Route
           path="/dashboard"
           element={<ProfileScreen activeLink="dashboard" />}
-        />
+        /> */}
+
+
+
+        <Route path="/dashboard" element={<PrivateRoutes />}>
+          <Route path="/dashboard" element={<ProfileScreen />} />
+        </Route>
+
         <Route
           path="/addstudent"
           element={<ProfileScreen activeLink="addstudent" />}
