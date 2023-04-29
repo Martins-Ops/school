@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { countries } from "../utils/countries";
 import { apiRequest, post } from "../utils/exports";
+import { ToastContainer, toast } from "react-toastify";
+
 
 function AddStudents() {
+  const [loading,setLoading] = useState(false)
   interface FormDetails {
     first_name: string;
     last_name: string;
     middle_name: string;
     email: string;
-    //   date_of_birth: string;
-    address: string;
     nationality: string;
     state_of_origin: string;
     gender: string;
     student_class: Number;
+    is_teacher: boolean;
+    is_student: boolean;
+    is_principal: boolean;
+    password: string;
   }
 
   const initialFormDetails: FormDetails = {
@@ -21,16 +26,24 @@ function AddStudents() {
     last_name: "",
     middle_name: "",
     email: "",
-    //   date_of_birth: '',
-    address: "",
     nationality: "",
     state_of_origin: "",
     gender: "",
     student_class: 0,
+    is_teacher: false,
+    is_student: true,
+    is_principal: false,
+    password: "password1234",
   };
+
+
+
 
   const [formDetails, setFormDetails] =
     useState<FormDetails>(initialFormDetails);
+  
+    const notify = () => toast("Student has been added");
+
 
   const handlerFormChange = (e: any) => {
     setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
@@ -38,20 +51,26 @@ function AddStudents() {
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await apiRequest("POST", "app/addstudent", formDetails);
-    const data = await response;
-
-    // const response = await post('app/addstudent',formDetails)
-    // const data = await response
-    // console.log(data)
+    try {
+      setLoading(true);
+      const response = await post("auth/signup", formDetails);
+      setLoading(false);
+      const data = await response.data;
+      if (data.email) {
+        notify();
+        setFormDetails(initialFormDetails);
+      }
+      console.log(data);
+    } catch (error) {}
   };
 
   const inputStyles =
-    "border  border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
+    "border border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
 
   return (
-    <div>
+    <div className="my-32">
       <h3 className="text-lg bold-500 capitalize mx-auto">Add new student</h3>
+      <ToastContainer />
 
       <form onSubmit={submitHandler} action="">
         <div className="mb-6 flex gap-20 mt-10 mx-12">
@@ -94,27 +113,6 @@ function AddStudents() {
             id="first-name"
             className={inputStyles}
             placeholder="Email Address"
-            required
-          />
-        </div>
-
-        <div className="mb-6 flex gap-20 mt-10 mx-12">
-          {/* <input onChange={handlerFormChange} name='date_of_birth' type="date" id="first-name"  className="border-b border-gray-400 py-2 px-3 w-1/2 rounded-none focus:outline-none focus:border-blue-500" placeholder='Date of Birth' required /> */}
-
-          <input
-            onChange={handlerFormChange}
-            name="address"
-            type="select"
-            className={inputStyles}
-            placeholder="Residential Address"
-            required
-          />
-          <input
-            onChange={handlerFormChange}
-            name="address"
-            type="number"
-            className={inputStyles}
-            placeholder="Address"
             required
           />
         </div>
