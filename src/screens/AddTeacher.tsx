@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { countries } from "../utils/countries";
-import { apiRequest, post } from "../utils/exports";
+import { post } from "../utils/exports";
 import { ToastContainer, toast } from "react-toastify";
 
 function AddTeacher() {
+  const [loading, setLoading] = useState(false);
+
   interface FormDetails {
     first_name: string;
     last_name: string;
     middle_name: string;
     email: string;
-    //   date_of_birth: string;
-    address: string;
+    password: string;
     nationality: string;
     state_of_origin: string;
     gender: string;
-    student_class: Number;
+    is_teacher: boolean;
+    is_student: boolean;
+    is_principal: boolean;
   }
 
   const initialFormDetails: FormDetails = {
@@ -22,12 +25,13 @@ function AddTeacher() {
     last_name: "",
     middle_name: "",
     email: "",
-    //   date_of_birth: '',
-    address: "",
+    password: "password1234",
     nationality: "",
     state_of_origin: "",
     gender: "",
-    student_class: 0,
+    is_teacher: true,
+    is_student: false,
+    is_principal: false,
   };
 
   const notify = () => toast("Teacher has been added");
@@ -41,20 +45,24 @@ function AddTeacher() {
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // const response = await apiRequest("POST", "app/addstudent", formDetails);
-    // const data = await response;
-    console.log(formDetails);
-    notify()
-    // const response = await post('app/addstudent',formDetails)
-    // const data = await response
-    // console.log(data)
+    try {
+      setLoading(true);
+      const response = await post("auth/signup", formDetails);
+      setLoading(false);
+      const data = await response.data;
+      if (data.email) {
+        notify();
+        setFormDetails(initialFormDetails);
+      }
+      console.log(data);
+    } catch (error) {}
   };
 
   const inputStyles =
     "border  border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
 
   return (
-    <div>
+    <div className="mt-32">
       <h3 className="text-lg bold-500 capitalize mx-auto capitalize">
         Add a New Teacher
       </h3>
@@ -70,6 +78,7 @@ function AddTeacher() {
             className={inputStyles}
             placeholder="Surname"
             required
+            value={formDetails.last_name}
           />
 
           <input
@@ -80,6 +89,7 @@ function AddTeacher() {
             className={inputStyles}
             placeholder="Firstname"
             required
+            value={formDetails.first_name}
           />
         </div>
 
@@ -92,6 +102,7 @@ function AddTeacher() {
             className={inputStyles}
             placeholder="Middle Name"
             required
+            value={formDetails.middle_name}
           />
 
           <input
@@ -102,27 +113,7 @@ function AddTeacher() {
             className={inputStyles}
             placeholder="Email Address"
             required
-          />
-        </div>
-
-        <div className="mb-6 flex gap-20 mt-10 mx-12">
-          {/* <input onChange={handlerFormChange} name='date_of_birth' type="date" id="first-name"  className="border-b border-gray-400 py-2 px-3 w-1/2 rounded-none focus:outline-none focus:border-blue-500" placeholder='Date of Birth' required /> */}
-
-          <input
-            onChange={handlerFormChange}
-            name="address"
-            type="select"
-            className={inputStyles}
-            placeholder="Residential Address"
-            required
-          />
-          <input
-            onChange={handlerFormChange}
-            name="address"
-            type="number"
-            className={inputStyles}
-            placeholder="Address"
-            required
+            value={formDetails.email}
           />
         </div>
 
@@ -154,34 +145,6 @@ function AddTeacher() {
                 {country.name}
               </option>
             ))}
-          </select>
-        </div>
-
-        <div className="mb-6 flex gap-20 mt-10 mx-12">
-          <select
-            onChange={handlerFormChange}
-            name="gender"
-            id="nationality"
-            className={inputStyles}
-            required
-          >
-            <option value="">Gender</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select>
-
-          <select
-            onChange={handlerFormChange}
-            name="student_class"
-            id="nationality"
-            className={inputStyles}
-            required
-          >
-            <option value="">Student Class</option>
-
-            <option value={1}>JSS1</option>
-            <option value={2}>JSS2</option>
-            <option value={3}>JSS3</option>
           </select>
         </div>
 

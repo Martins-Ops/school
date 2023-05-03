@@ -233,6 +233,8 @@ function HomeScreen() {
           </div>
         </div>
       </div>
+
+      
     </div>
   );
 }

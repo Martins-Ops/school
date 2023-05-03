@@ -14,17 +14,40 @@ function LoginPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const checkUser = async (token: string) => {
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    //  myHeaders.append("Content-Type", "application/json");
+  // const checkUser = async (token: string) => {
+  //   const myHeaders = new Headers();
+  //   myHeaders.append("Authorization", `Bearer ${token}`);
+  // //  myHeaders.append("Content-Type", "application/json");
 
+  //   try {
+  //     const response = await fetch(`${BASE_URL}app/user/`, {
+  //       method: "GET",
+  //       headers: myHeaders,
+  //       credentials: "include",
+  //       redirect: "follow",
+  //     });
+
+  //     const result = await response.text();
+  //     console.log(result);
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
+
+  const checkUser = async () => {
     try {
+
+      const token = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("token="))
+        ?.split("=")[1];
+
       const response = await fetch(`${BASE_URL}app/user/`, {
         method: "GET",
-        headers: myHeaders,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         credentials: "include",
-        redirect: "follow",
       });
 
       const result = await response.text();
@@ -70,13 +93,12 @@ function LoginPage() {
 
         if (data) {
           console.log(data);
-          localStorage.setItem("token", data.access);
           localStorage.setItem("isLoggedin", "true");
 
-          document.cookie = `access_token=${data.access}; HttpOnly`;
+          document.cookie = `token=${data.access} `;
 
           navigate("/dashboard", { replace: true });
-          checkUser(data.access);
+          checkUser();
         }
       } catch (error) {
         setLoginerr(true);

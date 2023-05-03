@@ -33,10 +33,11 @@ function App() {
           element={<ProfileScreen activeLink="dashboard" />}
         /> */}
 
-
-
         <Route path="/dashboard" element={<PrivateRoutes />}>
-          <Route path="/dashboard" element={<ProfileScreen />} />
+          <Route
+            path="/dashboard"
+            element={<ProfileScreen activeLink="dashboard" />}
+          />
         </Route>
 
         <Route
