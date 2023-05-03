@@ -1,50 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { getAuthCall } from "../utils/exports";
+import { get, getAuthCall } from "../utils/exports";
+
+
+interface studentTypes {
+  first_name: string;
+  last_name: string;
+  id: number;
+  email: string;
+  classroom:string;
+  gender:string
+}
 
 const tdStyle = "py-3 text-sm text-gray-500 mb-8 ";
 
 function StudentsScreen() {
+
+  const [students, setStudents] = useState([])
+
   const fetchStudents = async () => {
-    const response = await getAuthCall("app/students");
-    // console.log(response)
+    const response = await get("app/students");
+    console.log(response)
+    setStudents(response)
   };
 
-  // useEffect(()=>{
+  useEffect(() => {
 
-  // fetchStudents()
+    fetchStudents()
 
-  // },[])
-
-  const students = [
-    {
-      name: "John Doe",
-      id: "12345",
-      class: "A",
-      age: 18,
-      date: "2022-01-01",
-      gender: "Male",
-      email: "john.doe@example.com",
-    },
-    {
-      name: "Jane Smith",
-      id: "67890",
-      class: "B",
-      age: 19,
-      date: "2021-12-31",
-      gender: "Female",
-      email: "jane.smith@example.com",
-    },
-    {
-      name: "Bob Johnson",
-      id: "13579",
-      class: "C",
-      age: 20,
-      date: "2021-11-01",
-      gender: "Male",
-      email: "bob.johnson@example.com",
-    },
-  ];
+  }, [])
 
   return (
     <div>
@@ -84,15 +68,15 @@ function StudentsScreen() {
             </tr>
           </thead>
           <tbody>
-            {students.map((student) => (
+            {students?.map((student: studentTypes) => (
               <tr
                 className="text-left hover:bg-gray-200 cursor-pointer py-20"
                 key={student.id}
               >
-                <td className={tdStyle}>{student.name}</td>
+                <td className={tdStyle}>{`${student.first_name} ${student.last_name}`}</td>
                 <td className={tdStyle}>{student.id}</td>
-                <td className={tdStyle}>{student.class}</td>
-                <td className={tdStyle}>{student.age}</td>
+                <td className={tdStyle}>{student.classroom}</td>
+                <td className={tdStyle}>42</td>
                 <td className={tdStyle}>{student.gender}</td>
                 <td className={tdStyle}>{student.email}</td>
               </tr>
