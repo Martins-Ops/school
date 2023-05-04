@@ -50,8 +50,12 @@ function LoginPage() {
         credentials: "include",
       });
 
-      const result = await response.text();
+      const result = await response.json();
       console.log(result);
+      localStorage.setItem('is_teacher', result.is_teacher)
+      localStorage.setItem('is_student', result.is_student)
+      localStorage.setItem('is_principal', result.is_principal)
+      
     } catch (error) {
       console.log("error", error);
     }
@@ -94,10 +98,9 @@ function LoginPage() {
         if (data) {
           console.log(data);
           localStorage.setItem("isLoggedin", "true");
-
           document.cookie = `token=${data.access} `;
 
-          navigate("/dashboard", { replace: true });
+          navigate("/", { replace: true });
           checkUser();
         }
       } catch (error) {
