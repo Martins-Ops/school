@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { get, getAuthCall } from "../utils/exports";
+import StudentDetail from "../modals.tsx/StudentDetail";
 
 
 interface studentTypes {
@@ -19,6 +20,8 @@ function StudentsScreen() {
 
   const [students, setStudents] = useState([])
   const [studentclass, setClass] = useState('all')
+  const [showMoal, setShowModal] = useState(false)
+  const [modalDetails, setModalDetails] = useState({})
 
   const fetchStudents = async () => {
     const response = await get("app/students");
@@ -42,7 +45,7 @@ function StudentsScreen() {
     <div className="mt-28">
 
       <div className="flex gap-20">
-        <select value={studentclass}onChange={(e:any)=>setClass(e.target.value)} className="rounded-lg p-2 px-10">
+        <select value={studentclass} onChange={(e: any) => setClass(e.target.value)} className="rounded-lg p-2 px-10">
           <option value="all">All</option>
           <option value="1">JSS1</option>
           <option value="2">JSS2</option>
@@ -82,8 +85,19 @@ function StudentsScreen() {
 
           {filterStudents(students).map((student: studentTypes) => (
             <tr
+
+            
               className="text-left hover:bg-gray-200 cursor-pointer py-20"
               key={student.id}
+              onClick={() => {
+                const modalDetails = {
+                  name: student.first_name,
+                  email: student.email,
+                  class: student.classroom
+                };
+                setShowModal(true);
+                setModalDetails(modalDetails);
+              }}
             >
               <td className={tdStyle}>{`${student.first_name} ${student.last_name}`}</td>
               <td className={tdStyle}>{student.id}</td>
@@ -98,6 +112,9 @@ function StudentsScreen() {
 
         </table>
       </div>
+
+      {showMoal ? <StudentDetail details ={modalDetails} /> : null}
+
     </div>
   );
 }
