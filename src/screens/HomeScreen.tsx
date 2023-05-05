@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToken, setIsLoggedIn } from "../store/slices/authslice";
 import logo from "../../src/assets/images/logo.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Map, { Marker } from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 import { HiLocationMarker } from "react-icons/hi";
 
 
@@ -302,23 +300,6 @@ function HomeScreen() {
       <div id="Location" className="mx-4  md:mx-20 my-10">
         <h3 className={sectionHeader}>Location</h3>
 
-        <Map
-          style={{ height: "54vh", width: "100%" }}
-          mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-          longitude={3.6319}
-          latitude={6.8322}
-          zoom={12}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
-        >
-          <Marker
-            // onClick={() => setShowPopup(true)}
-            longitude={lng}
-            latitude={lat}
-            anchor="bottom"
-          >
-            <HiLocationMarker size={32} color="blue" />
-          </Marker>
-        </Map>
       </div>
     </div>
   );
