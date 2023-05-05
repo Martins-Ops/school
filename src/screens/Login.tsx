@@ -1,15 +1,14 @@
 import { FaUser, FaLock } from "react-icons/fa";
 import {
   BASE_URL,
-  getAuthCall,
-  getLoginAuthCall,
   post,
 } from "../utils/exports";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function LoginPage() {
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -55,7 +54,17 @@ function LoginPage() {
       localStorage.setItem('is_teacher', result.is_teacher)
       localStorage.setItem('is_student', result.is_student)
       localStorage.setItem('is_principal', result.is_principal)
-      
+
+      if (result.is_principal === true) {
+
+        navigate("/dashboard", { replace: true });
+      } else if (result.is_teacher === true) {
+        navigate("/mysubjects", { replace: true });
+      } else if (result.is_student === true) {
+        navigate("/myresults", { replace: true });
+      } 
+
+
     } catch (error) {
       console.log("error", error);
     }
@@ -96,11 +105,11 @@ function LoginPage() {
         const data = await response.data;
 
         if (data) {
-          console.log(data);
+           console.log(data);
           localStorage.setItem("isLoggedin", "true");
           document.cookie = `token=${data.access} `;
 
-          navigate("/", { replace: true });
+       
           checkUser();
         }
       } catch (error) {
@@ -117,7 +126,7 @@ function LoginPage() {
           <p className="text-red-700 py-8">Invalid email or password</p>
         )}
         <h2 className="text-2xl font-bold mb-6">Login</h2>
-        <div className="flex items-center border-b border-gray-300 pb-3 mt-8 mb-2">
+        <div className="flex items-center border-border-gray-300 pb-3 mt-8 mb-2">
           <FaUser className="text-gray-400 mr-3" />
           <input
             onChange={handleChange}
