@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { countries } from "../utils/countries";
 import { post } from "../utils/exports";
 import { ToastContainer, toast } from "react-toastify";
+import { inputStyles } from "../utils/styles";
 
 function AddTeacher() {
   const [loading, setLoading] = useState(false);
@@ -58,9 +59,7 @@ function AddTeacher() {
     } catch (error) {}
   };
 
-  const inputStyles =
-    "border  border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
-
+  
   return (
     <div className="mt-32">
       <h3 className="text-lg bold-500 capitalize mx-auto capitalize">
