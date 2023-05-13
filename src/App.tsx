@@ -16,6 +16,8 @@ import ContactScreen from "./screens/ContactScreen";
 // import AOS from "aos";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import PrincipalRoute from "./utils/PrincipalRoutes";
+import AddTeacher from "./screens/AddTeacher";
 function App() {
   // AOS.init();
 
@@ -33,25 +35,46 @@ function App() {
           element={<ProfileScreen activeLink="dashboard" />}
         /> */}
 
-        <Route path="/dashboard" element={<PrivateRoutes />}>
+        <Route path="/dashboard" element={<PrincipalRoute />}>
           <Route
             path="/dashboard"
             element={<ProfileScreen activeLink="dashboard" />}
           />
         </Route>
 
-        <Route
-          path="/addstudent"
-          element={<ProfileScreen activeLink="addstudent" />}
-        />
-        <Route
-          path="/addteacher"
-          element={<ProfileScreen activeLink="addteacher" />}
-        />
+        <Route path="/addstudent" element={<PrincipalRoute />}>
+          <Route
+            path="/addstudent"
+            element={<ProfileScreen activeLink="addstudent" />}
+          />
+
+        </Route>
+
+        <Route path="/addteacher" element={<PrincipalRoute />}>
+          <Route
+            path="/addteacher"
+            element={<ProfileScreen activeLink="addteacher" />}
+          />
+        </Route>
+
+        <Route path="/addsubject" element={<PrincipalRoute />}>
+          <Route
+            path="/addsubject"
+            element={<ProfileScreen activeLink="addsubject" />}
+          />
+
+        </Route>
+
+
 
         <Route
           path="/mysubjects"
           element={<ProfileScreen activeLink="mysubjects" />}
+        />
+
+         <Route
+          path="/mysubjects/:subjectId" 
+          element={<ProfileScreen activeLink="mysubjects/:subjectId" />}
         />
         <Route path="/contact" element={<ContactScreen />} />
       </Routes>
