@@ -1,17 +1,19 @@
 import AddStudents from "./AddStudents";
 import StudentsScreen from "./StudentsScreen";
-import { NavLink } from "react-router-dom";
 import logo from "../../src/assets/images/logo.png";
 import { FaUserCheck, FaUserPlus, FaUserTie, FaBook, FaAddressBook } from "react-icons/fa";
 import { FcMoneyTransfer } from "react-icons/fc";
 import AddTeacher from "./AddTeacher";
 import MySubjects from "./MySubjects";
-import { Link } from "react-router-dom";
+import { Link,useLocation,NavLink } from "react-router-dom";
 import AddSubject from "./AddSubject";
 import AddScore from "./AddScore";
 
 
 function ProfileScreen({ activeLink }: any) {
+
+  const location = useLocation();
+
   var nav = [
     { name: "View Students", link: "/dashboard", icon: FaUserCheck, user:'is_principal' },
     { name: "Add Students", link: "/addstudent", icon: FaUserPlus, user: 'is_principal' },
@@ -31,41 +33,42 @@ function ProfileScreen({ activeLink }: any) {
 
   return (
     <div className="md:flex  w-full md:gap-20">
-      <div className="md:w-1/4 h-screen md:border border-r-100">
+      <div className="md:w-1/4 h-screen rounded-lg mb-6 mt-2 bg-[#39393F] z-20">
         <Link to="/" className="flex gap-10 mt-10 mx-5">
           <img src={logo} alt="logo" className="w-20" />
           <p className="mt-4 text-red-700 text-lg">SP Sagamu</p>
         </Link>
 
-        <div className="mt-12 mx-10 flex md:block">
-          {nav.map((each) => {
-            if(localStorage.getItem(each.user)==='true'){
-              return (
-                <div className="flex gap-5 my-5" key={each.name}>
-                  <each.icon className="text-gray-400" size={24} />
-                  <NavLink
-                    to={each.link}
-                    className="flex text-gray-600 pointer block mb-8 active:text-green-500"
-                    style={({ isActive }) =>
-                      isActive
-                        ? {
-                          textDecoration: "none",
-                          color: "#6EE7B7",
-                        }
-                        : {}
-                    }
-                  >
-                    {each.name}
-                  </NavLink>
-                </div>
-              );
-            }
-            
-          })}
+<div className="mt-12 mx-6">
+  {nav.map((each) => {
+    if (localStorage.getItem(each.user) === 'true') {
+      const isActive = location.pathname === each.link;
+
+      return (
+        <div
+          className={`flex items-center px-4 gap-5 mb-10 rounded-lg ${
+            isActive ? 'bg-[#E4316F]' : ''
+          }`}
+          key={each.name}
+        >
+          <each.icon className="text-white" size={24} />
+          <NavLink
+            to={each.link}
+            className="text-white pointer block py-3 text-center"
+            style={isActive ? { textDecoration: 'none', color: '#fff' } : {}}
+          >
+            {each.name}
+          </NavLink>
         </div>
+      );
+    }
+    return null;
+  })}
+</div>
+
       </div>
 
-      <div className="md:mt-10 flex-grow md:w-3/4 mx-auto text-center">
+      <div className="md:mt-10 flex-grow md:w-3/4 mx-auto text-center ">
         {activeLink === "dashboard" && <StudentsScreen />}
         {activeLink === "addstudent" && <AddStudents />}
         {activeLink === "addteacher" && <AddTeacher />}
