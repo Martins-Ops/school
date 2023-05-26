@@ -58,3 +58,31 @@ export async function apiRequest(method, url, data) {
 
   return responseData;
 }
+
+
+export const classroom = [
+  {
+    name: 'JSS1',
+    id: '1'
+  },
+  {
+    name: 'JSS2',
+    id: '2'
+  },
+  {
+    name: 'JSS3',
+    id: '3'
+  },
+  {
+    name: 'SSS1',
+    id: '4'
+  },
+  {
+    name: 'SSS2',
+    id: '5'
+  },
+  {
+    name: 'SSS3',
+    id: '6'
+  },
+]
