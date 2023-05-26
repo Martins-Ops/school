@@ -3,9 +3,14 @@ import { countries } from "../utils/countries";
 import { post } from "../utils/exports";
 import { ToastContainer, toast } from "react-toastify";
 import { inputStyles } from "../utils/styles";
+import BtnTeal from "../components/BtnTeal";
+import Rodal from "rodal";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 function AddTeacher() {
   const [loading, setLoading] = useState(false);
+  const [successModal, setSuccessModal] = useState(false);
 
   interface FormDetails {
     first_name: string;
@@ -35,7 +40,6 @@ function AddTeacher() {
     is_principal: false,
   };
 
-  const notify = () => toast("Teacher has been added");
 
   const [formDetails, setFormDetails] =
     useState<FormDetails>(initialFormDetails);
@@ -52,14 +56,17 @@ function AddTeacher() {
       setLoading(false);
       const data = await response.data;
       if (data.email) {
-        notify();
+        setSuccessModal(true);
+        setTimeout(() => {
+          setSuccessModal(false);
+        }, 5000);
+
         setFormDetails(initialFormDetails);
       }
       console.log(data);
     } catch (error) {}
   };
 
-  
   return (
     <div className="mt-32">
       <h3 className="text-lg bold-500 capitalize mx-auto capitalize">
@@ -147,13 +154,18 @@ function AddTeacher() {
           </select>
         </div>
 
-        <button
-          type="submit"
-          className="bg-teal-600 text-white px-5 py-3 rounded-lg text-center mt-8"
-        >
-          Submit
-        </button>
+        <BtnTeal value="Submit" loading={loading} />
       </form>
+
+      <Rodal visible={successModal}>
+        <h3 className="text-lg font-bold mb-4">Student added sucessfully</h3>
+
+        {successModal && (
+          <div className="success-checkmark w-20 h-20 mx-auto">
+            <AiOutlineCheckCircle className="text-green-500 w-12 h-12 animate-success-check" />
+          </div>
+        )}
+      </Rodal>
     </div>
   );
 }

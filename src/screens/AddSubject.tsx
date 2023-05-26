@@ -11,7 +11,8 @@ const [subject,setSubject] = useState({
   teacher:''
 })
 
-const [teachers, setTeachers] = useState([])
+  const [teachers, setTeachers] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const fetchTeachers = async () => {
     const response = await get("app/teachers");
@@ -22,9 +23,11 @@ const [teachers, setTeachers] = useState([])
     setSubject({ ...subject, [e.target.name]: e.target.value });
   };
 
-  const submitHandler=async()=>{
+  const submitHandler = async () => {
+    setLoading(true);
     const response = await post("app/subjects/",subject);
     console.log(response)
+    setLoading(false)
 
     if(response.status===201){
       setSubject(subject)
@@ -63,7 +66,7 @@ const [teachers, setTeachers] = useState([])
         </select>
       </div>
 
-      <BtnTeal />
+      <BtnTeal loading={loading} value='submit' />
 
     </form>
   )

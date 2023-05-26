@@ -1,25 +1,15 @@
 import React, { useState } from "react";
 import { countries } from "../utils/countries";
-import { apiRequest, post } from "../utils/exports";
-import { ToastContainer, toast } from "react-toastify";
-
+import { ToastContainer } from "react-toastify";
+import BtnTeal from "../components/BtnTeal";
+import { post } from "../utils/exports";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import Rodal from "rodal";
+import { FormDetails } from "../types/ProjectTypes";
 
 function AddStudents() {
-  const [loading,setLoading] = useState(false)
-  interface FormDetails {
-    first_name: string;
-    last_name: string;
-    middle_name: string;
-    email: string;
-    nationality: string;
-    state_of_origin: string;
-    gender: string;
-    student_class: Number;
-    is_teacher: boolean;
-    is_student: boolean;
-    is_principal: boolean;
-    password: string;
-  }
+  const [loading, setLoading] = useState(false);
+  const [successModal, setSuccessModal] = useState(false);
 
   const initialFormDetails: FormDetails = {
     first_name: "",
@@ -29,20 +19,15 @@ function AddStudents() {
     nationality: "",
     state_of_origin: "",
     gender: "",
-    student_class: 0,
+    classroom: 0,
     is_teacher: false,
     is_student: true,
     is_principal: false,
     password: "password1234",
   };
 
-
-
-
   const [formDetails, setFormDetails] =
     useState<FormDetails>(initialFormDetails);
-  
-    const notify = () => toast("Student has been added");
 
 
   const handlerFormChange = (e: any) => {
@@ -57,7 +42,13 @@ function AddStudents() {
       setLoading(false);
       const data = await response.data;
       if (data.email) {
-        notify();
+        //  notify();
+
+        setSuccessModal(true);
+        setTimeout(() => {
+          setSuccessModal(false);
+        }, 5000);
+
         setFormDetails(initialFormDetails);
       }
       console.log(data);
@@ -78,9 +69,10 @@ function AddStudents() {
             onChange={handlerFormChange}
             name="last_name"
             type="text"
-            id="first-name"
+            id="last_name"
             className={inputStyles}
             placeholder="Surname"
+            value={formDetails.last_name}
             required
           />
 
@@ -88,9 +80,10 @@ function AddStudents() {
             onChange={handlerFormChange}
             name="first_name"
             type="text"
-            id="first-name"
+            id="first_name"
             className={inputStyles}
             placeholder="Firstname"
+            value={formDetails.first_name}
             required
           />
         </div>
@@ -100,9 +93,10 @@ function AddStudents() {
             onChange={handlerFormChange}
             name="middle_name"
             type="text"
-            id="first-name"
+            id="middle_name"
             className={inputStyles}
             placeholder="Middle Name"
+            value={formDetails.middle_name}
             required
           />
 
@@ -110,9 +104,10 @@ function AddStudents() {
             onChange={handlerFormChange}
             name="email"
             type="email"
-            id="first-name"
+            id="email"
             className={inputStyles}
             placeholder="Email Address"
+            value={formDetails.email}
             required
           />
         </div>
@@ -123,6 +118,7 @@ function AddStudents() {
             name="nationality"
             id="nationality"
             className={inputStyles}
+            value={formDetails.nationality}
             required
           >
             <option value="">Select a country</option>
@@ -137,6 +133,7 @@ function AddStudents() {
             name="state_of_origin"
             id="state"
             className={inputStyles}
+            value={formDetails.state_of_origin}
             required
           >
             <option value="">State of origin</option>
@@ -154,17 +151,18 @@ function AddStudents() {
             name="gender"
             id="nationality"
             className={inputStyles}
+            value={formDetails.gender}
             required
           >
             <option value="">Gender</option>
-            <option>Male</option>
-            <option>Female</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
           </select>
 
           <select
             onChange={handlerFormChange}
-            name="student_class"
-            id="nationality"
+            name="classroom"
+            id="classroom"
             className={inputStyles}
             required
           >
@@ -176,13 +174,18 @@ function AddStudents() {
           </select>
         </div>
 
-        <button
-          type="submit"
-          className="bg-teal-600 text-white px-5 py-3 rounded-lg text-center mt-8"
-        >
-          Submit
-        </button>
+        <BtnTeal loading={loading} value="submit" />
       </form>
+
+      <Rodal visible={successModal}>
+        <h3 className="text-lg font-bold mb-4">Student added sucessfully</h3>
+
+        {successModal && (
+          <div className="success-checkmark w-20 h-20 mx-auto">
+            <AiOutlineCheckCircle className="text-green-500 w-12 h-12 animate-success-check" />
+          </div>
+        )}
+      </Rodal>
     </div>
   );
 }
