@@ -1,4 +1,4 @@
-import { FaUser, FaLock } from "react-icons/fa";
+import { FaUser, FaLock, FaSpinner } from "react-icons/fa";
 import {
   BASE_URL,
   post,
@@ -158,11 +158,20 @@ function LoginPage() {
         )}
 
         <button
-          onClick={loginHandler}
-          className="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 rounded-lg mt-6"
-        >
-          {!loading ? "Sign In" : "..."}
-        </button>
+      onClick={loginHandler}
+      className="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 rounded-lg mt-6 relative"
+    >
+      {loading ? (
+        <>
+          <span className="flex items-center justify-center absolute top-0 left-0 w-full h-full">
+            <FaSpinner className="animate-spin text-white" />
+          </span>
+          <span className="opacity-0">Sign In</span>
+        </>
+      ) : (
+        'Sign In'
+      )}
+    </button>
       </div>
     </div>
   );
