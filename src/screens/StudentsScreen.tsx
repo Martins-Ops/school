@@ -47,9 +47,9 @@ function StudentsScreen() {
       <div className="flex gap-20">
         <select value={studentclass} onChange={(e: any) => setClass(e.target.value)} className="rounded-lg p-2 px-10">
           <option value="all">All</option>
-          <option value="1">JSS1</option>
-          <option value="2">JSS2</option>
-          <option value="3">JSS3</option>
+          <option value="JSS1">JSS1</option>
+          <option value="JSS2">JSS2</option>
+          <option value="JSS3">JSS3</option>
           <option value="SS1">SSS1</option>
           <option value="SS2">SSS2</option>
           <option value="SS3">SSS3</option>
