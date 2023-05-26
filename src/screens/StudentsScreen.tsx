@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { get, getAuthCall } from "../utils/exports";
+import { get } from "../utils/exports";
 import StudentDetail from "../modals.tsx/StudentDetail";
 
 
@@ -20,7 +20,7 @@ function StudentsScreen() {
 
   const [students, setStudents] = useState([])
   const [studentclass, setClass] = useState('all')
-  const [showMoal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const [modalDetails, setModalDetails] = useState({})
 
   const fetchStudents = async () => {
@@ -113,7 +113,7 @@ function StudentsScreen() {
         </table>
       </div>
 
-      {showMoal ? <StudentDetail details ={modalDetails} /> : null}
+      {showModal ? <StudentDetail showModal={showModal} hideModal = {()=>setShowModal(false)}  details ={modalDetails} /> : null}
 
     </div>
   );

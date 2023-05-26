@@ -5,7 +5,7 @@ import { AiOutlineMail, AiOutlineLogin } from "react-icons/ai";
 import { BiLogIn, BiMenuAltRight } from "react-icons/bi";
 import { RiMenu4Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 interface authState {
   isLoggeedin: boolean;
@@ -14,7 +14,15 @@ interface authState {
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const auth: any = useSelector((state: authState) => state);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isLoggedin") === "true");
+
+  const logoutHanler =()=>{
+    localStorage.clear()
+    setIsAuthenticated(false);
+  }
+
+
 
   const closeNav = () => {
     setIsOpen(false);
@@ -24,7 +32,6 @@ const Header = () => {
     { link: "/", name: "Home" },
     { link: "/about", name: "About" },
     { link: "/contact", name: "Contact" },
-    // { link: "/login", name: "Login" },
   ];
 
   const logoText =
@@ -69,9 +76,11 @@ const Header = () => {
 
                 <span className="flex gap-3">
                   <BiLogIn className="text-white" />
-                  <Link to="login" className="text-white hover:text-teal-500">
+                  {isAuthenticated ? <Link onClick={logoutHanler} to="login" className="text-white hover:text-teal-500">
+                    Logout
+                  </Link> : <Link to="login" className="text-white hover:text-teal-500">
                     Login
-                  </Link>
+                  </Link>}
                 </span>
               </nav>
             </div>

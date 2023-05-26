@@ -1,10 +1,9 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect } from "react";
 import Carousel from "../components/Carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setIsLoggedIn } from "../store/slices/authslice";
 import logo from "../../src/assets/images/logo.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { HiLocationMarker } from "react-icons/hi";
 
 
 import task1 from "../../src/assets/images/task1.png";
@@ -19,31 +18,8 @@ import vp from "../../src/assets/images/vp.png";
 import girl1 from "../../src/assets/images/girl1.jpg";
 import girl2 from "../../src/assets/images/girl2.jpg";
 
-import img1 from "../../src/assets/images/img1.jpg";
-import img2 from "../../src/assets/images/img2.jpg";
-import img3 from "../../src/assets/images/img3.jpg";
-import img4 from "../../src/assets/images/img4.jpg";
-import img5 from "../../src/assets/images/img5.jpg";
-import img6 from "../../src/assets/images/img6.jpg";
-import img7 from "../../src/assets/images/img7.jpg";
-import img8 from "../../src/assets/images/img8.jpg";
-import img9 from "../../src/assets/images/img9.jpg";
-import img10 from "../../src/assets/images/img10.jpg";
-import img11 from "../../src/assets/images/img11.jpg";
 
-const images = [
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
-  img6,
-  img7,
-  img8,
-  img9,
-  img10,
-  img11,
-];
+
 
 const events = [
   {
@@ -82,14 +58,6 @@ const events = [
 
 
 
-var lng = 3.61644;
-var lat = 6.853513;
-
-interface authState {
-  isLoggeedin: boolean;
-  token: string;
-}
-
 function HomeScreen() {
   const dispatch = useDispatch();
 
@@ -101,7 +69,6 @@ function HomeScreen() {
     window.scrollTo(0, 0);
   }, []);
 
-  const token: any = useSelector((state: authState) => state);
 
   const sectionHeader =
     "bg-gray-200 mb-10 py-2 px-8 rounded text-sm md:text-lg";
