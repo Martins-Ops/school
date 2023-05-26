@@ -10,8 +10,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import Footer from "./components/Footer";
 import About from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
-import 'rodal/lib/rodal.css';
-
+import "rodal/lib/rodal.css";
 
 // export const serverUrl = ''
 
@@ -49,7 +48,6 @@ function App() {
             path="/addstudent"
             element={<ProfileScreen activeLink="addstudent" />}
           />
-
         </Route>
 
         <Route path="/addteacher" element={<PrincipalRoute />}>
@@ -64,18 +62,15 @@ function App() {
             path="/addsubject"
             element={<ProfileScreen activeLink="addsubject" />}
           />
-
         </Route>
-
-
 
         <Route
           path="/mysubjects"
           element={<ProfileScreen activeLink="mysubjects" />}
         />
 
-         <Route
-          path="/mysubjects/:subjectId" 
+        <Route
+          path="/mysubjects/:subjectId"
           element={<ProfileScreen activeLink="mysubjects/:subjectId" />}
         />
         <Route path="/contact" element={<ContactScreen />} />
