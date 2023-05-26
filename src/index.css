@@ -14,3 +14,19 @@ body {
   font-family: 'Monda', sans-serif;
 }
 
+
+@keyframes successCheck {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-success-check {
+  animation: successCheck 1s ease-in-out;
+}
