@@ -10,6 +10,8 @@ import ProfileScreen from "./screens/ProfileScreen";
 import Footer from "./components/Footer";
 import About from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
+import 'rodal/lib/rodal.css';
+
 
 // export const serverUrl = ''
 
