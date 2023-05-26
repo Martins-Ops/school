@@ -1,15 +1,32 @@
 
-const StudentDetail = ({ details }: any) => {
+import Rodal from 'rodal';
+
+const StudentDetail = ({ details,showModal,hideModal }: any) => {
     console.log(details)
     return (
-        <div className="w-1/2 bg-gray-400 h-40 py-10 px-4">
-            <h3>Student Details</h3>
-            <div className="text-left mt-4">
-                <p> Name: {details.name}</p>
-                <p> email: {details.email}</p>
-                <p>class: {details.class}</p>
-            </div>
-        </div>
+    <Rodal
+  visible={showModal}
+  onClose={hideModal}
+  width={400}
+  height={200}
+  className="rounded-lg bg-gray-100"
+>
+  <div className="p-6">
+    <h3 className="text-2xl font-bold mb-4">Student Details</h3>
+    <div className="text-left">
+      <p className="mb-2">
+        <strong>Name:</strong> {details.name}
+      </p>
+      <p className="mb-2">
+        <strong>Email:</strong> {details.email}
+      </p>
+      <p className="mb-2">
+        <strong>Class:</strong> {details.class}
+      </p>
+    </div>
+  </div>
+</Rodal>
+
     )
 }
 
