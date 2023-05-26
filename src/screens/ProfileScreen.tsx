@@ -8,6 +8,7 @@ import MySubjects from "./MySubjects";
 import { Link,useLocation,NavLink } from "react-router-dom";
 import AddSubject from "./AddSubject";
 import AddScore from "./AddScore";
+import ViewTeachers from "./ViewTeachers";
 
 
 function ProfileScreen({ activeLink }: any) {
@@ -15,7 +16,9 @@ function ProfileScreen({ activeLink }: any) {
   const location = useLocation();
 
   var nav = [
-    { name: "View Students", link: "/dashboard", icon: FaUserCheck, user:'is_principal' },
+    { name: "View Students", link: "/dashboard", icon: FaUserCheck, user: 'is_principal' },
+        { name: "View Teachers", link: "/viewteacher", icon: FaUserCheck, user:'is_principal' },
+
     { name: "Add Students", link: "/addstudent", icon: FaUserPlus, user: 'is_principal' },
     { name: "Add Teacher", link: "/addteacher", icon: FaUserTie, user: 'is_principal' },
     { name: "Add Subject", link: "/addsubject", icon: FaAddressBook, user: 'is_principal' },
@@ -74,7 +77,9 @@ function ProfileScreen({ activeLink }: any) {
         {activeLink === "addteacher" && <AddTeacher />}
         {activeLink === "mysubjects" && <MySubjects />}
         {activeLink === "addsubject" && <AddSubject />}
+         {activeLink === "viewteacher" && <ViewTeachers />}
         {activeLink === "mysubjects/:subjectId" && <AddScore />}
+        
 
       </div>
     </div>

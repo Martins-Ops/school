@@ -50,6 +50,13 @@ function App() {
           />
         </Route>
 
+           <Route path="/viewteacher" element={<PrincipalRoute />}>
+          <Route
+            path="/viewteacher"
+            element={<ProfileScreen activeLink="viewteacher" />}
+          />
+        </Route>
+
         <Route path="/addteacher" element={<PrincipalRoute />}>
           <Route
             path="/addteacher"
