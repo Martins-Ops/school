@@ -32,9 +32,7 @@ function AddScore() {
     }
   };
 
-  useEffect(() => {
-    fetchReq();
-  }, []);
+
 
   const updateResult = async (id: number) => {
     try {
@@ -54,10 +52,17 @@ function AddScore() {
       );
       const result = await response.text();
       console.log(result);
+
+      fetchReq()
+
     } catch (error) {
       // Handle error...
     }
   };
+
+    useEffect(() => {
+    fetchReq();
+  }, []);
 
   return (
     <div className="mt-40">
