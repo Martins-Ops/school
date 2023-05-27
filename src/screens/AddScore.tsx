@@ -8,12 +8,10 @@ import LoadingModal from "../modals/LoadingModal";
 
 function AddScore() {
   const [students, setStudents] = useState([]);
-  const [testScores, setTestScores] = useState<{
-    [key: string]: string | number;
-  }>({});
-  const [examScore, setExamScore] = useState(0);
+  const [testScores, setTestScores] = useState<{ [key: string]: string | number; }>({});
+  const [examScores, setExamScores] = useState<{ [key: string]: string | number; }>({});
   const [editingRow, setEditingRow] = useState<number | null>(null);
-  const [loadingUpdate,setLoadingUpdate] = useState<boolean>(false)
+  const [loadingUpdate, setLoadingUpdate] = useState<boolean>(false);
 
   const { subjectId } = useParams();
 
@@ -28,27 +26,32 @@ function AddScore() {
           return scores;
         }, {})
       );
+      setExamScores(
+        response.reduce((scores: any, student: any) => {
+          scores[student._id] = student.exam_score;
+          return scores;
+        }, {})
+      );
     } catch (error) {
       console.log("Error fetching data:", error);
     }
   };
 
-
-
   const updateResult = async (id: number) => {
     try {
       const testScore = testScores[id];
+      const examScore = examScores[id];
 
       console.log(testScore);
+      console.log(examScore);
 
       const requestOptions = {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ test_score: testScore, student_id: id }),
+        body: JSON.stringify({ test_score: testScore, exam_score: examScore, student_id: id }),
       };
 
-
-      setLoadingUpdate(true)
+      setLoadingUpdate(true);
 
       const response = await fetch(
         `http://127.0.0.1:8000/app/mysubjectscore/${subjectId}/`,
@@ -57,16 +60,15 @@ function AddScore() {
       const result = await response.json();
       console.log(result);
 
-      fetchReq()
+      fetchReq();
 
-      setLoadingUpdate(false)
-
+      setLoadingUpdate(false);
     } catch (error) {
       // Handle error...
     }
   };
 
-    useEffect(() => {
+  useEffect(() => {
     fetchReq();
   }, []);
 
@@ -83,7 +85,7 @@ function AddScore() {
           </tr>
         </thead>
         <tbody>
-          {students?.map((student: studentAddScoreTypes) => (
+          {students.map((student: studentAddScoreTypes) => (
             <tr
               className="text-left hover:bg-gray-200 cursor-pointer py-20"
               key={student._id}
@@ -108,14 +110,22 @@ function AddScore() {
                 )}
               </td>
               <td className={tdStyle}>
-                <input
-                  value={student.exam_score}
-                  type="text"
-                  className="bg-gray text-center border border-black w-1/6"
-                  onChange={(e) => {
-                    /* Handle exam score change */
-                  }}
-                />
+                {editingRow === student._id ? (
+                  <input
+                    value={examScores[student._id]?.toString() || ""}
+                    type="number"
+                    className="m-0 p-0 text-center bg-gray border border-black w-1/6"
+                    onChange={(e) => {
+                      const updatedScores = { ...examScores };
+                      updatedScores[student._id] = parseInt(e.target.value, 10);
+                      setExamScores(updatedScores);
+                    }}
+                  />
+                ) : (
+                  <div onClick={() => setEditingRow(student._id)}>
+                    {examScores[student._id]}
+                  </div>
+                )}
               </td>
               <td className={tdStyle}>
                 <input
@@ -142,7 +152,6 @@ function AddScore() {
       </table>
 
       <LoadingModal loading={loadingUpdate} />
-
     </div>
   );
 }
