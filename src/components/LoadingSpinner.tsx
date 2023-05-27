@@ -5,7 +5,7 @@ function LoadingSpinner() {
   return (
    <span className="flex items-center justify-center">
             <FaSpinner className="animate-spin text-white" />
-          </span>
+    </span>
   );
 }
 

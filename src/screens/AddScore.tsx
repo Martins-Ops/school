@@ -4,6 +4,7 @@ import { get } from "../utils/exports";
 import { studentAddScoreTypes } from "../types/ProjectTypes";
 import { tdStyle } from "../utils/projectStyles";
 import { AiFillEdit, AiFillCheckCircle } from "react-icons/ai";
+import LoadingModal from "../modals/LoadingModal";
 
 function AddScore() {
   const [students, setStudents] = useState([]);
@@ -11,8 +12,8 @@ function AddScore() {
     [key: string]: string | number;
   }>({});
   const [examScore, setExamScore] = useState(0);
-  const [toUpdate, setToupddate] = useState(false);
   const [editingRow, setEditingRow] = useState<number | null>(null);
+  const [loadingUpdate,setLoadingUpdate] = useState<boolean>(false)
 
   const { subjectId } = useParams();
 
@@ -46,14 +47,19 @@ function AddScore() {
         body: JSON.stringify({ test_score: testScore, student_id: id }),
       };
 
+
+      setLoadingUpdate(true)
+
       const response = await fetch(
         `http://127.0.0.1:8000/app/mysubjectscore/${subjectId}/`,
         requestOptions
       );
-      const result = await response.text();
+      const result = await response.json();
       console.log(result);
 
       fetchReq()
+
+      setLoadingUpdate(false)
 
     } catch (error) {
       // Handle error...
@@ -134,6 +140,9 @@ function AddScore() {
           ))}
         </tbody>
       </table>
+
+      <LoadingModal loading={loadingUpdate} />
+
     </div>
   );
 }

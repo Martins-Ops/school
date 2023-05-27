@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { get } from "../utils/exports";
-import StudentDetail from "../modals.tsx/StudentDetail";
+import StudentDetail from "../modals/StudentDetail";
 
 interface studentTypes {
   first_name: string;
