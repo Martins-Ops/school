@@ -16,9 +16,9 @@ import "rodal/lib/rodal.css";
 
 // import AOS from "aos";
 import "react-toastify/dist/ReactToastify.css";
-import PrivateRoutes from "./utils/PrivateRoutes";
 import PrincipalRoute from "./utils/PrincipalRoutes";
-import AddTeacher from "./screens/AddTeacher";
+
+
 function App() {
   // AOS.init();
 
