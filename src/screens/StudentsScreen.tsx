@@ -1,8 +1,7 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { get } from "../utils/exports";
 import StudentDetail from "../modals.tsx/StudentDetail";
-
 
 interface studentTypes {
   first_name: string;
@@ -10,27 +9,25 @@ interface studentTypes {
   id: number;
   email: string;
   classroom: string;
-  gender: string
+  gender: string;
 }
 
 const tdStyle = "py-3 text-sm text-gray-500 mb-8 ";
 
-
 function StudentsScreen() {
-
-  const [students, setStudents] = useState([])
-  const [studentclass, setClass] = useState('all')
-  const [showModal, setShowModal] = useState(false)
-  const [modalDetails, setModalDetails] = useState({})
+  const [students, setStudents] = useState([]);
+  const [studentclass, setClass] = useState("all");
+  const [showModal, setShowModal] = useState(false);
+  const [modalDetails, setModalDetails] = useState({});
 
   const fetchStudents = async () => {
     const response = await get("app/students");
-    setStudents(response)
+    setStudents(response);
   };
 
   useEffect(() => {
-    fetchStudents()
-  }, [])
+    fetchStudents();
+  }, []);
 
   const filterStudents = (students: studentTypes[]) => {
     if (studentclass === "all") {
@@ -40,12 +37,14 @@ function StudentsScreen() {
     }
   };
 
-
   return (
     <div className="mt-28">
-
       <div className="flex gap-20">
-        <select value={studentclass} onChange={(e: any) => setClass(e.target.value)} className="rounded-lg p-2 px-10">
+        <select
+          value={studentclass}
+          onChange={(e: any) => setClass(e.target.value)}
+          className="rounded-lg p-2 px-10"
+        >
           <option value="all">All</option>
           <option value="JSS1">JSS1</option>
           <option value="JSS2">JSS2</option>
@@ -78,43 +77,47 @@ function StudentsScreen() {
 
               <th className="py-3">Gender</th>
               <th className="py-3">Email</th>
+              <th className="py-3">Has Paid</th>
             </tr>
           </thead>
 
-
-
           {filterStudents(students).map((student: studentTypes) => (
             <tr
-
-            
               className="text-left hover:bg-gray-200 cursor-pointer py-20"
               key={student.id}
               onClick={() => {
                 const modalDetails = {
                   name: student.first_name,
                   email: student.email,
-                  class: student.classroom
+                  class: student.classroom,
                 };
                 setShowModal(true);
                 setModalDetails(modalDetails);
               }}
             >
-              <td className={tdStyle}>{`${student.first_name} ${student.last_name}`}</td>
+              <td
+                className={tdStyle}
+              >{`${student.first_name} ${student.last_name}`}</td>
               <td className={tdStyle}>{student.id}</td>
               <td className={tdStyle}>{student.classroom}</td>
               <td className={tdStyle}>42</td>
               <td className={tdStyle}>{student.gender}</td>
               <td className={tdStyle}>{student.email}</td>
+              <td className={tdStyle}>
+                <input type="checkbox" />
+              </td>
             </tr>
           ))}
-
-
-
         </table>
       </div>
 
-      {showModal ? <StudentDetail showModal={showModal} hideModal = {()=>setShowModal(false)}  details ={modalDetails} /> : null}
-
+      {showModal ? (
+        <StudentDetail
+          showModal={showModal}
+          hideModal={() => setShowModal(false)}
+          details={modalDetails}
+        />
+      ) : null}
     </div>
   );
 }
