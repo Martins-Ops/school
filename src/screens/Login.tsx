@@ -13,25 +13,6 @@ function LoginPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // const checkUser = async (token: string) => {
-  //   const myHeaders = new Headers();
-  //   myHeaders.append("Authorization", `Bearer ${token}`);
-  // //  myHeaders.append("Content-Type", "application/json");
-
-  //   try {
-  //     const response = await fetch(`${BASE_URL}app/user/`, {
-  //       method: "GET",
-  //       headers: myHeaders,
-  //       credentials: "include",
-  //       redirect: "follow",
-  //     });
-
-  //     const result = await response.text();
-  //     console.log(result);
-  //   } catch (error) {
-  //     console.log("error", error);
-  //   }
-  // };
 
   const checkUser = async () => {
     try {
