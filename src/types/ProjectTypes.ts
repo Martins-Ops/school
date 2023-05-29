@@ -56,3 +56,9 @@ export  interface FormDetails {
     is_principal: boolean;
     password: string;
   }
+
+
+export interface authState {
+  isLoggeedin: boolean;
+  token: string;
+}
