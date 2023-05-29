@@ -76,6 +76,11 @@ function App() {
           element={<ProfileScreen activeLink="mysubjects" />}
         />
 
+          <Route
+          path="/myresults"
+          element={<ProfileScreen activeLink="myresults" />}
+        />
+
         <Route
           path="/mysubjects/:subjectId"
           element={<ProfileScreen activeLink="mysubjects/:subjectId" />}
