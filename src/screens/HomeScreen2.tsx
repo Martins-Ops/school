@@ -17,6 +17,7 @@ import principal from "../../src/assets/images/principal.png";
 import vp from "../../src/assets/images/vp.png";
 import girl1 from "../../src/assets/images/girl1.jpg";
 import girl2 from "../../src/assets/images/girl2.jpg";
+import { authState } from "../types/ProjectTypes";
 
 const events = [
   { img: task1, day: 10, month: "MAR 2023", title: "Mid term break" },
@@ -25,10 +26,7 @@ const events = [
   { img: task4, day: 12, month: "JUN 2023", title: "Vacation Starts" },
 ];
 
-interface authState {
-  isLoggeedin: boolean;
-  token: string;
-}
+
 
 function HomeScreen() {
   const dispatch = useDispatch();
@@ -43,7 +41,7 @@ function HomeScreen() {
        window.scrollTo(0, 0);
   }, []);
 
-  const token: any = useSelector((state: authState) => state);
+    const token: any = useSelector((state: authState  ) => state);
 
   return (
     <div className=" pb-20">
