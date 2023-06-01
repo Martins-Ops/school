@@ -17,6 +17,7 @@ const tdStyle = "py-3 text-sm text-gray-500 mb-8 ";
 function StudentsScreen() {
   const [students, setStudents] = useState([]);
   const [studentclass, setClass] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [modalDetails, setModalDetails] = useState({});
 
@@ -29,13 +30,23 @@ function StudentsScreen() {
     fetchStudents();
   }, []);
 
-  const filterStudents = (students: studentTypes[]) => {
-    if (studentclass === "all") {
-      return students;
-    } else {
-      return students.filter((student) => student.classroom === studentclass);
-    }
-  };
+const filterStudents = (students: studentTypes[]) => {
+  let filteredStudents = students;
+  if (studentclass !== "all") {
+    filteredStudents = filteredStudents.filter(
+      (student) => student.classroom === studentclass
+    );
+  }
+  if (searchQuery.trim() !== "") {
+    filteredStudents = filteredStudents.filter((student) =>
+      `${student.first_name} ${student.last_name}`
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
+  }
+  return filteredStudents;
+};
+
 
   return (
     <div className="mt-28">
@@ -62,6 +73,8 @@ function StudentsScreen() {
             className="block w-full rounded-full bg-gray-100 border-transparent focus:border-gray-500  focus:ring-0 pl-10 pr-3 py-2 text-sm placeholder-gray-500 focus:outline-none"
             type="text"
             placeholder="Search for Student"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
       </div>
@@ -70,44 +83,47 @@ function StudentsScreen() {
         <table className="w-full my-10">
           <thead>
             <tr className="text-left">
+              {/* <th className="py-3">Image</th> */}
               <th className="py-3">Name</th>
               <th className="py-3">ID</th>
               <th className="py-3">Class</th>
               <th className="py-3">Age</th>
-
               <th className="py-3">Gender</th>
               <th className="py-3">Email</th>
               <th className="py-3">Has Paid</th>
             </tr>
           </thead>
 
-          {filterStudents(students).map((student: studentTypes) => (
-            <tr
-              className="text-left hover:bg-gray-200 cursor-pointer py-20"
-              key={student.id}
-              onClick={() => {
-                const modalDetails = {
-                  name: student.first_name,
-                  email: student.email,
-                  class: student.classroom,
-                };
-                // setShowModal(true);
-                setModalDetails(modalDetails);
-              }}
-            >
-              <td
-                className={tdStyle}
-              >{`${student.first_name} ${student.last_name}`}</td>
-              <td className={tdStyle}>{student.id}</td>
-              <td className={tdStyle}>{student.classroom}</td>
-              <td className={tdStyle}>42</td>
-              <td className={tdStyle}>{student.gender}</td>
-              <td className={tdStyle}>{student.email}</td>
-              <td className={tdStyle}>
-                <input type="checkbox" />
-              </td>
-            </tr>
-          ))}
+          <tbody>
+            {filterStudents(students).map((student: studentTypes) => (
+              <tr
+                className="text-left my-10 hover:bg-gray-200 cursor-pointer py-20"
+                key={student.id}
+                onClick={() => {
+                  const modalDetails = {
+                    name: student.first_name,
+                    email: student.email,
+                    class: student.classroom,
+                  };
+                  // setShowModal(true);
+                  setModalDetails(modalDetails);
+                }}
+              >
+                {/* <td className={`bg-gray-300 h-3 w-4 my-3 rounded-full px-4 ${tdStyle}`}></td> */}
+                <td
+                  className={tdStyle}
+                >{`${student.first_name} ${student.last_name}`}</td>
+                <td className={tdStyle}>{student.id}</td>
+                <td className={tdStyle}>{student.classroom}</td>
+                <td className={tdStyle}>42</td>
+                <td className={tdStyle}>{student.gender}</td>
+                <td className={tdStyle}>{student.email}</td>
+                <td className={tdStyle}>
+                  <input type="checkbox" />
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
 
