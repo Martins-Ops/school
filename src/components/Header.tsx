@@ -35,7 +35,7 @@ const Header = () => {
   ];
 
   const logoText =
-    "text-white absolute  w-1/10 left-32 md:left-48 font-bold text-sm md:text-lg mt-10";
+    "text-black absolute w-1/10 left-32 md:left-56 font-bold text-sm md:text-lg mt-10";
 
   return (
     <div className="relative fixed">
@@ -46,13 +46,13 @@ const Header = () => {
         ></div>
       )}
 
-      <header className=" w-full h-28 fixed bg-gray-700 shadow-lg z-10">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-4">
-            <div className="items-center flex">
+      <header className="w-full h-28 fixed bg-white shadow-lg z-10">
+      
+          <div className="flex justify-between items-center ">
+            <div className="items-center flex ">
               <Link to="/" className="flex">
                 <img
-                  className="w-20 h-20 md:w-36 md:h-32 mr-2 absolute left-8 z-20 top-6 md:top-1"
+                  className="w-20 h-20 md:w-44 md:h-36 mr-2 absolute left-8 z-20 top-6 md:top-1"
                   src={logo}
                   alt="School logo"
                 />
@@ -61,8 +61,10 @@ const Header = () => {
                 <h2 className={`${logoText} bottom-10`}>COLLEDGE</h2>
               </Link>
             </div>
-            <div className="absolute right-16 bottom-8 hidden md:block">
-              <nav className="flex space-x-16 mr-4">
+
+            
+            <div className="w-2/5 bg-gray-700 h-28 pl-16 pt-10 hidden md:block">
+              <nav className="flex space-x-16  pr-4">
                 {nav.map((each) => {
                   return (
                     <Link
@@ -84,6 +86,9 @@ const Header = () => {
                 </span>
               </nav>
             </div>
+
+
+
             <div className="md:hidden">
               <button
                 type="button"
@@ -130,7 +135,7 @@ const Header = () => {
               </Transition>
             </div>
           </div>
-        </div>
+     
       </header>
     </div>
   );
