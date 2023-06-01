@@ -107,7 +107,7 @@ function LoginPage() {
           <p className="text-red-700 py-8">Invalid email or password</p>
         )}
         <h2 className="text-2xl font-bold mb-6">Login</h2>
-        <div className="flex items-center border-border-gray-300 pb-3 mt-8 mb-2">
+        <div className="flex items-center border-b border-gray-300 pb-3 mt-8 mb-2">
           <FaUser className="text-gray-400 mr-3" />
           <input
             onChange={handleChange}
