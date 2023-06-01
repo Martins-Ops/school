@@ -91,7 +91,7 @@ function StudentsScreen() {
                   email: student.email,
                   class: student.classroom,
                 };
-                setShowModal(true);
+                // setShowModal(true);
                 setModalDetails(modalDetails);
               }}
             >
