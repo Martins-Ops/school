@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { countries } from "../utils/countries";
+import { countries,states } from "../utils/countries";
 import { ToastContainer } from "react-toastify";
 import BtnTeal from "../components/BtnTeal";
 import { post } from "../utils/exports";
@@ -137,9 +137,9 @@ function AddStudents() {
             required
           >
             <option value="">State of origin</option>
-            {countries.map((country) => (
-              <option key={country.code} value={country.name}>
-                {country.name}
+            {states.map((state) => (
+              <option key={state} value={state}>
+                {state}
               </option>
             ))}
           </select>
