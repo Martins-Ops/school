@@ -10,9 +10,22 @@ export const get = (url, config = {}) => {
 };
 
 export const post = async (url, data, config = {}) => {
-  console.log(data);
   return axios.post(BASE_URL + url, data, config).then((response) => response);
 };
+
+export const authPost = async (url, data, config = {}) => {
+  const updatedConfig = {
+    ...config,
+    headers: {
+      ...config.headers,
+      'Content-Type': 'multipart/form-data', // Set proper content type for file upload
+    },
+  };
+  
+  return axios.post(BASE_URL + url, data, updatedConfig)
+    .then((response) => response);
+};
+
 
 export const put = (url, data, config = {}) => {
   return axios

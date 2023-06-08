@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { countries,states } from "../utils/countries";
+import {  states } from "../utils/countries";
 import { ToastContainer } from "react-toastify";
 import BtnTeal from "../components/BtnTeal";
-import { post } from "../utils/exports";
+import { authPost, post } from "../utils/exports";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import Rodal from "rodal";
 import { FormDetails } from "../types/ProjectTypes";
@@ -24,36 +24,73 @@ function AddStudents() {
     is_student: true,
     is_principal: false,
     password: "password1234",
+    profile_image:null
   };
 
   const [formDetails, setFormDetails] =
     useState<FormDetails>(initialFormDetails);
 
 
+const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  if (e.target.files && e.target.files.length > 0) {
+    const imageFile = e.target.files[0];
+    setFormDetails({ ...formDetails, profile_image: imageFile });
+  }
+};
   const handlerFormChange = (e: any) => {
     setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
   };
 
+  // const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   try {
+  //     setLoading(true);
+  //     const response = await post("auth/signup/", formDetails);
+  //     setLoading(false);
+  //     const data = await response.data;
+  //     if (data.email) {
+  //       setSuccessModal(true);
+  //       setTimeout(() => {
+  //         setSuccessModal(false);
+  //       }, 3000);
+
+  //       setFormDetails(initialFormDetails);
+  //     }
+  //     console.log(data);
+  //   } catch (error) {}
+  // };
+
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      setLoading(true);
-      const response = await post("auth/signup", formDetails);
-      setLoading(false);
-      const data = await response.data;
-      if (data.email) {
-        //  notify();
+  e.preventDefault();
+  try {
+    setLoading(true);
+    const formData = new FormData();
 
-        setSuccessModal(true);
-        setTimeout(() => {
-          setSuccessModal(false);
-        }, 5000);
-
-        setFormDetails(initialFormDetails);
+    Object.entries(formDetails).forEach(([key, value]) => {
+      if (key === 'profile_image') {
+        formData.append(key, value); // Append the file
+      } else {
+        formData.append(key, JSON.stringify(value)); // Append other form data as stringified JSON
       }
-      console.log(data);
-    } catch (error) {}
-  };
+    });
+
+  const response = await authPost("auth/signup/", formDetails);
+    
+    setLoading(false);
+    const data = await response.data;
+    if (data.email) {
+      setSuccessModal(true);
+      setTimeout(() => {
+        setSuccessModal(false);
+      }, 3000);
+      setFormDetails(initialFormDetails);
+    }
+    console.log(data);
+  } catch (error) {
+    // Handle error
+  }
+};
+
 
   const inputStyles =
     "border border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
@@ -113,21 +150,19 @@ function AddStudents() {
         </div>
 
         <div className="mb-6 flex gap-20 mt-10 mx-12">
-          <select
-            onChange={handlerFormChange}
-            name="nationality"
-            id="nationality"
-            className={inputStyles}
-            value={formDetails.nationality}
-            required
-          >
-            <option value="">Select a country</option>
-            {countries.map((country) => (
-              <option key={country.code} value={country.name}>
-                {country.name}
-              </option>
-            ))}
-          </select>
+          <div>
+            <input
+              type="file"
+              accept="image/*"
+             capture="environment"
+              onChange={handleImageChange}
+              className="hidden"
+              id="image-upload"
+            />
+            <label htmlFor="image-upload" className={inputStyles}>
+              Add Image
+            </label>
+          </div>
           <select
             onChange={handlerFormChange}
             name="state_of_origin"

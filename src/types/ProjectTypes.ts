@@ -54,7 +54,8 @@ export  interface FormDetails {
     is_teacher: boolean;
     is_student: boolean;
     is_principal: boolean;
-    password: string;
+  password: string;
+  profile_image: File | null;
   }
 
 
