@@ -73,44 +73,48 @@ function ProfileScreen({ activeLink }: any) {
   ];
 
   return (
-    <div className="md:flex  w-full md:gap-20">
-      <div className="md:w-1/4 h-screen rounded-lg mb-6 mt-2 bg-[#39393F] z-20">
-        <Link to="/" className="flex gap-10 mt-10 mx-5">
-          <img src={logo} alt="logo" className="w-20" />
-          <p className="mt-4 text-red-700 text-lg">SP Sagamu</p>
-        </Link>
+    <div className="relative md:flex w-full md:gap-20">
+      <div className="md:w-1/4 bg-[#39393F] z-20">
+        <div className="fixed h-screen rounded-lg mb-6 mt-2  ">
+          <Link to="/" className="flex gap-10 mt-10 mx-5">
+            <img src={logo} alt="logo" className="w-20" />
+            <p className="mt-4 text-red-700 text-lg">SP Sagamu</p>
+          </Link>
 
-        <div className="mt-12 mx-6">
-          {nav.map((each) => {
-            if (localStorage.getItem(each.user) === "true") {
-              const isActive = location.pathname === each.link;
+          <div className="mt-12 mx-6">
+            {nav.map((each) => {
+              if (localStorage.getItem(each.user) === "true") {
+                const isActive = location.pathname === each.link;
 
-              return (
-                <div
-                  className={`flex items-center px-4 gap-5 mb-10 rounded-lg ${
-                    isActive ? "bg-[#E4316F]" : ""
-                  }`}
-                  key={each.name}
-                >
-                  <each.icon className="text-white" size={24} />
-                  <NavLink
-                    to={each.link}
-                    className="text-white pointer block py-3 text-center"
-                    style={
-                      isActive ? { textDecoration: "none", color: "#fff" } : {}
-                    }
+                return (
+                  <div
+                    className={`flex items-center px-4 gap-5 mb-10 rounded-lg ${
+                      isActive ? "bg-[#E4316F]" : ""
+                    }`}
+                    key={each.name}
                   >
-                    {each.name}
-                  </NavLink>
-                </div>
-              );
-            }
-            return null;
-          })}
+                    <each.icon className="text-white" size={24} />
+                    <NavLink
+                      to={each.link}
+                      className="text-white pointer block py-3 text-center"
+                      style={
+                        isActive
+                          ? { textDecoration: "none", color: "#fff" }
+                          : {}
+                      }
+                    >
+                      {each.name}
+                    </NavLink>
+                  </div>
+                );
+              }
+              return null;
+            })}
+          </div>
         </div>
       </div>
 
-      <div className="md:mt-10 flex-grow md:w-3/4 mx-auto text-center ">
+      <div className="md:mt-10 flex-grow md:w-3/4 mx-auto text-center">
         {activeLink === "dashboard" && <StudentsScreen />}
         {activeLink === "addstudent" && <AddStudents />}
         {activeLink === "addteacher" && <AddTeacher />}
