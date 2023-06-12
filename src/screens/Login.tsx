@@ -78,7 +78,7 @@ function LoginPage() {
     } else {
       try {
         setLoading(true);
-        const response = await post("auth/login", {
+        const response = await post("auth/login/", {
           email: credentials.email,
           password: credentials.password,
         });
