@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useMemo } from "react";
 import { FaSearch } from "react-icons/fa";
 import { get } from "../utils/exports";
 import StudentDetail from "../modals/StudentDetail";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 interface studentTypes {
   first_name: string;
@@ -16,14 +17,17 @@ const tdStyle = "py-3 text-sm text-gray-500 mb-8 ";
 
 function StudentsScreen() {
   const [students, setStudents] = useState([]);
+  const [loading,setLoading] = useState(false)
   const [studentclass, setClass] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [modalDetails, setModalDetails] = useState({});
 
   const fetchStudents = async () => {
+    setLoading(true)
     const response = await get("app/students");
     setStudents(response);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -46,6 +50,8 @@ const filterStudents = (students: studentTypes[]) => {
   }
   return filteredStudents;
 };
+  
+  
 
 
   return (
@@ -79,8 +85,9 @@ const filterStudents = (students: studentTypes[]) => {
         </div>
       </div>
 
-      <div>
-        <table className="w-full my-10">
+      <div className="h-screen">
+       
+        {!loading ?<table className="w-full my-10">
           <thead>
             <tr className="text-left">
               {/* <th className="py-3">Image</th> */}
@@ -124,7 +131,7 @@ const filterStudents = (students: studentTypes[]) => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table>:<div className="h-screen z-10 text-center"><LoadingSpinner color='black'/></div>}
       </div>
 
       {showModal ? (
