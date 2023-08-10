@@ -16,6 +16,7 @@ import AddSubject from "./AddSubject";
 import AddScore from "./AddScore";
 import ViewTeachers from "./ViewTeachers";
 import StudentResult from "./StudentResult";
+import LoginPage from "./Login";
 
 function ProfileScreen({ activeLink }: any) {
   const location = useLocation();
@@ -37,6 +38,12 @@ function ProfileScreen({ activeLink }: any) {
     {
       name: "Add Students",
       link: "/addstudent",
+      icon: FaUserPlus,
+      user: "is_principal",
+    },
+       {
+      name: "password reset",
+      link: "/password-reset",
       icon: FaUserPlus,
       user: "is_principal",
     },
@@ -122,6 +129,8 @@ function ProfileScreen({ activeLink }: any) {
         {activeLink === "addsubject" && <AddSubject />}
         {activeLink === "viewteacher" && <ViewTeachers />}
         {activeLink === "myresults" && <StudentResult />}
+        {activeLink === "password-reset" && <LoginPage />}
+
         {activeLink === "mysubjects/:subjectId" && <AddScore />}
       </div>
     </div>

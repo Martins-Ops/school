@@ -69,7 +69,7 @@ function AddTeacher() {
 
   return (
     <div className="mt-32">
-      <h3 className="text-lg bold-500 capitalize mx-auto capitalize">
+      <h3 className="text-lg bold-500 mx-auto capitalize">
         Add a New Teacher
       </h3>
       <ToastContainer />
