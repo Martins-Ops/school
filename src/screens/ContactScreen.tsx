@@ -1,85 +1,82 @@
-import React,{useEffect} from "react";
+// ContactUs.js
 
-function ContactPage() {
+import React from "react";
+import img2 from "../assets/images/img6.jpg";
 
-
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+const ContactUs = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" action="#" method="POST">
-            <div>
+    <div className="min-h-screen pt-40 py-32 flex bg-gray-100">
+      <div className="w-1/2 bg-black bg-opacity-60">
+        <img src={img2} alt={img2} className="h-full brightness-50 object-cover" />
+      </div>
+
+      <div className="w-1/2">
+        <div className="w-full bg-white rounded-lg shadow-md p-6 h-full">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            Contact Us
+          </h2>
+          <p className="text-gray-700 mb-6">
+            If you have any questions or inquiries, feel free to reach out to us
+            using the contact form below.
+          </p>
+
+          <form>
+            <div className="mb-4">
               <label
+                className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
               >
                 Name
               </label>
-              <div className="mt-1">
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
+              <input
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                type="text"
+                id="name"
+                placeholder="John Doe"
+                required
+              />
             </div>
-
-            <div>
+            <div className="mb-4">
               <label
+                className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
               >
-                Email address
+                Email
               </label>
-              <div className="mt-1">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
+              <input
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                type="email"
+                id="email"
+                placeholder="johndoe@example.com"
+                required
+              />
             </div>
-
-            <div>
+            <div className="mb-4">
               <label
+                className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="message"
-                className="block text-sm font-medium text-gray-700"
               >
                 Message
               </label>
-              <div className="mt-1">
-                <textarea
-                  id="message"
-                  name="message"
-                //   rows="4"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                ></textarea>
-              </div>
+              <textarea
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                id="message"
+                rows={4}
+                placeholder="Your message here..."
+                required
+              />
             </div>
-
-            <div>
-              <button
-                type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-700 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-              >
-                Submit
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            >
+              Send Message
+            </button>
           </form>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default ContactPage;
+export default ContactUs;
