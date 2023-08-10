@@ -52,7 +52,7 @@ const Header = () => {
             <div className="items-center flex ">
               <Link to="/" className="flex">
                 <img
-                  className="w-20 h-20 md:w-44 md:h-36 mr-2 absolute left-8 z-20 top-6 md:top-1"
+                  className="w-32 h-28 md:w-44 md:h-36 mr-4 absolute left-4 md:left-8 z-20 top-6 md:top-1"
                   src={logo}
                   alt="School logo"
                 />
