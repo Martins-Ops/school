@@ -1,7 +1,8 @@
-import logo from "../../src/assets/images/logo.png";
+import logo from "../../../src/assets/images/logo.png";
 import { useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import img5 from "../../src/assets/images/img9.jpg";
+import img5 from "../../../src/assets/images/img9.jpg";
+import SectionHeader from "../../components/SectionHeader";
 
 const About = () => {
   useEffect(() => {
@@ -11,7 +12,7 @@ const About = () => {
   // 08073738551
 
   return (
-    <div className="">
+    <div className="mx-4 md:mx-20">
       <div id="into and logo" className="pt-36 mx-6 md:mx-10 md:flex md:gap-10">
         <div className="shadow-lg bg-gray-700 md:w-1/2 py-4 px-6">
           <LazyLoadImage src={logo} className="" alt="logo" />
@@ -35,38 +36,39 @@ const About = () => {
         </div>
       </div>
 
-      <div id="vision-and-mission" className="relative my-20">
-        <div className="my-20 mx-8 md:mx-20 shadow-lg bg-gray-700 rounded-sm text-center py-10 md:py-20 px-4">
-          <h2 className="text-4xl text-white">Vision</h2>
-          <p className="text-gray-300 my-8 text-xl md:text-2xl">
-            A distinguished Colledge that provides solid foundation for
-            christian values and moral probity, and serves as transformational
-            agens in the society
-          </p>
-        </div>
+      <>
+        <SectionHeader title={"About us"} />
+        <p className="text-blue-900">
+          St Paul College Sagamu is owned and managed by the Institute of the
+          Sisters of St. Louis, a religious group of women. The Institute was
+          founded in 1842 in France by Abbe Eugene Marie Louis Bautain with a
+          vision of ‘a world healed, unified and transformed by the saving
+          wisdom of Christianity’ and a mission to particularly instruct the
+          young, care for the sick and work for the salvation of souls.
+          Presently, the central house (headquarters) is in Dublin, Ireland. In
+          Nigeria, the provincial house where the leader and proprietress of the
+          school, Sr. Isabel Mann with her team reside is in Ibadan, the Oyo
+          state capital.
+        </p>
+      </>
 
-        <div className="md:flex mx-8 px-8 md:mx-28 md:gap-10 md:mx-32 bg-gray-200 py-10 rounded-lg">
-          <div className="text-center">
-            <h2 className="my-4">Mission</h2>
-            <p className="text-gray-500">
-              With the help of God and the collaboration of all stakeholders,
-              Louisville Girls High School, a Catholic educational institution
-              in Ijebu-Itele, offers wholesome education to her students by
-              promoting:
-            </p>
-          </div>
+      <>
+        <SectionHeader title="Vision" />
+        <p className="text-blue-900">
+          A distinguished Colledge that provides solid foundation for christian
+          values and moral probity, and serves as transformational agens in the
+          society
+        </p>
+      </>
 
-          <div className="text-center">
-            <h2 className="my-4">Mission</h2>
-            <p className="text-gray-500">
-              With the help of God and the collaboration of all stakeholders,
-              Louisville Girls High School, a Catholic educational institution
-              in Ijebu-Itele, offers wholesome education to her students by
-              promoting:
-            </p>
-          </div>
-        </div>
-      </div>
+      <>
+        <SectionHeader title="Mission" />
+        <p className="text-blue-900">
+          With the help of God and the collaboration of all stakeholders,
+          Louisville Girls High School, a Catholic educational institution in
+          Ijebu-Itele, offers wholesome education to her students by promoting:
+        </p>
+      </>
 
       <div id="location" className="my-10 mx-8 md:mx-20 md:flex md:gap-20">
         <div>
