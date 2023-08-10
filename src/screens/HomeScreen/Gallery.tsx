@@ -17,10 +17,10 @@ function Gallery() {
     <>
       <SectionHeader title="Gallery" />
 
-      <div className="flex gap-10">
-        <div className="flex w-1/2 flex-wrap justify-between h-460 w-435">
+      <div className="flex flex-col md:flex-row gap-10">
+        <div className="flex w-full md:w-1/2  flex-wrap justify-between h-460 w-435">
           {images.map((image) => (
-            <div key={image} className="w-1/3 h-1/3 p-2">
+            <div key={image} className="w-1/2 h-1/2 md:w-1/3 md:h-1/3 p-2">
               <img
                 src={image}
                 alt={image}
@@ -29,7 +29,7 @@ function Gallery() {
             </div>
           ))}
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <img src={img3} alt={img3} className="w-full h-full object-cover" />
         </div>
       </div>
