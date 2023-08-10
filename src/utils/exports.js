@@ -18,14 +18,14 @@ export const authPost = async (url, data, config = {}) => {
     ...config,
     headers: {
       ...config.headers,
-      'Content-Type': 'multipart/form-data', // Set proper content type for file upload
+      "Content-Type": "multipart/form-data", // Set proper content type for file upload
     },
   };
-  
-  return axios.post(BASE_URL + url, data, updatedConfig)
+
+  return axios
+    .post(BASE_URL + url, data, updatedConfig)
     .then((response) => response);
 };
-
 
 export const put = (url, data, config = {}) => {
   return axios
@@ -72,30 +72,60 @@ export async function apiRequest(method, url, data) {
   return responseData;
 }
 
-
 export const classroom = [
   {
-    name: 'JSS1',
-    id: '1'
+    name: "JSS1",
+    id: "1",
   },
   {
-    name: 'JSS2',
-    id: '2'
+    name: "JSS2",
+    id: "2",
   },
   {
-    name: 'JSS3',
-    id: '3'
+    name: "JSS3",
+    id: "3",
   },
   {
-    name: 'SSS1',
-    id: '4'
+    name: "SSS1",
+    id: "4",
   },
   {
-    name: 'SSS2',
-    id: '5'
+    name: "SSS2",
+    id: "5",
   },
   {
-    name: 'SSS3',
-    id: '6'
+    name: "SSS3",
+    id: "6",
   },
-]
+];
+
+export const achievementSlideSettings = {
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  speed: 1000,
+  autoplaySpeed: 2000,
+  centerMode: true,
+  centerPadding: "0",
+  dots: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 1,
+      },
+    },
+  ],
+};
