@@ -10,6 +10,7 @@ import img3 from "../../assets/images/img3.jpg";
 import img4 from "../../assets/images/img4.jpg";
 import img5 from "../../assets/images/img5.jpg";
 import img6 from "../../assets/images/img6.jpg";
+import jamb from "../../assets/images/jamb.jpeg";
 
 import SectionHeader from "../../components/SectionHeader";
 
@@ -42,13 +43,11 @@ const data = [
 ];
 
 const SliderComponent = () => {
-
-
   return (
     <>
-      <SectionHeader title="Achievements" />
-      <div className="w-[80%] mx-auto mt-4">
-        <Slider {...settings}>
+      <SectionHeader title="Laurels" />
+      <div className="w-[90%] md:w-[60%] mx-auto mt-4">
+        {/* <Slider {...settings}>
           {data.map((item, index) => (
             <div key={index} className="px-4">
               <div className="bg-white rounded-lg shadow-md p-4">
@@ -61,7 +60,10 @@ const SliderComponent = () => {
               </div>
             </div>
           ))}
-        </Slider>
+        </Slider> */}
+        <div>
+          <img src={jamb} className="rounded-md" alt="best in jamb" />
+        </div>
       </div>
     </>
   );

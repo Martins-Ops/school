@@ -12,24 +12,25 @@ function ManageMent() {
       <SectionHeader title="Management" />
       <div className="md:flex md:gap-10 justify-center items-center">
         <div className=" md:w-1/4 justify-center">
-          <LazyLoadImage src={principal} className="" alt="" />
+          {/* <LazyLoadImage src={principal} className="" alt="" /> */}
           <p className="text-center font-bold text-2xl my-8">The Principal</p>
         </div>
 
         <div className="w-full md:w-1/4 justify-center">
-          <LazyLoadImage src={vp} className="" alt="" />
+          {/* <LazyLoadImage src={vp} className="" alt="" /> */}
+          <div className="w-full h-full"></div>
           <p className="text-center font-bold text-2xl my-8">
             The Vice Principal
           </p>
         </div>
 
         <div className=" md:w-1/4 justify-center">
-          <LazyLoadImage src={abell} className="" alt="" />
+          {/* <LazyLoadImage src={abell} className="" alt="" /> */}
           <p className="text-center font-bold text-2xl my-8">The Accountant</p>
         </div>
 
         <div className=" md:w-1/4 justify-center">
-          <LazyLoadImage src={daniel} className="" alt="" />
+          {/* <LazyLoadImage src={daniel} className="" alt="" /> */}
           <p className="text-center font-bold text-2xl my-8">The Manager</p>
         </div>
       </div>

@@ -57,21 +57,9 @@ function HomeScreen() {
 
         <div id="mission" className="md:flex mt-16 mx-8 md:mx-20 gap-4">
           <div
-            // data-aos-delay="100"
-            // data-aos="fade-right"
-            className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
-          >
-            <h3 className="my-4">Our Mission</h3>
-            <p className={missionParagraph}>
-              To provide holistic education that fosters knowledge, Christian
-              values, and servant leadership in Church and society
-            </p>
-          </div>
-
-          <div
             // data-aos-delay="200"
             // data-aos="fade-down"
-            className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
+            className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/2 "
           >
             <h3 className="my-4">Our Vision</h3>
             <p className={missionParagraph}>
@@ -84,7 +72,7 @@ function HomeScreen() {
           <div
             // data-aos-delay="300"
             // data-aos="fade-left"
-            className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/3 "
+            className="bg-gray-300 mb-10 px-4 md:px-8 py-4 shadow-lg rounded-sm md:w-1/2"
           >
             <h3 className="my-4">Our Mission</h3>
             <p className={missionParagraph}>
