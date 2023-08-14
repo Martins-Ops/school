@@ -38,7 +38,7 @@ function HomeScreen() {
             // data-aos="fade-right"
             className="text-sm md:text-lg shadow-lg text-gray-500 py-4 px-3"
           >
-            Saint Paul College Sagamu located in the quiet town of Ijebu-Itele,
+            Saint Paul Colledge Sagamu located in the quiet town of Ijebu-Itele,
             Ogun State Nigeria, pristinely kept from the sprawling realities of
             urban life. Providently born on January 11 1998, the simply
             beautiful campus she has grown to be is the ideal learning
