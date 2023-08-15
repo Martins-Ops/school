@@ -26,22 +26,18 @@ const events = [
   { img: task4, day: 12, month: "JUN 2023", title: "Vacation Starts" },
 ];
 
-
-
 function HomeScreen() {
   const dispatch = useDispatch();
-
-
 
   useEffect(() => {
     var isLoggedIn = localStorage.getItem("isLoggedin");
     var token = localStorage.getItem("token");
     dispatch(setToken(token));
     dispatch(setIsLoggedIn(isLoggedIn === "true" ? true : false));
-       window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, []);
 
-    const token: any = useSelector((state: authState  ) => state);
+  const token: any = useSelector((state: authState) => state);
 
   return (
     <div className=" pb-20">
@@ -57,7 +53,7 @@ function HomeScreen() {
           data-aos="fade-right"
           className="shadow-lg text-gray-500 py-4 px-3"
         >
-          Saint Paul Colledge Sagamu located in the quiet town of Ijebu-Itele,
+          Saint Paul college Sagamu located in the quiet town of Ijebu-Itele,
           Ogun State Nigeria, pristinely kept from the sprawling realities of
           urban life. Providently born on January 11 1998, the simply beautiful
           campus she has grown to be is the ideal learning environment for young
@@ -94,9 +90,9 @@ function HomeScreen() {
         >
           <h3 className="my-4">Our Vision</h3>
           <p>
-            A distinguished Colledge that provides solid foundation for
-            christian values and moral probity, and serves as transformational
-            agens in the society
+            A distinguished college that provides solid foundation for christian
+            values and moral probity, and serves as transformational agens in
+            the society
           </p>
         </div>
 
@@ -123,7 +119,7 @@ function HomeScreen() {
                   src={each.img}
                   className="object-cover  h-64"
                   alt={each.title}
-                  style={{width:'97%'}}
+                  style={{ width: "97%" }}
                 />
                 <div className="absolute bg-gray-500 bg-opacity-75 bottom-9 left-0 p-2">
                   <p className="text-white font-bold text-lg">{each.day}</p>
@@ -133,8 +129,6 @@ function HomeScreen() {
               </div>
             );
           })}
-
-
         </div>
       </div>
 
@@ -231,8 +225,6 @@ function HomeScreen() {
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 }

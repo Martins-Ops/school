@@ -1,22 +1,16 @@
 import { FaUser, FaLock, FaSpinner } from "react-icons/fa";
-import {
-  BASE_URL,
-  post,
-} from "../utils/exports";
+import { BASE_URL, post } from "../utils/exports";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function LoginPage() {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-
   const checkUser = async () => {
     try {
-
       const token = document.cookie
         .split("; ")
         .find((row) => row.startsWith("token="))
@@ -32,20 +26,17 @@ function LoginPage() {
 
       const result = await response.json();
       console.log(result);
-      localStorage.setItem('is_teacher', result.is_teacher)
-      localStorage.setItem('is_student', result.is_student)
-      localStorage.setItem('is_principal', result.is_principal)
+      localStorage.setItem("is_teacher", result.is_teacher);
+      localStorage.setItem("is_student", result.is_student);
+      localStorage.setItem("is_principal", result.is_principal);
 
       if (result.is_principal === true) {
-
         navigate("/dashboard", { replace: true });
       } else if (result.is_teacher === true) {
         navigate("/mysubjects", { replace: true });
       } else if (result.is_student === true) {
         navigate("/myresults", { replace: true });
-      } 
-
-
+      }
     } catch (error) {
       console.log("error", error);
     }
@@ -86,11 +77,10 @@ function LoginPage() {
         const data = await response.data;
 
         if (data) {
-           console.log(data);
+          console.log(data);
           localStorage.setItem("isLoggedin", "true");
           document.cookie = `token=${data.access} `;
 
-       
           checkUser();
         }
       } catch (error) {
@@ -139,20 +129,20 @@ function LoginPage() {
         )}
 
         <button
-      onClick={loginHandler}
-      className="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 rounded-lg mt-6 relative"
-    >
-      {loading ? (
-        <>
-          <span className="flex items-center justify-center absolute top-0 left-0 w-full h-full">
-            <FaSpinner className="animate-spin text-white" />
-          </span>
-          <span className="opacity-0">Sign In</span>
-        </>
-      ) : (
-        'Sign In'
-      )}
-    </button>
+          onClick={loginHandler}
+          className="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 rounded-lg mt-6 relative"
+        >
+          {loading ? (
+            <>
+              <span className="flex items-center justify-center absolute top-0 left-0 w-full h-full">
+                <FaSpinner className="animate-spin text-white" />
+              </span>
+              <span className="opacity-0">Sign In</span>
+            </>
+          ) : (
+            "Sign In"
+          )}
+        </button>
       </div>
     </div>
   );

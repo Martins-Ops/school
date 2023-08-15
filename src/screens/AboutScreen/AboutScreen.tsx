@@ -19,10 +19,10 @@ const About = () => {
         </div>
         <div className="md:w-1/2 md:mt-32 mt-20 shadow-lg bg-gray-300 py-8 px-4 md:px-8 h-1/2 ">
           <h2 className="text-xl my-4 text-indigo-900">
-            About St Paul Colledge
+            About St Paul college
           </h2>
           <p className="text-blue-900">
-            St Paul Colledge Sagamu is owned and managed by the Institute of the
+            St Paul college Sagamu is owned and managed by the Institute of the
             Sisters of St. Louis, a religious group of women. The Institute was
             founded in 1842 in France by Abbe Eugene Marie Louis Bautain with a
             vision of ‘a world healed, unified and transformed by the saving
@@ -39,7 +39,7 @@ const About = () => {
       <>
         <SectionHeader title={"About us"} />
         <p className="text-blue-900">
-          St Paul Colledge Sagamu is owned and managed by the Institute of the
+          St Paul college Sagamu is owned and managed by the Institute of the
           Sisters of St. Louis, a religious group of women. The Institute was
           founded in 1842 in France by Abbe Eugene Marie Louis Bautain with a
           vision of ‘a world healed, unified and transformed by the saving
@@ -55,7 +55,7 @@ const About = () => {
       <>
         <SectionHeader title="Vision" />
         <p className="text-blue-900">
-          A distinguished Colledge that provides solid foundation for christian
+          A distinguished college that provides solid foundation for christian
           values and moral probity, and serves as transformational agens in the
           society
         </p>
