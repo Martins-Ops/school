@@ -1,5 +1,7 @@
 import logo from "../../src/assets/images/logo.png";
 import { FaUser, FaWarehouse, FaFacebookMessenger } from "react-icons/fa";
+import { AiOutlineMail } from "react-icons/ai";
+import { BsTelephoneInbound } from "react-icons/bs";
 
 function Footer() {
   return (
@@ -14,17 +16,17 @@ function Footer() {
 
         <div className="w-full md:w-1/3 my-10">
           <p className="flex gap-4 text-white my-4">
-            <FaFacebookMessenger color="white" /> mspcollegesagamu@gmail.com
+            <AiOutlineMail color="white" /> mspcollegesagamu@gmail.com
           </p>
           <p className="flex gap-2 text-white my-4">
-            <FaUser /> (+234)7030151626
+            <BsTelephoneInbound /> (+234)7030151626
           </p>
           <p className="flex gap-2 text-white my-4">
-            <FaUser /> (+234)7030151626
+            <BsTelephoneInbound /> (+234)7030151626
           </p>
         </div>
 
-        <div className="w-full md:w-1/3 my-10">
+        {/* <div className="w-full md:w-1/3 my-10">
           <p className="flex gap-4 text-white my-4">
             <FaWarehouse color="white" /> Apele community{" "}
           </p>
@@ -34,7 +36,7 @@ function Footer() {
           <p className="flex gap-2 text-white my-4">
             <FaUser /> Sagamu ogun state Nigeria
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

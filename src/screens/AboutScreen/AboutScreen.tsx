@@ -36,7 +36,7 @@ const About = () => {
         </div>
       </div>
 
-      <>
+      {/* <>
         <SectionHeader title={"About us"} />
         <p className="text-blue-900">
           St Paul college Sagamu is owned and managed by the Institute of the
@@ -50,7 +50,7 @@ const About = () => {
           school, Sr. Isabel Mann with her team reside is in Ibadan, the Oyo
           state capital.
         </p>
-      </>
+      </> */}
 
       <>
         <SectionHeader title="Vision" />
@@ -63,13 +63,13 @@ const About = () => {
 
       <>
         <SectionHeader title="Mission" />
-        <p className="text-blue-900">
+        <p className="text-blue-900 mb-20">
           With the help of God and the collaboration of all stakeholders,
           Louisville Girls High School, a Catholic educational institution in
           Ijebu-Itele, offers wholesome education to her students by promoting:
         </p>
       </>
-
+      {/* 
       <div id="location" className="my-10 mx-8 md:mx-20 md:flex md:gap-20">
         <div>
           <h2 className="capitalize text-3xl md:text-5xl text-gray-500">
@@ -121,9 +121,9 @@ const About = () => {
         <div>
           <img src={img5} alt="big image" />
         </div>
-      </div>
+      </div> */}
 
-      <div id="focal points" className="text-center my-20 bg-gray-300 py-4">
+      {/* <div id="focal points" className="text-center my-20 bg-gray-300 py-4">
         <h2 className="text-3xl my-10">Our Five Focal Points</h2>
         <p className="text-xl">
           Saint Paul Sagamu have four focal points geared towards helping them
@@ -155,7 +155,7 @@ const About = () => {
             <p className="text-4xl">Charity</p>
           </span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

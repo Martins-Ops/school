@@ -15,7 +15,7 @@ function HomeScreen() {
   useEffect(() => {
     var isLoggedIn = localStorage.getItem("isLoggedin");
     var token = localStorage.getItem("token");
-    dispatch(setToken(token));
+  dispatch(setToken(token));
     dispatch(setIsLoggedIn(isLoggedIn === "true" ? true : false));
     window.scrollTo(0, 0);
   }, []);

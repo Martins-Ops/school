@@ -6,11 +6,11 @@ import img2 from "../assets/images/img6.jpg";
 const ContactUs = () => {
   return (
     <div className="min-h-screen pt-40 py-32 flex bg-gray-100">
-      <div className="w-1/2 bg-black bg-opacity-60">
+      <div className="w-0 md:w-1/2 bg-black bg-opacity-60">
         <img src={img2} alt={img2} className="h-full brightness-50 object-cover" />
       </div>
 
-      <div className="w-1/2">
+      <div className="w-full md:w-1/2">
         <div className="w-full bg-white rounded-lg shadow-md p-6 h-full">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Contact Us
