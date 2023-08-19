@@ -46,36 +46,36 @@ function App() {
             />
           </Route>
 
-          <Route path="/addstudent" element={<PrincipalRoute />}>
+          <Route path="/dashboard/addstudent" element={<PrincipalRoute />}>
             <Route
-              path="/addstudent"
+              path="/dashboard/addstudent"
               element={<ProfileScreen activeLink="addstudent" />}
             />
           </Route>
 
-          <Route path="/viewteacher" element={<PrincipalRoute />}>
+          <Route path="/dashboard/viewteacher" element={<PrincipalRoute />}>
             <Route
-              path="/viewteacher"
+              path="/dashboard/viewteacher"
               element={<ProfileScreen activeLink="viewteacher" />}
             />
           </Route>
 
-          <Route path="/addteacher" element={<PrincipalRoute />}>
+          <Route path="/dashboard/addteacher" element={<PrincipalRoute />}>
             <Route
-              path="/addteacher"
+              path="/dashboard/addteacher"
               element={<ProfileScreen activeLink="addteacher" />}
             />
           </Route>
 
-          <Route path="/addsubject" element={<PrincipalRoute />}>
+          <Route path="/dashboard/addsubject" element={<PrincipalRoute />}>
             <Route
-              path="/addsubject"
+              path="/dashboard/addsubject"
               element={<ProfileScreen activeLink="addsubject" />}
             />
           </Route>
 
           <Route
-            path="/mysubjects"
+            path="/dashboard/mysubjects"
             element={<ProfileScreen activeLink="mysubjects" />}
           />
           {/* password-reset */}
@@ -86,7 +86,7 @@ function App() {
           />
 
           <Route
-            path="/myresults"
+            path="/dashboard/myresults"
             element={<ProfileScreen activeLink="myresults" />}
           />
 

@@ -30,50 +30,50 @@ function ProfileScreen({ activeLink }: any) {
     },
     {
       name: "View Teachers",
-      link: "/viewteacher",
+      link: "/dashboard/viewteacher",
       icon: FaUserCheck,
       user: "is_principal",
     },
 
     {
       name: "Add Students",
-      link: "/addstudent",
+      link: "/dashboard/addstudent",
       icon: FaUserPlus,
       user: "is_principal",
     },
-       {
+    {
       name: "password reset",
-      link: "/password-reset",
+      link: "/dashboard/password-reset",
       icon: FaUserPlus,
       user: "is_principal",
     },
     {
       name: "Add Teacher",
-      link: "/addteacher",
+      link: "/dashboard/addteacher",
       icon: FaUserTie,
       user: "is_principal",
     },
     {
       name: "Add Subject",
-      link: "/addsubject",
+      link: "/dashboard/addsubject",
       icon: FaAddressBook,
       user: "is_principal",
     },
     {
       name: "Payment History",
-      link: "/payment-history",
+      link: "/dashboard/payment-history",
       icon: FcMoneyTransfer,
       user: "is_principal",
     },
     {
       name: "My Subjects",
-      link: "/mysubjects",
+      link: "/dashboard/mysubjects",
       icon: FaBook,
       user: "is_teacher",
     },
     {
       name: "My Results",
-      link: "/myresults",
+      link: "/dashboard/myresults",
       icon: FaBook,
       user: "is_student",
     },
@@ -81,8 +81,8 @@ function ProfileScreen({ activeLink }: any) {
 
   return (
     <div className="relative md:flex w-full md:gap-20">
-      <div className="md:w-1/4 bg-[#39393F] z-20">
-        <div className="fixed h-screen rounded-lg mb-6 mt-2  ">
+      <div className="  z-20">
+        <div className="fixed h-screen md:w-1/4 bg-[#39393F] rounded-lg mb-6 mt-2  ">
           <Link to="/" className="flex gap-10 mt-10 mx-5">
             <img src={logo} alt="logo" className="w-20" />
             <p className="mt-4 text-red-700 text-lg">SP Sagamu</p>
@@ -121,7 +121,7 @@ function ProfileScreen({ activeLink }: any) {
         </div>
       </div>
 
-      <div className="md:mt-10 flex-grow md:w-3/4 mx-auto text-center">
+      <div className="md:mt-10 ml-[30%]  flex-grow md:w-3/4 mx-auto text-center">
         {activeLink === "dashboard" && <StudentsScreen />}
         {activeLink === "addstudent" && <AddStudents />}
         {activeLink === "addteacher" && <AddTeacher />}
