@@ -3,6 +3,11 @@ import { BASE_URL, post } from "../utils/exports";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import img2 from "../assets/images/img6.jpg";
+
+const loginInput = "w-full  border-none focus:outline-none";
+const loginInputDiv =
+  "flex items-center w-3/4 border-b border-gray-300 pb-3 mb-12 mt-8 ";
 
 function LoginPage() {
   useEffect(() => {
@@ -91,58 +96,67 @@ function LoginPage() {
     }
   };
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8 items-center">
-      <div className="bg-white p-10 rounded-lg shadow-lg">
-        {loginErr && (
-          <p className="text-red-700 py-8">Invalid email or password</p>
-        )}
-        <h2 className="text-2xl font-bold mb-6">Login</h2>
-        <div className="flex items-center border-b border-gray-300 pb-3 mt-8 mb-2">
-          <FaUser className="text-gray-400 mr-3" />
-          <input
-            onChange={handleChange}
-            type="email"
-            className="w-full border-none focus:outline-none"
-            placeholder="Email"
-            name="email"
-            value={credentials.email}
-          />
-        </div>
-        {emailInputError && (
-          <p className="text-red-700 text-sm mt-1">Invalid Email</p>
-        )}
-        <div className="flex items-center border-b border-gray-300 mt-4 py-3">
-          <FaLock className="text-gray-400 mr-3" />
-          <input
-            onChange={handleChange}
-            type="password"
-            className="w-full border-none focus:outline-none"
-            placeholder="Password"
-            name="password"
-            value={credentials.password}
-          />
-        </div>
-        {passwordInputError && (
-          <p className="text-red-700 text-sm mt-4">
-            Password must be greater than 4 characters
-          </p>
-        )}
-
-        <button
-          onClick={loginHandler}
-          className="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 rounded-lg mt-6 relative"
-        >
-          {loading ? (
-            <>
-              <span className="flex items-center justify-center absolute top-0 left-0 w-full h-full">
-                <FaSpinner className="animate-spin text-white" />
-              </span>
-              <span className="opacity-0">Sign In</span>
-            </>
-          ) : (
-            "Sign In"
+    <div className="min-h-screen flex bg-gray-100">
+      <div className="w-0 md:w-1/2 bg-black bg-opacity-60">
+        <img
+          src={img2}
+          alt={img2}
+          className="h-full brightness-50 object-cover"
+        />
+      </div>
+      <div className="min-h-screen bg-gray-100 w-full md:w-1/2  items-center">
+        <div className="bg-white pt-40 w-full h-screen p-10 rounded-lg shadow-lg">
+          {loginErr && (
+            <p className="text-red-700 py-8">Invalid email or password</p>
           )}
-        </button>
+          <h2 className="text-2xl font-bold mb-6">Login</h2>
+          <div className={loginInputDiv}>
+            <FaUser className="text-gray-400 mr-3" />
+            <input
+              onChange={handleChange}
+              type="email"
+              className={loginInput}
+              placeholder="Email"
+              name="email"
+              value={credentials.email}
+            />
+          </div>
+          {emailInputError && (
+            <p className="text-red-700 text-sm mt-1">Invalid Email</p>
+          )}
+          <div className={loginInputDiv}>
+            <FaLock className="text-gray-400 mr-3" />
+            <input
+              onChange={handleChange}
+              type="password"
+              className={loginInput}
+              placeholder="Password"
+              name="password"
+              value={credentials.password}
+            />
+          </div>
+          {passwordInputError && (
+            <p className="text-red-700 text-sm mt-4">
+              Password must be greater than 4 characters
+            </p>
+          )}
+
+          <button
+            onClick={loginHandler}
+            className=" mt-4 w-2/3 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 rounded-lg relative"
+          >
+            {loading ? (
+              <>
+                <span className="flex items-center justify-center absolute top-0 left-0 w-full h-full">
+                  <FaSpinner className="animate-spin text-white" />
+                </span>
+                <span className="opacity-0">Sign In</span>
+              </>
+            ) : (
+              "Sign In"
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );
