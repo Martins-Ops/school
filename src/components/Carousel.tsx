@@ -7,6 +7,9 @@ import Fade from "react-reveal/Fade";
 import banner1 from "../../src/assets/images/banner3.jpg";
 import banner2 from "../../src/assets/images/banner2.jpg";
 import banner3 from "../../src/assets/images/banner4.jpeg";
+import banner4 from "../../src/assets/images/banner1.jpg";
+import banner5 from "../../src/assets/images/schoolBuilding.jpeg";
+
 
 const carouselItems = [
   {
@@ -27,6 +30,20 @@ const carouselItems = [
     p2: "Education is key to success",
     p3: "Making an impact ",
   },
+
+  {
+    image: banner4,
+    p1: "Featured notification",
+    p2: "Education is key to success",
+    p3: "Making an impact ",
+  },
+
+   {
+    image: banner5,
+    p1: "Featured notification",
+    p2: "Education is key to success",
+    p3: "Making an impact ",
+  },
 ];
 function Carousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -43,10 +60,8 @@ function Carousel() {
 
     afterChange: (index: number) => {
       setCurrentSlide(index);
-   
     },
   };
-
 
   return (
     <div>
@@ -86,7 +101,6 @@ function Carousel() {
           );
         })}
       </Slider>
-
     </div>
   );
 }

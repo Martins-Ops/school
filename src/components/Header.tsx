@@ -45,7 +45,7 @@ const Header = () => {
 
   return (
     <div>
-      {params === "login" || "dashboard" ? (
+      {params === "login" ? (
         <div></div>
       ) : (
         <div className="relative fixed">
