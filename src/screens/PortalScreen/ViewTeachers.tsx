@@ -38,22 +38,8 @@ function ViewTeachers() {
   };
 
   return (
-    <div className="mt-8">
+    <div className="ml-[10%] mt-8">
       <div className="flex gap-20">
-        <select
-          value={studentclass}
-          onChange={(e: any) => setClass(e.target.value)}
-          className="rounded-lg p-2 px-10"
-        >
-          <option value="all">All</option>
-          <option value="1">JSS1</option>
-          <option value="2">JSS2</option>
-          <option value="3">JSS3</option>
-          <option value="SS1">SSS1</option>
-          <option value="SS2">SSS2</option>
-          <option value="SS3">SSS3</option>
-        </select>
-
         <div className="relative w-full max-w-md mx-auto">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <FaSearch className="text-gray-400" />
