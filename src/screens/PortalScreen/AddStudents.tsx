@@ -75,19 +75,21 @@ function AddStudents() {
   const inputStyles =
     "border border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
 
+  const inputFlexDiv = "mb-6 flex gap-4 md:gap-20 mt-10 mx-12";
+
   return (
     <div className="my-12">
       <h3 className="text-lg bold-500 capitalize mx-auto">Add new student</h3>
       <ToastContainer />
 
       <form onSubmit={submitHandler} action="">
-        <div className="mb-6 flex gap-20 mt-10 mx-12">
+        <div className={inputFlexDiv}>
           <input
             onChange={handlerFormChange}
             name="last_name"
             type="text"
             id="last_name"
-            className={`${inputStyles} hidden`}
+            className={inputStyles}
             placeholder="Surname"
             value={formDetails.last_name}
             required
@@ -105,7 +107,7 @@ function AddStudents() {
           />
         </div>
 
-        <div className="mb-6 flex gap-20 mt-10 mx-12">
+        <div className={inputFlexDiv}>
           <input
             onChange={handlerFormChange}
             name="middle_name"
@@ -129,7 +131,7 @@ function AddStudents() {
           />
         </div>
 
-        <div className="mb-6 flex gap-20 mt-10 mx-12">
+        <div className={inputFlexDiv}>
           <div>
             <input
               type="file"

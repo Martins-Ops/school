@@ -18,7 +18,10 @@ const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-const tdStyle = "py-3 text-sm text-gray-500 mb-8";
+const tdStyle = "py-3 text-sm text-gray-500  mr-24";
+const tdHidden = "py-3 text-sm text-gray-500 hidden md:inline-block mr-24";
+
+const hiddenTable = "py-3 hidden md:inline-block mr-24";
 
 function StudentsScreen() {
   const [studentclass, setClass] = useState("all");
@@ -33,10 +36,12 @@ function StudentsScreen() {
     return response;
   };
 
-  const { data: students, isLoading, isError, error } = useQuery(
-    "students",
-    fetchStudents
-  );
+  const {
+    data: students,
+    isLoading,
+    isError,
+    error,
+  } = useQuery("students", fetchStudents);
 
   const filterStudents = (students: studentTypes[]) => {
     let filteredStudents = students;
@@ -63,8 +68,8 @@ function StudentsScreen() {
   };
 
   return (
-    <div className="mt-8">
-      <div className="flex gap-20">
+    <div className="ml-[10%] mt-8">
+      <div className="flex gap-4 md:gap-20">
         <select
           value={studentclass}
           onChange={(e: any) => setClass(e.target.value)}
@@ -95,16 +100,16 @@ function StudentsScreen() {
 
       <div className="h-screen">
         {!isLoading ? (
-          <table className="w-full my-10">
+          <table className=" w-full my-10">
             <thead>
               <tr className="text-left">
                 <th className="py-3">Name</th>
-                <th className="py-3">ID</th>
+                <th className={hiddenTable}>ID</th>
                 <th className="py-3">Class</th>
-                <th className="py-3">Age</th>
-                <th className="py-3">Gender</th>
-                <th className="py-3">Email</th>
-                <th className="py-3">Has Paid</th>
+                <th className={hiddenTable}>Age</th>
+                <th className={hiddenTable}>Gender</th>
+                <th className={hiddenTable}>Email</th>
+                {/* <th className={hiddenTable}>Has Paid</th> */}
               </tr>
             </thead>
 
@@ -126,14 +131,16 @@ function StudentsScreen() {
                   <td className={tdStyle}>
                     {`${student.first_name} ${student.last_name}`}
                   </td>
-                  <td className={tdStyle}>{student.id}</td>
+                  <td className={tdHidden}>{student.id}</td>
                   <td className={tdStyle}>{student.classroom}</td>
-                  <td className={tdStyle}>42</td>
-                  <td className={tdStyle}>{student.gender}</td>
-                  <td className={tdStyle}>{student.email}</td>
-                  <td className={tdStyle}>
-                    <input type="checkbox" />
+                  <td className={tdHidden}>42</td>
+                  <td className={tdHidden}>
+                    {student.gender === "M" ? "Male" : "Female"}
                   </td>
+                  <td className={tdHidden}>{student.email}</td>
+                  {/* <td className={tdHidden}>
+                    <input type="checkbox" />
+                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -145,7 +152,7 @@ function StudentsScreen() {
         )}
       </div>
 
-      <div className="flex justify-center mt-4">
+      {/* <div className="flex justify-center mt-4">
         <button
           className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           disabled={currentPage === 1}
@@ -233,7 +240,7 @@ function StudentsScreen() {
         >
           Next
         </button>
-      </div>
+      </div> */}
 
       {showModal && (
         <StudentDetail
