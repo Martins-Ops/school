@@ -89,11 +89,11 @@ const Header = () => {
                     <BiLogIn className="text-white" />
                     {isAuthenticated ? (
                       <Link
-                        onClick={logoutHanler}
-                        to="login"
+                        // onClick={logoutHanler}
+                        to="/dashboard"
                         className="text-white hover:text-teal-500"
                       >
-                        Logout
+                        Dashboard
                       </Link>
                     ) : (
                       <Link

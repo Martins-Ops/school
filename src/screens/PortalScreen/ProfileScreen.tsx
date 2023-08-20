@@ -9,6 +9,7 @@ import {
   FaAddressBook,
 } from "react-icons/fa";
 import { FcMoneyTransfer } from "react-icons/fc";
+import { CiLogout } from "react-icons/ci";
 import AddTeacher from "./AddTeacher";
 import MySubjects from "./MySubjects";
 import { Link, useLocation, NavLink } from "react-router-dom";
@@ -80,6 +81,13 @@ function ProfileScreen({ activeLink }: any) {
       link: "/dashboard/myresults",
       icon: FaBook,
       user: "is_student",
+    },
+
+    {
+      name: "logout",
+      link: "/login",
+      icon: CiLogout,
+      user: "is_principal",
     },
   ];
 
