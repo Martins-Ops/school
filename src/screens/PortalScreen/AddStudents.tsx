@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { states } from "../../utils/countries";
 import { ToastContainer } from "react-toastify";
 import BtnTeal from "../../components/BtnTeal";
-import { authPost, post } from "../../utils/exports";
+import { authPost } from "../../utils/exports";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import Rodal from "rodal";
 import { StudentFormDetails } from "../../types/ProjectTypes";
+import PortalFormInput from "./components/PortalFormInput";
 
 function AddStudents() {
   const [loading, setLoading] = useState(false);
@@ -75,7 +76,7 @@ function AddStudents() {
   const inputStyles =
     "border border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
 
-  const inputFlexDiv = "mb-6 flex gap-4 md:gap-20 mt-10 mx-12";
+  const inputFlexDiv = "mb-16 flex gap-4 md:gap-20 mt-10 mx-12";
 
   return (
     <div className="my-12">
@@ -84,23 +85,21 @@ function AddStudents() {
 
       <form onSubmit={submitHandler} action="">
         <div className={inputFlexDiv}>
-          <input
+          <PortalFormInput
             onChange={handlerFormChange}
             name="last_name"
             type="text"
             id="last_name"
-            className={inputStyles}
             placeholder="Surname"
             value={formDetails.last_name}
             required
           />
 
-          <input
+          <PortalFormInput
             onChange={handlerFormChange}
             name="first_name"
             type="text"
             id="first_name"
-            className={inputStyles}
             placeholder="Firstname"
             value={formDetails.first_name}
             required
@@ -108,23 +107,21 @@ function AddStudents() {
         </div>
 
         <div className={inputFlexDiv}>
-          <input
+          <PortalFormInput
             onChange={handlerFormChange}
             name="middle_name"
             type="text"
             id="middle_name"
-            className={inputStyles}
             placeholder="Middle Name"
             value={formDetails.middle_name}
             required
           />
 
-          <input
+          <PortalFormInput
             onChange={handlerFormChange}
             name="email"
             type="email"
             id="email"
-            className={inputStyles}
             placeholder="Email Address"
             value={formDetails.email}
             required
@@ -132,20 +129,38 @@ function AddStudents() {
         </div>
 
         <div className={inputFlexDiv}>
-          <div>
-            <input
-              type="file"
-              accept="image/*"
-              capture="environment"
-              onChange={handleImageChange}
-              // className={inputStyles}
-              className="hidden"
-              id="image-upload"
-            />
-            <label htmlFor="image-upload" className={inputStyles}>
-              Add Image
-            </label>
-          </div>
+          <PortalFormInput
+            onChange={handlerFormChange}
+            name="contact_number"
+            type="number"
+            id="contact_number"
+            placeholder="Contact Number"
+            value={formDetails.middle_name}
+            required={false}
+          />
+
+          <PortalFormInput
+            onChange={handlerFormChange}
+            name="parent_number"
+            type="number"
+            id="parent_number"
+            placeholder="Parent Number"
+            value={formDetails.email}
+            required
+          />
+        </div>
+
+        <div className={inputFlexDiv}>
+          <PortalFormInput
+            onChange={handlerFormChange}
+            name="address"
+            type="text"
+            id="address"
+            placeholder="House_Address"
+            value={formDetails.first_name}
+            required
+          />
+
           <select
             onChange={handlerFormChange}
             name="state_of_origin"
@@ -190,6 +205,21 @@ function AddStudents() {
             <option value={2}>JSS2</option>
             <option value={3}>JSS3</option>
           </select>
+        </div>
+
+        <div className="my-10">
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={handleImageChange}
+            // className={inputStyles}
+            className="hidden"
+            id="image-upload"
+          />
+          <label htmlFor="image-upload" className={inputStyles}>
+            Add Image
+          </label>
         </div>
 
         <BtnTeal loading={loading} value="submit" />
