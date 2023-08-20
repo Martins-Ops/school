@@ -4,6 +4,7 @@ import { get } from "../../utils/exports";
 import StudentDetail from "../../modals/StudentDetail";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 
 interface studentTypes {
   first_name: string;
@@ -36,12 +37,10 @@ function StudentsScreen() {
     return response;
   };
 
-  const {
-    data: students,
-    isLoading,
-    isError,
-    error,
-  } = useQuery("students", fetchStudents);
+  const { data: students, isLoading, isError, error } = useQuery(
+    "students",
+    fetchStudents
+  );
 
   const filterStudents = (students: studentTypes[]) => {
     let filteredStudents = students;
@@ -73,7 +72,7 @@ function StudentsScreen() {
         <select
           value={studentclass}
           onChange={(e: any) => setClass(e.target.value)}
-          className="rounded-lg p-2 px-10"
+          className="rounded-lg border p-2 px-10"
         >
           <option value="all">All</option>
           <option value="JSS1">JSS1</option>
@@ -116,20 +115,16 @@ function StudentsScreen() {
             <tbody>
               {filterStudents(students).map((student: studentTypes) => (
                 <tr
-                  className="text-left my-10 hover:bg-gray-200 cursor-pointer py-20"
+                  className="text-left my-10 cursor-pointer py-20"
                   key={student.id}
-                  onClick={() => {
-                    const modalDetails = {
-                      name: student.first_name,
-                      email: student.email,
-                      class: student.classroom,
-                    };
-                    setModalDetails(modalDetails);
-                    setShowModal(true);
-                  }}
                 >
                   <td className={tdStyle}>
-                    {`${student.first_name} ${student.last_name}`}
+                    <Link
+                      to={`/dashboard/${student.id}`}
+                      className="text-blue-400 underline"
+                    >
+                      {`${student.first_name} ${student.last_name}`}
+                    </Link>
                   </td>
                   <td className={tdHidden}>{student.id}</td>
                   <td className={tdStyle}>{student.classroom}</td>
@@ -139,8 +134,8 @@ function StudentsScreen() {
                   </td>
                   <td className={tdHidden}>{student.email}</td>
                   {/* <td className={tdHidden}>
-                    <input type="checkbox" />
-                  </td> */}
+        <input type="checkbox" />
+      </td> */}
                 </tr>
               ))}
             </tbody>

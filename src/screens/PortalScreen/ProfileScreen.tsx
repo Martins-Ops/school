@@ -19,6 +19,7 @@ import StudentResult from "./StudentResult";
 import LoginPage from "../AuthScreen/Login";
 import { Transition } from "@headlessui/react";
 import { useState } from "react";
+import StudentDetail from "../../modals/StudentDetail";
 
 function ProfileScreen({ activeLink }: any) {
   const location = useLocation();
@@ -138,6 +139,7 @@ function ProfileScreen({ activeLink }: any) {
         {activeLink === "password-reset" && <LoginPage />}
 
         {activeLink === "mysubjects/:subjectId" && <AddScore />}
+        {activeLink === "dashboard/:studentId" && <StudentDetail />}
       </div>
 
       <Transition
