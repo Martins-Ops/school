@@ -1,6 +1,11 @@
 import axios from "axios";
 
-export const BASE_URL = "http://127.0.0.1:8000/";
+const ENVIRONMENT = process.env.REACT_APP_ENVIRONMENT;
+
+export const BASE_URL =
+  ENVIRONMENT === "DEV"
+    ? "http://127.0.0.1:8000/"
+    : "stpaulschool.pythonanywhere.com";
 const authToken = localStorage.getItem("token");
 
 const headers = { Authorization: `Bearer ${authToken}` };
