@@ -1,36 +1,43 @@
 import React, { useState } from "react";
-import { countries } from "../../utils/countries";
-import { post } from "../../utils/exports";
-import { ToastContainer, toast } from "react-toastify";
-import { inputStyles } from "../../utils/styles";
+import { states } from "../../utils/countries";
+import { ToastContainer } from "react-toastify";
 import BtnTeal from "../../components/BtnTeal";
-import Rodal from "rodal";
+import { authPost } from "../../utils/exports";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import LoadingSpinner from "../../components/LoadingSpinner";
-import { TeacherFormDetails } from "../../types/ProjectTypes";
+import Rodal from "rodal";
+import { StudentFormDetails } from "../../types/ProjectTypes";
+import PortalFormInput from "./components/PortalFormInput";
 
 function AddTeacher() {
   const [loading, setLoading] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
 
-  const initialFormDetails: TeacherFormDetails = {
+  const initialFormDetails: StudentFormDetails = {
     first_name: "",
     last_name: "",
     middle_name: "",
     email: "",
-    password: "password1234",
     nationality: "",
     state_of_origin: "",
     gender: "",
-    is_teacher: true,
-    is_student: false,
+    classroom: 0,
+    is_teacher: false,
+    is_student: true,
     is_principal: false,
+    password: "password1234",
+    profile_image: null,
   };
 
-  const [formDetails, setFormDetails] = useState<TeacherFormDetails>(
+  const [formDetails, setFormDetails] = useState<StudentFormDetails>(
     initialFormDetails
   );
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const imageFile = e.target.files[0];
+      setFormDetails({ ...formDetails, profile_image: imageFile });
+    }
+  };
   const handlerFormChange = (e: any) => {
     setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
   };
@@ -39,107 +46,182 @@ function AddTeacher() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await post("auth/signup", formDetails);
+      const formData = new FormData();
+
+      Object.entries(formDetails).forEach(([key, value]) => {
+        if (key === "profile_image") {
+          formData.append(key, value); // Append the file
+        } else {
+          formData.append(key, JSON.stringify(value)); // Append other form data as stringified JSON
+        }
+      });
+
+      const response = await authPost("auth/signup/", formDetails);
+
       setLoading(false);
       const data = await response.data;
       if (data.email) {
         setSuccessModal(true);
         setTimeout(() => {
           setSuccessModal(false);
-        }, 5000);
-
+        }, 3000);
         setFormDetails(initialFormDetails);
       }
       console.log(data);
-    } catch (error) {}
+    } catch (error) {
+      // Handle error
+    }
   };
 
+  const inputStyles =
+    "border border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
+
+  const inputFlexDiv = "mb-16 flex gap-4 md:gap-20 mt-10 mx-12";
+
   return (
-    <div className="mt-32">
-      <h3 className="text-lg bold-500 mx-auto capitalize">Add a New Teacher</h3>
+    <div className="my-12">
+      <h3 className="text-lg bold-500 capitalize mx-auto">Add new Teacher</h3>
       <ToastContainer />
 
       <form onSubmit={submitHandler} action="">
-        <div className="mb-6 flex gap-20 mt-10 mx-12">
-          <input
+        <div className={inputFlexDiv}>
+          <PortalFormInput
             onChange={handlerFormChange}
             name="last_name"
             type="text"
-            id="first-name"
-            className={inputStyles}
+            id="last_name"
             placeholder="Surname"
-            required
             value={formDetails.last_name}
+            required
           />
 
-          <input
+          <PortalFormInput
             onChange={handlerFormChange}
             name="first_name"
             type="text"
-            id="first-name"
-            className={inputStyles}
+            id="first_name"
             placeholder="Firstname"
-            required
             value={formDetails.first_name}
+            required
           />
         </div>
 
-        <div className="mb-6 flex gap-20 mt-10 mx-12">
-          <input
+        <div className={inputFlexDiv}>
+          <PortalFormInput
             onChange={handlerFormChange}
             name="middle_name"
             type="text"
-            id="first-name"
-            className={inputStyles}
+            id="middle_name"
             placeholder="Middle Name"
-            required
             value={formDetails.middle_name}
+            required
           />
 
-          <input
+          <PortalFormInput
             onChange={handlerFormChange}
             name="email"
             type="email"
-            id="first-name"
-            className={inputStyles}
+            id="email"
             placeholder="Email Address"
-            required
             value={formDetails.email}
+            required
           />
         </div>
 
-        <div className="mb-6 flex gap-20 mt-10 mx-12">
-          <select
+        <div className={inputFlexDiv}>
+          <PortalFormInput
             onChange={handlerFormChange}
-            name="nationality"
-            id="nationality"
-            className={inputStyles}
+            name="contact_number"
+            type="number"
+            id="contact_number"
+            placeholder="Contact Number"
+            value={formDetails.middle_name}
             required
-          >
-            <option value="">Select a country</option>
-            {countries.map((country) => (
-              <option key={country.code} value={country.name}>
-                {country.name}
-              </option>
-            ))}
-          </select>
+          />
+
+          <PortalFormInput
+            onChange={handlerFormChange}
+            name="parent_number"
+            type="number"
+            id="parent_number"
+            placeholder="Phone Number 2"
+            value={formDetails.email}
+            required={false}
+          />
+        </div>
+
+        <div className={inputFlexDiv}>
+          <PortalFormInput
+            onChange={handlerFormChange}
+            name="address"
+            type="text"
+            id="address"
+            placeholder="House_Address"
+            value={formDetails.first_name}
+            required
+          />
+
           <select
             onChange={handlerFormChange}
             name="state_of_origin"
             id="state"
             className={inputStyles}
+            value={formDetails.state_of_origin}
             required
           >
             <option value="">State of origin</option>
-            {countries.map((country) => (
-              <option key={country.code} value={country.name}>
-                {country.name}
+            {states.map((state) => (
+              <option key={state} value={state}>
+                {state}
               </option>
             ))}
           </select>
         </div>
 
-        <BtnTeal value="Submit" loading={loading} />
+        <div className="mb-6 flex gap-20 mt-10 mx-12">
+          <select
+            onChange={handlerFormChange}
+            name="gender"
+            id="nationality"
+            className={inputStyles}
+            value={formDetails.gender}
+            required
+          >
+            <option value="">Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+
+          <select
+            onChange={handlerFormChange}
+            name="classroom"
+            id="classroom"
+            className={inputStyles}
+            required
+          >
+            <option value="">Marital Status</option>
+
+            <option value={1}>Single</option>
+            <option value={2}>Married</option>
+          </select>
+        </div>
+
+        <div className="my-10">
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={handleImageChange}
+            // className={inputStyles}
+            className="hidden"
+            id="image-upload"
+          />
+          <label htmlFor="image-upload" className={inputStyles}>
+            Add Image
+          </label>
+        </div>
+
+        <BtnTeal loading={loading} value="submit" />
       </form>
 
       <Rodal visible={successModal}>
