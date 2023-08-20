@@ -136,8 +136,8 @@ function AddStudents() {
               accept="image/*"
               capture="environment"
               onChange={handleImageChange}
-              className={inputStyles}
-              // className="hidden"
+              // className={inputStyles}
+              className="hidden"
               id="image-upload"
             />
             <label htmlFor="image-upload" className={inputStyles}>
