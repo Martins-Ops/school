@@ -7,9 +7,13 @@ function Footer() {
   const location = useLocation();
   const pathSegments = location.pathname.split("/");
   const params = pathSegments[pathSegments.length - 1];
+  const dashboardParams = pathSegments[pathSegments.length - 2];
+
   return (
     <div>
-      {params === "login" || "dashboard" ? (
+      {params === "login" ||
+      params === "dashboard" ||
+      dashboardParams === "dashboard" ? (
         <></>
       ) : (
         <div className="bg-gray-700 py-8 px-4 md:px-8 md:gap-10">

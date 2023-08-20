@@ -41,11 +41,13 @@ const Header = () => {
   const pathSegments = location.pathname.split("/");
   const params = pathSegments[pathSegments.length - 1];
 
-  console.log(params);
+  const dashboardParams = pathSegments[pathSegments.length - 2];
 
   return (
     <div>
-      {params === "login" ? (
+      {params === "login" ||
+      params === "dashboard" ||
+      dashboardParams === "dashboard" ? (
         <div></div>
       ) : (
         <div className="relative fixed">
