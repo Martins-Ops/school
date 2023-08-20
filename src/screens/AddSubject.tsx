@@ -42,7 +42,7 @@ const [subject,setSubject] = useState({
 
 
   return (
-    <form onSubmit={submitHandler} className='mt-28'>
+    <form onSubmit={submitHandler} className='mt-8'>
 
       <div className="mb-20 flex gap-20 mt-10 mx-12">
         <input name='name' placeholder='Add subject name' type="text" id="last-name" value={subject.name} onChange={handlerFormChange} className={inputStyles} required />

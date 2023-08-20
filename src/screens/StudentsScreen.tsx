@@ -63,7 +63,7 @@ function StudentsScreen() {
   };
 
   return (
-    <div className="mt-28">
+    <div className="mt-8">
       <div className="flex gap-20">
         <select
           value={studentclass}

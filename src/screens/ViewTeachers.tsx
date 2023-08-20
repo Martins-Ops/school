@@ -42,7 +42,7 @@ function ViewTeachers() {
 
 
   return (
-    <div className="mt-28">
+    <div className="mt-8">
 
       <div className="flex gap-20">
         <select value={studentclass} onChange={(e: any) => setClass(e.target.value)} className="rounded-lg p-2 px-10">
