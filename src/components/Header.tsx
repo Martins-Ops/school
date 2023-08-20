@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import logo from "../assets/images/logo.png";
-import { AiOutlineMail, AiOutlineLogin } from "react-icons/ai";
-import { BiLogIn, BiMenuAltRight } from "react-icons/bi";
+import { BiLogIn } from "react-icons/bi";
 import { RiMenu4Line } from "react-icons/ri";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 interface authState {
