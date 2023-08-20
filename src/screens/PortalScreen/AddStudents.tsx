@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { states } from "../utils/countries";
+import { states } from "../../utils/countries";
 import { ToastContainer } from "react-toastify";
-import BtnTeal from "../components/BtnTeal";
-import { authPost, post } from "../utils/exports";
+import BtnTeal from "../../components/BtnTeal";
+import { authPost, post } from "../../utils/exports";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import Rodal from "rodal";
-import { StudentFormDetails } from "../types/ProjectTypes";
+import { StudentFormDetails } from "../../types/ProjectTypes";
 
 function AddStudents() {
   const [loading, setLoading] = useState(false);

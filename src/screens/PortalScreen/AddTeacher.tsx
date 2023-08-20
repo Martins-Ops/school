@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import { countries } from "../utils/countries";
-import { post } from "../utils/exports";
+import { countries } from "../../utils/countries";
+import { post } from "../../utils/exports";
 import { ToastContainer, toast } from "react-toastify";
-import { inputStyles } from "../utils/styles";
-import BtnTeal from "../components/BtnTeal";
+import { inputStyles } from "../../utils/styles";
+import BtnTeal from "../../components/BtnTeal";
 import Rodal from "rodal";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import LoadingSpinner from "../components/LoadingSpinner";
-import { TeacherFormDetails } from "../types/ProjectTypes";
-
+import LoadingSpinner from "../../components/LoadingSpinner";
+import { TeacherFormDetails } from "../../types/ProjectTypes";
 
 function AddTeacher() {
   const [loading, setLoading] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
-
-
 
   const initialFormDetails: TeacherFormDetails = {
     first_name: "",
@@ -30,9 +27,9 @@ function AddTeacher() {
     is_principal: false,
   };
 
-
-  const [formDetails, setFormDetails] =
-    useState<TeacherFormDetails>(initialFormDetails);
+  const [formDetails, setFormDetails] = useState<TeacherFormDetails>(
+    initialFormDetails
+  );
 
   const handlerFormChange = (e: any) => {
     setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
@@ -59,9 +56,7 @@ function AddTeacher() {
 
   return (
     <div className="mt-32">
-      <h3 className="text-lg bold-500 mx-auto capitalize">
-        Add a New Teacher
-      </h3>
+      <h3 className="text-lg bold-500 mx-auto capitalize">Add a New Teacher</h3>
       <ToastContainer />
 
       <form onSubmit={submitHandler} action="">

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { get } from "../utils/exports";
-import StudentDetail from "../modals/StudentDetail";
-import LoadingSpinner from "../components/LoadingSpinner";
+import { get } from "../../utils/exports";
+import StudentDetail from "../../modals/StudentDetail";
+import LoadingSpinner from "../../components/LoadingSpinner";
 import { useQuery } from "react-query";
 
 interface studentTypes {
@@ -176,12 +176,10 @@ function StudentsScreen() {
 
             if (
               (pageNumber === 1 && currentPage <= 4) ||
-              (pageNumber ===
-                Math.ceil(students?.length / studentsPerPage) &&
+              (pageNumber === Math.ceil(students?.length / studentsPerPage) &&
                 currentPage >=
                   Math.ceil(students?.length / studentsPerPage) - 3) ||
-              (pageNumber >= currentPage - 2 &&
-                pageNumber <= currentPage + 2)
+              (pageNumber >= currentPage - 2 && pageNumber <= currentPage + 2)
             ) {
               return (
                 <button
@@ -207,15 +205,14 @@ function StudentsScreen() {
 
         {currentPage < Math.ceil(students?.length / studentsPerPage) - 3 && (
           <>
-            {currentPage < Math.ceil(students?.length / studentsPerPage) - 4 && (
+            {currentPage <
+              Math.ceil(students?.length / studentsPerPage) - 4 && (
               <span className="mx-1">...</span>
             )}
             <button
               className="mx-1 bg-blue-500 text-blue-900 hover:bg-blue-700 font-bold py-2 px-4 rounded"
               onClick={() => {
-                setCurrentPage(
-                  Math.ceil(students?.length / studentsPerPage)
-                );
+                setCurrentPage(Math.ceil(students?.length / studentsPerPage));
                 scrollToTop();
               }}
             >

@@ -1,7 +1,7 @@
 // ContactUs.js
 
 import React from "react";
-import img2 from "../assets/images/img6.jpg";
+import img2 from "../../assets/images/img6.jpg";
 
 const ContactUs = () => {
   return (

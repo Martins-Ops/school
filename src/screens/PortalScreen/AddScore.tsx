@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { get } from "../utils/exports";
-import { studentAddScoreTypes } from "../types/ProjectTypes";
-import { tdStyle } from "../utils/projectStyles";
+import { get } from "../../utils/exports";
+import { studentAddScoreTypes } from "../../types/ProjectTypes";
+import { tdStyle } from "../../utils/projectStyles";
 import { AiFillEdit, AiFillCheckCircle } from "react-icons/ai";
-import LoadingModal from "../modals/LoadingModal";
+import LoadingModal from "../../modals/LoadingModal";
 
 function AddScore() {
   const [students, setStudents] = useState([]);
-  const [testScores, setTestScores] = useState<{ [key: string]: string | number; }>({});
-  const [examScores, setExamScores] = useState<{ [key: string]: string | number; }>({});
+  const [testScores, setTestScores] = useState<{
+    [key: string]: string | number;
+  }>({});
+  const [examScores, setExamScores] = useState<{
+    [key: string]: string | number;
+  }>({});
   const [editingRow, setEditingRow] = useState<number | null>(null);
   const [loadingUpdate, setLoadingUpdate] = useState<boolean>(false);
 
@@ -48,7 +52,11 @@ function AddScore() {
       const requestOptions = {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ test_score: testScore, exam_score: examScore, student_id: id }),
+        body: JSON.stringify({
+          test_score: testScore,
+          exam_score: examScore,
+          student_id: id,
+        }),
       };
 
       setLoadingUpdate(true);
@@ -90,7 +98,9 @@ function AddScore() {
               className="text-left hover:bg-gray-200 cursor-pointer py-20"
               key={student._id}
             >
-              <td className={tdStyle}>{`${student.first_name} ${student.last_name}`}</td>
+              <td
+                className={tdStyle}
+              >{`${student.first_name} ${student.last_name}`}</td>
               <td className={tdStyle}>
                 {editingRow === student._id ? (
                   <input

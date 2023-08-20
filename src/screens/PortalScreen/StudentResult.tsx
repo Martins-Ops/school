@@ -1,15 +1,14 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { authState } from "../types/ProjectTypes";
+import { authState } from "../../types/ProjectTypes";
 
 function StudentResult() {
-
   const [studentScores, setStudentScores] = useState([]);
 
-const token = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("token="))
-        ?.split("=")[1];    
+  const token = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("token="))
+    ?.split("=")[1];
 
   const fetchResult = async () => {
     var myHeaders = new Headers();
@@ -27,7 +26,7 @@ const token = document.cookie
         requestOptions
       );
       const result = await response.json();
-      setStudentScores(result)
+      setStudentScores(result);
     } catch (error) {
       console.log("error", error);
     }
@@ -38,7 +37,7 @@ const token = document.cookie
   }, []);
 
   return (
-     <div className="mt-20">
+    <div className="mt-20">
       <h2 className="text-2xl font-bold mb-4">Student Scores</h2>
       <table className="min-w-full">
         <thead>
@@ -50,7 +49,7 @@ const token = document.cookie
           </tr>
         </thead>
         <tbody>
-          {studentScores.map((studentSubject:any) => (
+          {studentScores.map((studentSubject: any) => (
             <tr key={studentSubject.id}>
               <td className="py-2">{studentSubject.subject}</td>
               <td className="py-2">{studentSubject.test_score}</td>
@@ -61,7 +60,7 @@ const token = document.cookie
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
 export default StudentResult;

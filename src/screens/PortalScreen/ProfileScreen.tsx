@@ -1,6 +1,6 @@
 import AddStudents from "./AddStudents";
 import StudentsScreen from "./StudentsScreen";
-import logo from "../../src/assets/images/logo.png";
+import logo from "../../../src/assets/images/logo.png";
 import {
   FaUserCheck,
   FaUserPlus,
@@ -16,7 +16,7 @@ import AddSubject from "./AddSubject";
 import AddScore from "./AddScore";
 import ViewTeachers from "./ViewTeachers";
 import StudentResult from "./StudentResult";
-import LoginPage from "./Login";
+import LoginPage from "../AuthScreen/Login";
 
 function ProfileScreen({ activeLink }: any) {
   const location = useLocation();

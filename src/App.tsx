@@ -2,14 +2,14 @@ import "./App.css";
 import Header from "./components/Header";
 import { Routes, Route } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
-import Login from "./screens/Login";
-import ProfileForm from "./screens/RegisterStudents";
+import Login from "./screens/AuthScreen/Login";
+import ProfileForm from "./screens/PortalScreen/RegisterStudents";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import ProfileScreen from "./screens/ProfileScreen";
+import ProfileScreen from "./screens/PortalScreen/ProfileScreen";
 import Footer from "./components/Footer";
 import About from "./screens/AboutScreen/AboutScreen";
-import ContactScreen from "./screens/ContactScreen";
+import ContactScreen from "./screens/ContactScreen/ContactScreen";
 import "rodal/lib/rodal.css";
 
 // export const serverUrl = ''

@@ -1,9 +1,9 @@
 import { FaUser, FaLock, FaSpinner } from "react-icons/fa";
-import { BASE_URL, post } from "../utils/exports";
+import { BASE_URL, post } from "../../utils/exports";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import img2 from "../assets/images/img6.jpg";
+import img2 from "../..//assets/images/img6.jpg";
 
 const loginInput = "w-full  border-none focus:outline-none";
 const loginInputDiv =
