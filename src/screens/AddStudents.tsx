@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import {  states } from "../utils/countries";
+import { states } from "../utils/countries";
 import { ToastContainer } from "react-toastify";
 import BtnTeal from "../components/BtnTeal";
 import { authPost, post } from "../utils/exports";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import Rodal from "rodal";
-import { FormDetails } from "../types/ProjectTypes";
+import { StudentFormDetails } from "../types/ProjectTypes";
 
 function AddStudents() {
   const [loading, setLoading] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
 
-  const initialFormDetails: FormDetails = {
+  const initialFormDetails: StudentFormDetails = {
     first_name: "",
     last_name: "",
     middle_name: "",
@@ -24,79 +24,59 @@ function AddStudents() {
     is_student: true,
     is_principal: false,
     password: "password1234",
-    profile_image:null
+    profile_image: null,
   };
 
-  const [formDetails, setFormDetails] =
-    useState<FormDetails>(initialFormDetails);
+  const [formDetails, setFormDetails] = useState<StudentFormDetails>(
+    initialFormDetails
+  );
 
-
-const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  if (e.target.files && e.target.files.length > 0) {
-    const imageFile = e.target.files[0];
-    setFormDetails({ ...formDetails, profile_image: imageFile });
-  }
-};
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const imageFile = e.target.files[0];
+      setFormDetails({ ...formDetails, profile_image: imageFile });
+    }
+  };
   const handlerFormChange = (e: any) => {
     setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
   };
 
-  // const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   try {
-  //     setLoading(true);
-  //     const response = await post("auth/signup/", formDetails);
-  //     setLoading(false);
-  //     const data = await response.data;
-  //     if (data.email) {
-  //       setSuccessModal(true);
-  //       setTimeout(() => {
-  //         setSuccessModal(false);
-  //       }, 3000);
-
-  //       setFormDetails(initialFormDetails);
-  //     }
-  //     console.log(data);
-  //   } catch (error) {}
-  // };
-
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  try {
-    setLoading(true);
-    const formData = new FormData();
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const formData = new FormData();
 
-    Object.entries(formDetails).forEach(([key, value]) => {
-      if (key === 'profile_image') {
-        formData.append(key, value); // Append the file
-      } else {
-        formData.append(key, JSON.stringify(value)); // Append other form data as stringified JSON
+      Object.entries(formDetails).forEach(([key, value]) => {
+        if (key === "profile_image") {
+          formData.append(key, value); // Append the file
+        } else {
+          formData.append(key, JSON.stringify(value)); // Append other form data as stringified JSON
+        }
+      });
+
+      const response = await authPost("auth/signup/", formDetails);
+
+      setLoading(false);
+      const data = await response.data;
+      if (data.email) {
+        setSuccessModal(true);
+        setTimeout(() => {
+          setSuccessModal(false);
+        }, 3000);
+        setFormDetails(initialFormDetails);
       }
-    });
-
-  const response = await authPost("auth/signup/", formDetails);
-    
-    setLoading(false);
-    const data = await response.data;
-    if (data.email) {
-      setSuccessModal(true);
-      setTimeout(() => {
-        setSuccessModal(false);
-      }, 3000);
-      setFormDetails(initialFormDetails);
+      console.log(data);
+    } catch (error) {
+      // Handle error
     }
-    console.log(data);
-  } catch (error) {
-    // Handle error
-  }
-};
-
+  };
 
   const inputStyles =
     "border border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
 
   return (
-    <div className="my-32">
+    <div className="my-12">
       <h3 className="text-lg bold-500 capitalize mx-auto">Add new student</h3>
       <ToastContainer />
 
@@ -107,7 +87,7 @@ const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             name="last_name"
             type="text"
             id="last_name"
-            className={inputStyles}
+            className={`${inputStyles} hidden`}
             placeholder="Surname"
             value={formDetails.last_name}
             required
@@ -154,9 +134,10 @@ const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             <input
               type="file"
               accept="image/*"
-             capture="environment"
+              capture="environment"
               onChange={handleImageChange}
-              className="hidden"
+              className={inputStyles}
+              // className="hidden"
               id="image-upload"
             />
             <label htmlFor="image-upload" className={inputStyles}>

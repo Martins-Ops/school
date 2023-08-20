@@ -42,7 +42,7 @@ export interface BtnPropsTypes {
 }
 
 
-export  interface FormDetails {
+export  interface StudentFormDetails {
     first_name: string;
     last_name: string;
     middle_name: string;
@@ -58,6 +58,20 @@ export  interface FormDetails {
   profile_image: File | null;
   }
 
+
+  export interface TeacherFormDetails {
+    first_name: string;
+    last_name: string;
+    middle_name: string;
+    email: string;
+    password: string;
+    nationality: string;
+    state_of_origin: string;
+    gender: string;
+    is_teacher: boolean;
+    is_student: boolean;
+    is_principal: boolean;
+  }
 
 export interface authState {
   isLoggeedin: boolean;

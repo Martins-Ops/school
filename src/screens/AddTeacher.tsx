@@ -7,26 +7,16 @@ import BtnTeal from "../components/BtnTeal";
 import Rodal from "rodal";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { TeacherFormDetails } from "../types/ProjectTypes";
+
 
 function AddTeacher() {
   const [loading, setLoading] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
 
-  interface FormDetails {
-    first_name: string;
-    last_name: string;
-    middle_name: string;
-    email: string;
-    password: string;
-    nationality: string;
-    state_of_origin: string;
-    gender: string;
-    is_teacher: boolean;
-    is_student: boolean;
-    is_principal: boolean;
-  }
 
-  const initialFormDetails: FormDetails = {
+
+  const initialFormDetails: TeacherFormDetails = {
     first_name: "",
     last_name: "",
     middle_name: "",
@@ -42,7 +32,7 @@ function AddTeacher() {
 
 
   const [formDetails, setFormDetails] =
-    useState<FormDetails>(initialFormDetails);
+    useState<TeacherFormDetails>(initialFormDetails);
 
   const handlerFormChange = (e: any) => {
     setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
