@@ -38,9 +38,9 @@ function LoginPage() {
       if (result.is_principal === true) {
         navigate("/dashboard", { replace: true });
       } else if (result.is_teacher === true) {
-        navigate("/mysubjects", { replace: true });
+        navigate("/dashboard/mysubjects", { replace: true });
       } else if (result.is_student === true) {
-        navigate("/myresults", { replace: true });
+        navigate("/dashboard/myresults", { replace: true });
       }
     } catch (error) {
       console.log("error", error);
