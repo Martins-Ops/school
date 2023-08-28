@@ -146,7 +146,7 @@ function ProfileScreen({ activeLink }: any) {
         {activeLink === "myresults" && <StudentResult />}
         {activeLink === "password-reset" && <LoginPage />}
 
-        {activeLink === "mysubjects/:subjectId" && <AddScore />}
+        {activeLink === "dashboard/mysubjects/:subjectId" && <AddScore />}
         {activeLink === "dashboard/:studentId" && <StudentDetail />}
       </div>
 

@@ -91,8 +91,8 @@ function App() {
           />
 
           <Route
-            path="/mysubjects/:subjectId"
-            element={<ProfileScreen activeLink="mysubjects/:subjectId" />}
+            path="/dashboard/mysubjects/:subjectId"
+            element={<ProfileScreen activeLink="dashboard/mysubjects/:subjectId" />}
           />
           <Route path="/contact" element={<ContactScreen />} />
         </Routes>
