@@ -29,10 +29,10 @@ console.log(subject)
   }, [])
 
   return (
-    <div className="my-32">
+    <div className="ml-[20%] my-32">
 <div>
   {subject?.map((each: any) => (
-    <Link to={`/mysubjects/${each.id}`} className="block bg-gray-400 my-8 mr-28 py-4 hover:bg-gray-300" key={each.id}>
+    <Link to={`/dashboard/mysubjects/${each.id}`} className="block bg-gray-400 my-8 mr-28 py-4 hover:bg-gray-300" key={each.id}>
       {each.name}
     </Link>
   ))}

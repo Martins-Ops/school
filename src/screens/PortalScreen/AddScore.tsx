@@ -81,7 +81,7 @@ function AddScore() {
   }, []);
 
   return (
-    <div className="mt-40">
+    <div className="ml-[20%] mt-40">
       <table className="w-full my-10">
         <thead>
           <tr className="text-left">
