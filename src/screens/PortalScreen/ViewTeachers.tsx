@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { get } from "../../utils/exports";
 import StudentDetail from "../../modals/StudentDetail";
+import TeacherDetail from "./TeacherDetail";
 
 interface studentTypes {
   first_name: string;
@@ -73,11 +74,14 @@ function ViewTeachers() {
               onClick={() => {
                 const modalDetails = {
                   name: student.first_name,
+                  lastName: student.last_name,
+
                   email: student.email,
                   class: student.classroom,
                 };
                 setShowModal(true);
                 setModalDetails(modalDetails);
+                console.log("Clicked on student:", student);
               }}
             >
               <td
@@ -93,12 +97,21 @@ function ViewTeachers() {
         </table>
       </div>
 
+
       {showModal ? (
-        <StudentDetail
-          showModal={showModal}
-          hideModal={() => setShowModal(false)}
-          details={modalDetails}
-        />
+        <div
+          className="fixed inset-0 bg-black opacity-50 z-30"
+          onClick={() => setShowModal(false)}
+        ></div>
+      ) : null}
+
+      {showModal ? (
+        <div className="h-screen z-50 bg-gray-300 right-0 w-3/5 top-0 fixed shadow-lg rounded-lg">
+          <TeacherDetail
+            hideModal={() => setShowModal(false)}
+            details={modalDetails}
+          />
+        </div>
       ) : null}
     </div>
   );
