@@ -64,12 +64,12 @@ function ProfileScreen({ activeLink }: any) {
       icon: FaAddressBook,
       user: "is_principal",
     },
-    {
-      name: "Payment History",
-      link: "/dashboard/payment-history",
-      icon: FcMoneyTransfer,
-      user: "is_principal",
-    },
+    // {
+    //   name: "Payment History",
+    //   link: "/dashboard/payment-history",
+    //   icon: FcMoneyTransfer,
+    //   user: "is_principal",
+    // },
     {
       name: "My Subjects",
       link: "/dashboard/mysubjects",
@@ -89,6 +89,13 @@ function ProfileScreen({ activeLink }: any) {
       icon: CiLogout,
       user: "is_principal",
     },
+
+     {
+      name: "logout",
+      link: "/login",
+      icon: CiLogout,
+      user: "is_teacher",
+    },
   ];
 
   return (
@@ -106,7 +113,7 @@ function ProfileScreen({ activeLink }: any) {
           <p className="mt-4 text-red-700 text-lg">SP Sagamu</p>
         </Link>
 
-        <div className="mt-12 mx-6">
+        <div className="mt-12 mx-6 overflow-y-scroll">
           {nav.map((each) => {
             if (localStorage.getItem(each.user) === "true") {
               const isActive = location.pathname === each.link;
