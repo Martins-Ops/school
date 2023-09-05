@@ -1,7 +1,7 @@
 import React from "react";
 
 interface propTypes {
-  value: string;
+  value?: any;
   onChange: any;
   name: string;
   type: string;
