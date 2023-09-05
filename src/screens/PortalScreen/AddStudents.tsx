@@ -7,6 +7,7 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import Rodal from "rodal";
 import { StudentFormDetails } from "../../types/ProjectTypes";
 import PortalFormInput from "./components/PortalFormInput";
+import WebcamModal from "../../modals/WebcamModal";
 
 function AddStudents() {
   const [loading, setLoading] = useState(false);
@@ -26,15 +27,17 @@ function AddStudents() {
     is_principal: false,
     password: "password1234",
     profile_image: null,
+    phone_number: "",
+    parent_number: ""
   };
 
-  const [formDetails, setFormDetails] = useState<StudentFormDetails>(
-    initialFormDetails
-  );
+  const [formDetails, setFormDetails] =
+    useState<StudentFormDetails>(initialFormDetails);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const imageFile = e.target.files[0];
+      console.log(imageFile);
       setFormDetails({ ...formDetails, profile_image: imageFile });
     }
   };
@@ -77,6 +80,8 @@ function AddStudents() {
     "border border-gray-300 py-2 px-3 w-1/2 rounded-lg focus:outline-none focus:border-blue-500";
 
   const inputFlexDiv = "mb-16 flex gap-4 md:gap-20 mt-10 mx-12";
+
+  const [webcamModal, setWebcamModal] = useState(false);
 
   return (
     <div className="my-12">
@@ -131,21 +136,21 @@ function AddStudents() {
         <div className={inputFlexDiv}>
           <PortalFormInput
             onChange={handlerFormChange}
-            name="contact_number"
-            type="number"
+            name="parent_number"
+            type="text"
             id="contact_number"
             placeholder="Contact Number"
-            value={formDetails.middle_name}
+            value={formDetails.parent_number}
             required={false}
           />
 
           <PortalFormInput
             onChange={handlerFormChange}
-            name="parent_number"
-            type="number"
+            name="phone_number"
+            type="text"
             id="parent_number"
             placeholder="Parent Number"
-            value={formDetails.email}
+            value={formDetails.phone_number}
             required
           />
         </div>
@@ -208,19 +213,18 @@ function AddStudents() {
         </div>
 
         <div className="my-10">
-          <input
-            type="file"
-            accept="image/*"
-            capture="environment"
-            onChange={handleImageChange}
-            // className={inputStyles}
-            className="hidden"
-            id="image-upload"
-          />
-          <label htmlFor="image-upload" className={inputStyles}>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setWebcamModal(true);
+            }}
+            className={inputStyles}
+          >
             Add Image
-          </label>
+          </button>
         </div>
+
+      
 
         <BtnTeal loading={loading} value="submit" />
       </form>
@@ -234,6 +238,14 @@ function AddStudents() {
           </div>
         )}
       </Rodal>
+      {webcamModal && (
+        <div className="bg-white">
+          <WebcamModal
+            visible={webcamModal}
+            onClose={() => setWebcamModal(false)}
+          />
+        </div>
+      )}
     </div>
   );
 }
