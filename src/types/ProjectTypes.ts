@@ -55,7 +55,9 @@ export  interface StudentFormDetails {
     is_student: boolean;
     is_principal: boolean;
   password: string;
-  profile_image: File | null;
+  profile_image: File | null;     
+  phone_number?:string | null,
+  parent_number?:string| null
   }
 
 
